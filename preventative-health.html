@@ -1,0 +1,4033 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Preventative Health Management - Evidence-based strategies for disease prevention, biosecurity and welfare monitoring in captive harbour seals">
+    <title>Preventative Health | Preventative Health Management of Captive Harbour Seals</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #0B3C5D;
+            --secondary: #2C7A7B;
+            --accent: #FF6B6B;
+            --background: #FFFFFF;
+            --light-grey: #F5F7F9;
+            --text: #222222;
+            --text-light: #666666;
+            --white: #FFFFFF;
+            --shadow: rgba(11, 60, 93, 0.1);
+            --shadow-strong: rgba(11, 60, 93, 0.15);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --warning-bg: #FFF5F5;
+            --warning-border: #FF6B6B;
+            --success-bg: #F0FFF4;
+            --success-border: #38A169;
+            --info-bg: #EBF8FF;
+            --info-border: #3182CE;
+            --high-risk: #E53E3E;
+            --medium-risk: #DD6B20;
+            --low-risk: #38A169;
+        }
+
+        [data-theme="dark"] {
+            --background: #1a1a1a;
+            --light-grey: #2a2a2a;
+            --text: #f5f5f5;
+            --text-light: #b0b0b0;
+            --shadow: rgba(0, 0, 0, 0.3);
+            --shadow-strong: rgba(0, 0, 0, 0.5);
+            --warning-bg: #2d1f1f;
+            --success-bg: #1f2d1f;
+            --info-bg: #1f2530;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+            transition: var(--transition);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            line-height: 1.2;
+            color: var(--primary);
+        }
+
+        [data-theme="dark"] h1, [data-theme="dark"] h2, [data-theme="dark"] h3, [data-theme="dark"] h4 {
+            color: #ffffff;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--secondary), var(--accent));
+            z-index: 1001;
+            transition: width 0.1s;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px var(--shadow);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        [data-theme="dark"] .navbar {
+            background: rgba(26, 26, 26, 0.95);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        [data-theme="dark"] .logo { color: #ffffff; }
+
+        .logo i { color: var(--secondary); }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            font-size: 0.95rem;
+            color: var(--text);
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-links a.active { color: var(--secondary); }
+
+        .nav-controls {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .theme-toggle,
+        .mobile-menu-toggle {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            color: var(--text);
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover,
+        .mobile-menu-toggle:hover {
+            background: var(--light-grey);
+            color: var(--secondary);
+        }
+
+        .mobile-menu-toggle { display: none; }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 75vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--primary) 0%, #0a4a6b 50%, var(--secondary) 100%);
+            padding-top: 80px;
+        }
+
+        .hero-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.25;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: var(--white);
+            padding: 2rem;
+            max-width: 1000px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .breadcrumb {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1.25rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .breadcrumb a { color: rgba(255, 255, 255, 0.9); }
+        .breadcrumb a:hover { color: var(--white); }
+        .breadcrumb .separator { color: rgba(255, 255, 255, 0.6); }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255, 107, 107, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(255, 107, 107, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+            font-weight: 300;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-stat {
+            text-align: center;
+        }
+
+        .hero-stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1;
+        }
+
+        .hero-stat-label {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.8);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 0.5rem;
+        }
+
+        .wave-container {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+        }
+
+        .wave {
+            position: relative;
+            display: block;
+            width: calc(100% + 1.3px);
+            height: 100px;
+        }
+
+        .wave-path { fill: var(--background); }
+
+        /* Page Layout */
+        .page-layout {
+            display: grid;
+            grid-template-columns: 240px 1fr;
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* Sticky Side Nav */
+        .side-nav {
+            position: sticky;
+            top: 100px;
+            align-self: start;
+            max-height: calc(100vh - 120px);
+            overflow-y: auto;
+            padding: 1.5rem;
+            background: var(--light-grey);
+            border-radius: 16px;
+            border-left: 3px solid var(--secondary);
+        }
+
+        .side-nav-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        [data-theme="dark"] .side-nav-title { color: #ffffff; }
+
+        .side-nav ul { list-style: none; }
+
+        .side-nav li { margin-bottom: 0.5rem; }
+
+        .side-nav a {
+            display: block;
+            padding: 0.5rem 0.75rem;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            border-radius: 8px;
+            border-left: 2px solid transparent;
+            transition: var(--transition);
+        }
+
+        .side-nav a:hover {
+            color: var(--secondary);
+            background: rgba(44, 122, 123, 0.08);
+        }
+
+        .side-nav a.active {
+            color: var(--secondary);
+            background: rgba(44, 122, 123, 0.1);
+            border-left-color: var(--secondary);
+            font-weight: 600;
+        }
+
+        .main-content { min-width: 0; }
+
+        .content-section {
+            margin-bottom: 5rem;
+            scroll-margin-top: 100px;
+        }
+
+        .section-header { margin-bottom: 2.5rem; }
+
+        .section-tag {
+            display: inline-block;
+            color: var(--secondary);
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.75rem;
+        }
+
+        .section-title {
+            font-size: clamp(1.75rem, 3vw, 2.5rem);
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        [data-theme="dark"] .section-title { color: #ffffff; }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 700px;
+            line-height: 1.7;
+        }
+
+        /* Typography */
+        .content-text {
+            font-size: 1.05rem;
+            line-height: 1.85;
+            color: var(--text);
+            margin-bottom: 1.5rem;
+        }
+
+        .content-text p { margin-bottom: 1.25rem; }
+
+        .citation {
+            display: inline;
+            color: var(--secondary);
+            font-weight: 500;
+            font-size: 0.9em;
+            white-space: nowrap;
+        }
+
+        .citation::before { content: '('; }
+        .citation::after { content: ')'; }
+
+        /* Callout Boxes */
+        .info-box {
+            background: var(--info-bg);
+            border-left: 4px solid var(--info-border);
+            padding: 1.5rem 2rem;
+            border-radius: 0 12px 12px 0;
+            margin: 2rem 0;
+        }
+
+        .info-box-title {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        [data-theme="dark"] .info-box-title { color: #ffffff; }
+
+        .info-box p {
+            font-size: 0.95rem;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        .warning-callout {
+            background: var(--warning-bg);
+            border: 1px solid var(--warning-border);
+            border-left: 4px solid var(--warning-border);
+            padding: 1.5rem 2rem;
+            border-radius: 0 12px 12px 0;
+            margin: 2rem 0;
+            position: relative;
+        }
+
+        .warning-callout::before {
+            content: '\f071';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            color: var(--accent);
+            font-size: 1.5rem;
+            opacity: 0.3;
+        }
+
+        .warning-title {
+            font-family: 'Playfair Display', serif;
+            color: var(--accent);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+        }
+
+        .warning-callout p {
+            font-size: 0.95rem;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        .success-callout {
+            background: var(--success-bg);
+            border-left: 4px solid var(--success-border);
+            padding: 1.5rem 2rem;
+            border-radius: 0 12px 12px 0;
+            margin: 2rem 0;
+        }
+
+        .success-callout .info-box-title {
+            color: var(--success-border);
+        }
+
+        /* Risk Priority Matrix */
+        .risk-matrix {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 40px var(--shadow);
+            margin: 2rem 0;
+        }
+
+        [data-theme="dark"] .risk-matrix { background: var(--light-grey); }
+
+        .matrix-grid {
+            display: grid;
+            grid-template-columns: auto repeat(3, 1fr);
+            grid-template-rows: auto repeat(3, 1fr);
+            gap: 0.5rem;
+            margin-top: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .matrix-cell {
+            padding: 1.25rem 1rem;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: var(--transition);
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .matrix-cell:hover {
+            transform: scale(1.03);
+            box-shadow: 0 5px 20px var(--shadow-strong);
+        }
+
+        .matrix-header {
+            background: var(--primary);
+            color: var(--white);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.75rem;
+        }
+
+        .matrix-row-header {
+            background: var(--primary);
+            color: var(--white);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.75rem;
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+            padding: 1rem 0.75rem;
+        }
+
+        .matrix-high {
+            background: linear-gradient(135deg, #FED7D7, #FEB2B2);
+            color: #742A2A;
+            font-weight: 600;
+        }
+
+        [data-theme="dark"] .matrix-high {
+            background: linear-gradient(135deg, #4a2020, #5a2828);
+            color: #FEB2B2;
+        }
+
+        .matrix-medium {
+            background: linear-gradient(135deg, #FEEBC8, #FBD38D);
+            color: #7B341E;
+            font-weight: 600;
+        }
+
+        [data-theme="dark"] .matrix-medium {
+            background: linear-gradient(135deg, #4a3520, #5a4028);
+            color: #FBD38D;
+        }
+
+        .matrix-low {
+            background: linear-gradient(135deg, #C6F6D5, #9AE6B4);
+            color: #22543D;
+            font-weight: 600;
+        }
+
+        [data-theme="dark"] .matrix-low {
+            background: linear-gradient(135deg, #1f3a2a, #2a4a35);
+            color: #9AE6B4;
+        }
+
+        .matrix-corner {
+            background: transparent;
+        }
+
+        .matrix-axis-label {
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-light);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 1rem;
+        }
+
+        .matrix-legend {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .legend-color {
+            width: 16px;
+            height: 16px;
+            border-radius: 4px;
+        }
+
+        .legend-color.high { background: var(--high-risk); }
+        .legend-color.medium { background: var(--medium-risk); }
+        .legend-color.low { background: var(--low-risk); }
+
+        /* Tables */
+        .table-container {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 40px var(--shadow);
+            margin: 2rem 0;
+            overflow: hidden;
+        }
+
+        [data-theme="dark"] .table-container { background: var(--light-grey); }
+
+        .table-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .table-search {
+            flex: 1;
+            max-width: 300px;
+            position: relative;
+        }
+
+        .table-search input {
+            width: 100%;
+            padding: 0.75rem 1rem 0.75rem 2.5rem;
+            border: 1px solid rgba(11, 60, 93, 0.15);
+            border-radius: 50px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            background: var(--background);
+            color: var(--text);
+            transition: var(--transition);
+        }
+
+        .table-search input:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(44, 122, 123, 0.1);
+        }
+
+        .table-search i {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-light);
+        }
+
+        .table-filters {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1rem;
+            background: var(--background);
+            border: 1px solid rgba(11, 60, 93, 0.15);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: var(--transition);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--secondary);
+            color: var(--white);
+            border-color: var(--secondary);
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            overflow-x: auto;
+            display: block;
+        }
+
+        .data-table thead {
+            position: sticky;
+            top: 0;
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .data-table th {
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            user-select: none;
+            transition: var(--transition);
+        }
+
+        .data-table th:hover { background: rgba(255, 255, 255, 0.1); }
+
+        .data-table th i {
+            margin-left: 0.5rem;
+            font-size: 0.7rem;
+            opacity: 0.6;
+        }
+
+        .data-table td {
+            padding: 1rem;
+            border-bottom: 1px solid rgba(11, 60, 93, 0.08);
+            font-size: 0.95rem;
+            vertical-align: top;
+        }
+
+        [data-theme="dark"] .data-table td {
+            border-bottom-color: rgba(255, 255, 255, 0.08);
+        }
+
+        .data-table tbody tr { transition: var(--transition); }
+
+        .data-table tbody tr:nth-child(even) {
+            background: var(--light-grey);
+        }
+
+        [data-theme="dark"] .data-table tbody tr:nth-child(even) {
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .data-table tbody tr:hover {
+            background: rgba(44, 122, 123, 0.08);
+        }
+
+        .priority-badge {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .priority-high {
+            background: var(--high-risk);
+            color: var(--white);
+        }
+
+        .priority-medium {
+            background: var(--medium-risk);
+            color: var(--white);
+        }
+
+        .priority-low {
+            background: var(--low-risk);
+            color: var(--white);
+        }
+
+        /* Staff Role Cards */
+        .staff-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .staff-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            cursor: pointer;
+        }
+
+        [data-theme="dark"] .staff-card { background: var(--light-grey); }
+
+        .staff-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px var(--shadow-strong);
+        }
+
+        .staff-card-header {
+            padding: 2rem;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .staff-card-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+
+        .keeper-header { background: linear-gradient(135deg, #2C7A7B, #38A169); }
+        .curator-header { background: linear-gradient(135deg, #0B3C5D, #2C7A7B); }
+        .vet-header { background: linear-gradient(135deg, #E53E3E, #DD6B20); }
+
+        .staff-card-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .staff-card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--white);
+            margin-bottom: 0.25rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .staff-card-role {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.85);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .staff-card-body {
+            padding: 2rem;
+        }
+
+        .staff-card-intro {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .responsibilities-list {
+            list-style: none;
+        }
+
+        .responsibilities-list li {
+            padding: 0.75rem 0 0.75rem 2rem;
+            position: relative;
+            font-size: 0.9rem;
+            color: var(--text);
+            border-bottom: 1px solid rgba(11, 60, 93, 0.05);
+            transition: var(--transition);
+        }
+
+        [data-theme="dark"] .responsibilities-list li {
+            border-bottom-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .responsibilities-list li:last-child { border-bottom: none; }
+
+        .responsibilities-list li::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 0.85rem;
+            color: var(--secondary);
+            font-size: 0.85rem;
+        }
+
+        .keeper-card .responsibilities-list li::before { color: #38A169; }
+        .curator-card .responsibilities-list li::before { color: var(--primary); }
+        .vet-card .responsibilities-list li::before { color: #E53E3E; }
+
+        .responsibilities-list li:hover {
+            padding-left: 2.25rem;
+            background: rgba(44, 122, 123, 0.03);
+        }
+
+        .staff-card-footer {
+            padding: 1rem 2rem;
+            background: var(--light-grey);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        [data-theme="dark"] .staff-card-footer {
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .staff-card-footer i {
+            color: var(--secondary);
+            margin-right: 0.5rem;
+        }
+
+        /* Hover overlay for staff cards */
+        .staff-card-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(11, 60, 93, 0.95), rgba(44, 122, 123, 0.95));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            opacity: 0;
+            transition: var(--transition);
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .staff-card:hover .staff-card-overlay {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .overlay-content {
+            text-align: center;
+            color: var(--white);
+        }
+
+        .overlay-content h4 {
+            color: var(--white);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .overlay-content p {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 1rem;
+        }
+
+        .overlay-stat {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Disease Cards */
+        .disease-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .disease-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px var(--shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        [data-theme="dark"] .disease-card { background: var(--light-grey); }
+
+        .disease-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px var(--shadow-strong);
+        }
+
+        .disease-card-header {
+            padding: 1.75rem 2rem;
+            color: var(--white);
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .disease-viral { background: linear-gradient(135deg, #E53E3E, #C53030); }
+        .disease-bacterial { background: linear-gradient(135deg, #DD6B20, #C05621); }
+        .disease-parasitic { background: linear-gradient(135deg, #805AD5, #6B46C1); }
+
+        .disease-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .disease-card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            color: var(--white);
+        }
+
+        .disease-card-type {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: rgba(255, 255, 255, 0.85);
+            margin-top: 0.25rem;
+        }
+
+        .disease-card-body {
+            padding: 1.75rem 2rem;
+        }
+
+        .disease-detail {
+            margin-bottom: 1.25rem;
+        }
+
+        .disease-detail-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-light);
+            font-weight: 600;
+            margin-bottom: 0.35rem;
+        }
+
+        .disease-detail-value {
+            font-size: 0.95rem;
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .disease-risk-bar {
+            height: 6px;
+            background: var(--light-grey);
+            border-radius: 3px;
+            overflow: hidden;
+            margin-top: 0.5rem;
+        }
+
+        .disease-risk-fill {
+            height: 100%;
+            border-radius: 3px;
+            transition: width 1s ease-out;
+        }
+
+        .risk-high { background: linear-gradient(90deg, #E53E3E, #FF6B6B); }
+        .risk-medium { background: linear-gradient(90deg, #DD6B20, #F6AD55); }
+        .risk-low { background: linear-gradient(90deg, #38A169, #68D391); }
+
+        .disease-card-footer {
+            padding: 1rem 2rem;
+            background: var(--light-grey);
+            font-size: 0.8rem;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        [data-theme="dark"] .disease-card-footer {
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        /* Zoonosis Section */
+        .zoonosis-section {
+            background: linear-gradient(135deg, #FFF5F5, #FED7D7);
+            border-radius: 24px;
+            padding: 3rem;
+            margin: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        [data-theme="dark"] .zoonosis-section {
+            background: linear-gradient(135deg, #2d1f1f, #3a2525);
+        }
+
+        .zoonosis-section::before {
+            content: '\f786';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 8rem;
+            color: rgba(229, 62, 62, 0.08);
+        }
+
+        .zoonosis-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.75rem;
+            color: #C53030;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        [data-theme="dark"] .zoonosis-title { color: #FEB2B2; }
+
+        .zoonosis-intro {
+            font-size: 1rem;
+            color: var(--text);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        .zoonosis-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .zoonosis-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 1.75rem;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(229, 62, 62, 0.1);
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        [data-theme="dark"] .zoonosis-card { background: var(--light-grey); }
+
+        .zoonosis-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 15px 40px rgba(229, 62, 62, 0.2);
+        }
+
+        .zoonosis-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #E53E3E, #FF6B6B);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: var(--white);
+            font-size: 1.5rem;
+        }
+
+        .zoonosis-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        [data-theme="dark"] .zoonosis-name { color: #ffffff; }
+
+        .zoonosis-desc {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .zoonosis-prevention {
+            margin-top: 2.5rem;
+            padding: 1.5rem 2rem;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 12px;
+            position: relative;
+            z-index: 1;
+        }
+
+        [data-theme="dark"] .zoonosis-prevention {
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .zoonosis-prevention h4 {
+            color: #C53030;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        [data-theme="dark"] .zoonosis-prevention h4 { color: #FEB2B2; }
+
+        .prevention-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0.75rem;
+        }
+
+        .prevention-list li {
+            padding: 0.5rem 0 0.5rem 1.75rem;
+            position: relative;
+            font-size: 0.9rem;
+            color: var(--text);
+        }
+
+        .prevention-list li::before {
+            content: '\f058';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--success-border);
+        }
+
+        /* Non-Infectious Cards */
+        .problem-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .problem-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 1.75rem;
+            box-shadow: 0 5px 20px var(--shadow);
+            transition: var(--transition);
+            border-top: 4px solid var(--secondary);
+            position: relative;
+        }
+
+        [data-theme="dark"] .problem-card { background: var(--light-grey); }
+
+        .problem-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px var(--shadow-strong);
+        }
+
+        .problem-card-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .problem-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .problem-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem;
+            color: var(--primary);
+        }
+
+        [data-theme="dark"] .problem-title { color: #ffffff; }
+
+        .problem-body {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .problem-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(11, 60, 93, 0.08);
+        }
+
+        [data-theme="dark"] .problem-meta {
+            border-top-color: rgba(255, 255, 255, 0.08);
+        }
+
+        .meta-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.25rem 0.7rem;
+            background: var(--light-grey);
+            border-radius: 50px;
+            font-size: 0.75rem;
+            color: var(--text-light);
+        }
+
+        [data-theme="dark"] .meta-tag { background: rgba(255, 255, 255, 0.05); }
+
+        .meta-tag i { color: var(--secondary); font-size: 0.7rem; }
+
+        /* Environmental Health Cards */
+        .env-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .env-card {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 20px;
+            padding: 2.5rem;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .env-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+        }
+
+        .env-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(11, 60, 93, 0.3);
+        }
+
+        .env-card-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .env-card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: var(--white);
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .env-card-text {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.7;
+            position: relative;
+            z-index: 1;
+            margin-bottom: 1.5rem;
+        }
+
+        .env-card-stats {
+            display: flex;
+            gap: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            z-index: 1;
+        }
+
+        .env-stat {
+            flex: 1;
+        }
+
+        .env-stat-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .env-stat-label {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.75);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 0.25rem;
+        }
+
+        /* Quarantine Flowchart */
+        .flowchart {
+            background: var(--white);
+            border-radius: 24px;
+            padding: 3rem 2rem;
+            box-shadow: 0 10px 40px var(--shadow);
+            margin: 2rem 0;
+            position: relative;
+        }
+
+        [data-theme="dark"] .flowchart { background: var(--light-grey); }
+
+        .flowchart-title {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.75rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        [data-theme="dark"] .flowchart-title { color: #ffffff; }
+
+        .flowchart-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .flowchart-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .flowchart-steps::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 30px;
+            bottom: 30px;
+            width: 3px;
+            background: linear-gradient(180deg, var(--secondary), var(--accent));
+            border-radius: 2px;
+        }
+
+        .flow-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            padding: 1.25rem 0;
+            position: relative;
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: all 0.6s ease-out;
+        }
+
+        .flow-step.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .flow-step-number {
+            width: 60px;
+            height: 60px;
+            background: var(--white);
+            border: 3px solid var(--secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: var(--secondary);
+            font-size: 1.25rem;
+            flex-shrink: 0;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 5px 15px var(--shadow);
+            transition: var(--transition);
+        }
+
+        [data-theme="dark"] .flow-step-number {
+            background: var(--light-grey);
+        }
+
+        .flow-step:hover .flow-step-number {
+            background: var(--secondary);
+            color: var(--white);
+            transform: scale(1.1);
+        }
+
+        .flow-step-content {
+            flex: 1;
+            padding-top: 0.5rem;
+        }
+
+        .flow-step-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 0.35rem;
+        }
+
+        [data-theme="dark"] .flow-step-title { color: #ffffff; }
+
+        .flow-step-desc {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .flow-step-time {
+            display: inline-block;
+            margin-top: 0.5rem;
+            padding: 0.25rem 0.75rem;
+            background: var(--light-grey);
+            border-radius: 50px;
+            font-size: 0.75rem;
+            color: var(--secondary);
+            font-weight: 600;
+        }
+
+        [data-theme="dark"] .flow-step-time {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Biosecurity Timeline */
+        .biosecurity-timeline {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 24px;
+            padding: 3rem;
+            margin: 2rem 0;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .biosecurity-timeline::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+        }
+
+        .timeline-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.75rem;
+            color: var(--white);
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .timeline-subtitle {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .timeline-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .timeline-item {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            padding: 1.75rem;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .timeline-item:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .timeline-item-year {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-item-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.05rem;
+            color: var(--white);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-item-desc {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.6;
+        }
+
+        /* Monitoring Calendar */
+        .calendar-container {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 40px var(--shadow);
+            margin: 2rem 0;
+        }
+
+        [data-theme="dark"] .calendar-container { background: var(--light-grey); }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .calendar-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: var(--primary);
+        }
+
+        [data-theme="dark"] .calendar-title { color: #ffffff; }
+
+        .calendar-legend {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .calendar-legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        .legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .legend-dot.daily { background: var(--high-risk); }
+        .legend-dot.weekly { background: var(--medium-risk); }
+        .legend-dot.quarterly { background: var(--info-border); }
+        .legend-dot.annual { background: var(--success-border); }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: 180px repeat(12, 1fr);
+            gap: 2px;
+            overflow-x: auto;
+        }
+
+        .calendar-cell {
+            padding: 0.75rem 0.5rem;
+            text-align: center;
+            font-size: 0.8rem;
+            border-radius: 4px;
+            transition: var(--transition);
+            cursor: pointer;
+            min-width: 60px;
+        }
+
+        .calendar-cell:hover {
+            transform: scale(1.05);
+            box-shadow: 0 3px 10px var(--shadow);
+        }
+
+        .calendar-header-cell {
+            background: var(--primary);
+            color: var(--white);
+            font-weight: 700;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .calendar-row-header {
+            background: var(--light-grey);
+            font-weight: 600;
+            color: var(--text);
+            text-align: left;
+            padding-left: 1rem;
+            display: flex;
+            align-items: center;
+            font-size: 0.8rem;
+        }
+
+        [data-theme="dark"] .calendar-row-header {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .calendar-active {
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        .calendar-active.daily { background: var(--high-risk); }
+        .calendar-active.weekly { background: var(--medium-risk); }
+        .calendar-active.quarterly { background: var(--info-border); }
+        .calendar-active.annual { background: var(--success-border); }
+
+        .calendar-inactive {
+            background: rgba(11, 60, 93, 0.03);
+            color: transparent;
+        }
+
+        [data-theme="dark"] .calendar-inactive {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        /* Critical Evaluation */
+        .evaluation-panel {
+            background: linear-gradient(135deg, var(--light-grey), var(--white));
+            border-radius: 24px;
+            padding: 3rem;
+            margin: 2rem 0;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(44, 122, 123, 0.1);
+        }
+
+        [data-theme="dark"] .evaluation-panel {
+            background: linear-gradient(135deg, var(--light-grey), rgba(0, 0, 0, 0.3));
+        }
+
+        .evaluation-panel::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--secondary), var(--accent));
+        }
+
+        .evaluation-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.75rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        [data-theme="dark"] .evaluation-title { color: #ffffff; }
+
+        .evaluation-title i {
+            color: var(--secondary);
+        }
+
+        .evaluation-text {
+            font-size: 1.05rem;
+            line-height: 1.85;
+            color: var(--text);
+            margin-bottom: 1.5rem;
+        }
+
+        .evaluation-text p { margin-bottom: 1rem; }
+
+        /* Key Takeaways Panel */
+        .takeaways-panel {
+            background: var(--white);
+            border-radius: 24px;
+            padding: 3rem;
+            box-shadow: 0 15px 50px var(--shadow);
+            margin: 2rem 0;
+            position: relative;
+            overflow: hidden;
+            border-left: 6px solid var(--secondary);
+        }
+
+        [data-theme="dark"] .takeaways-panel { background: var(--light-grey); }
+
+        .takeaways-panel::before {
+            content: '\f0eb';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            font-size: 6rem;
+            color: rgba(44, 122, 123, 0.08);
+        }
+
+        .takeaways-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.75rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        [data-theme="dark"] .takeaways-title { color: #ffffff; }
+
+        .takeaways-title i {
+            color: var(--accent);
+        }
+
+        .takeaways-subtitle {
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+
+        .takeaways-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .takeaway-item {
+            display: flex;
+            gap: 1rem;
+            padding: 1.25rem;
+            background: var(--light-grey);
+            border-radius: 12px;
+            transition: var(--transition);
+        }
+
+        [data-theme="dark"] .takeaway-item {
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .takeaway-item:hover {
+            transform: translateX(5px);
+            background: rgba(44, 122, 123, 0.08);
+        }
+
+        .takeaway-number {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .takeaway-content h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.05rem;
+            color: var(--primary);
+            margin-bottom: 0.35rem;
+        }
+
+        [data-theme="dark"] .takeaway-content h4 { color: #ffffff; }
+
+        .takeaway-content p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* References Section */
+        .references-section {
+            padding: 5rem 2rem;
+            background: var(--light-grey);
+        }
+
+        .references-list {
+            max-width: 1000px;
+            margin: 2rem auto 0;
+        }
+
+        .reference-item {
+            background: var(--white);
+            padding: 1.5rem 2rem;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--secondary);
+            box-shadow: 0 5px 20px var(--shadow);
+            transition: var(--transition);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        [data-theme="dark"] .reference-item { background: var(--background); }
+
+        .reference-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 10px 30px var(--shadow-strong);
+        }
+
+        .reference-item em {
+            color: var(--secondary);
+            font-style: italic;
+        }
+
+        .reference-item a {
+            color: var(--secondary);
+            word-break: break-all;
+        }
+
+        .reference-item a:hover { color: var(--accent); }
+
+        /* Footer */
+        .footer {
+            background: var(--primary);
+            color: var(--white);
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 4rem;
+            max-width: 1400px;
+            margin: 0 auto 3rem;
+        }
+
+        .footer-brand h3 {
+            color: var(--white);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-brand p {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .footer-social a:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        .footer-links h4 {
+            color: var(--white);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links ul { list-style: none; }
+
+        .footer-links li { margin-bottom: 0.75rem; }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: var(--secondary);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            box-shadow: 0 5px 20px rgba(44, 122, 123, 0.4);
+            z-index: 999;
+            border: none;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        /* Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .page-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .side-nav {
+                position: relative;
+                top: 0;
+                max-height: none;
+            }
+
+            .side-nav ul {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.5rem;
+            }
+
+            .side-nav li { margin-bottom: 0; }
+
+            .side-nav a {
+                padding: 0.5rem 1rem;
+                border-left: none;
+                border-bottom: 2px solid transparent;
+            }
+
+            .side-nav a.active {
+                border-left: none;
+                border-bottom-color: var(--secondary);
+            }
+
+            .calendar-grid {
+                overflow-x: auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background: var(--background);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 27px var(--shadow);
+                padding: 2rem 0;
+                gap: 1.5rem;
+            }
+
+            .nav-links.active { left: 0; }
+
+            .mobile-menu-toggle { display: block; }
+
+            .hero { min-height: 60vh; }
+
+            .hero h1 { font-size: 2rem; }
+
+            .hero-stats { gap: 1.5rem; }
+
+            .hero-stat-number { font-size: 1.75rem; }
+
+            .matrix-grid {
+                grid-template-columns: auto repeat(3, 1fr);
+                font-size: 0.75rem;
+            }
+
+            .matrix-cell {
+                padding: 0.75rem 0.5rem;
+                min-height: 60px;
+            }
+
+            .flowchart-steps::before {
+                left: 25px;
+            }
+
+            .flow-step-number {
+                width: 50px;
+                height: 50px;
+                font-size: 1rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .zoonosis-section,
+            .biosecurity-timeline,
+            .evaluation-panel,
+            .takeaways-panel {
+                padding: 2rem 1.5rem;
+            }
+
+            .calendar-grid {
+                font-size: 0.7rem;
+            }
+
+            .calendar-cell {
+                padding: 0.5rem 0.25rem;
+                min-width: 45px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .disease-cards,
+            .staff-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .takeaways-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-water"></i>
+                <span>Phoca vitulina</span>
+            </a>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="nutrition.html">Nutrition</a></li>
+                <li><a href="preventative-health.html" class="active">Preventative Health</a></li>
+                <li><a href="enclosure-design.html">Enclosure Design</a></li>
+                <li><a href="emerging-research.html">Emerging Research</a></li>
+            </ul>
+
+            <div class="nav-controls">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <img src="https://images.unsplash.com/photo-1589490144384-12e4a7d5a4ac?w=1920&h=1080&fit=crop" alt="Harbour seal receiving veterinary care - preventative health monitoring" class="hero-image">
+        
+        <div class="hero-content">
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+                <a href="index.html">Home</a>
+                <span class="separator">/</span>
+                <span>Preventative Health</span>
+            </nav>
+            
+            <span class="hero-badge">Chapter 02</span>
+            <h1>Preventative Health Management</h1>
+            <p class="hero-subtitle">A structured, risk-based approach to protecting captive harbour seals from infectious disease, environmental hazards and welfare compromise</p>
+            
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <div class="hero-stat-number">5</div>
+                    <div class="hero-stat-label">Risk Categories</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number">3</div>
+                    <div class="hero-stat-label">Staff Roles</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number">30+</div>
+                    <div class="hero-stat-label">Days Quarantine</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number">5</div>
+                    <div class="hero-stat-label">Major Diseases</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="wave-container">
+            <svg class="wave" viewBox="0 0 1440 100" preserveAspectRatio="none">
+                <path class="wave-path" d="M0,32L60,42.7C120,53,240,75,360,74.7C480,75,600,53,720,48C840,43,960,53,1080,64C1200,75,1320,85,1380,90.7L1440,96L1440,100L1380,100C1320,100,1200,100,1080,100C960,100,840,100,720,100C600,100,480,100,360,100C240,100,120,100,60,100L0,100Z"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Page Layout -->
+    <div class="page-layout">
+        <!-- Sticky Side Navigation -->
+        <aside class="side-nav" aria-label="Page sections">
+            <div class="side-nav-title">
+                <i class="fas fa-list"></i> On This Page
+            </div>
+            <ul>
+                <li><a href="#priorities" class="side-nav-link">Health Priorities</a></li>
+                <li><a href="#risk-matrix" class="side-nav-link">Risk Matrix</a></li>
+                <li><a href="#staff-roles" class="side-nav-link">Staff Roles</a></li>
+                <li><a href="#infectious" class="side-nav-link">Infectious Disease</a></li>
+                <li><a href="#disease-cards" class="side-nav-link">Disease Comparison</a></li>
+                <li><a href="#zoonosis" class="side-nav-link">Zoonotic Risks</a></li>
+                <li><a href="#non-infectious" class="side-nav-link">Non-Infectious</a></li>
+                <li><a href="#environmental" class="side-nav-link">Environmental Health</a></li>
+                <li><a href="#quarantine" class="side-nav-link">Quarantine</a></li>
+                <li><a href="#biosecurity" class="side-nav-link">Biosecurity Timeline</a></li>
+                <li><a href="#monitoring" class="side-nav-link">Monitoring Calendar</a></li>
+                <li><a href="#evaluation" class="side-nav-link">Critical Evaluation</a></li>
+                <li><a href="#takeaways" class="side-nav-link">Key Takeaways</a></li>
+                <li><a href="#references" class="side-nav-link">References</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Health Priorities Section -->
+            <section class="content-section reveal" id="priorities">
+                <div class="section-header">
+                    <span class="section-tag">Foundation</span>
+                    <h2 class="section-title">Preventative Health Priorities</h2>
+                    <p class="section-subtitle">A structured, risk-based approach to prioritising hazards in captive harbour seal management</p>
+                </div>
+
+                <div class="content-text">
+                    <p>
+                        Preventative health management is fundamental to the long-term welfare, longevity and reproductive success of captive harbour seals because many health problems are more effectively prevented than treated after clinical disease develops <span class="citation">Gili, Meijer and Lacave, 2018</span>. Consequently, preventative programmes should adopt a structured risk-based approach, prioritising hazards according to both their likelihood of occurrence and the potential consequences for individual animals, the wider collection and human health <span class="citation">Ahl et al., 1993</span>.
+                    </p>
+                    <p>
+                        Based on these criteria, the principal preventative health priorities include infectious disease introduction, non-infectious health problems, water quality, nutritional management and chronic stress. Infectious diseases represent the highest priority because pathogens such as phocine distemper virus can spread rapidly through captive populations, resulting in substantial morbidity, mortality and operational disruption if biosecurity fails <span class="citation">Siebert et al., 2024; Härkönen et al., 2006</span>.
+                    </p>
+                </div>
+
+                <div class="info-box">
+                    <div class="info-box-title">
+                        <i class="fas fa-shield-virus"></i> Why Prevention Outweighs Treatment
+                    </div>
+                    <p>
+                        Unlike nutritional or behavioural disorders, which generally develop gradually and affect individuals, infectious disease outbreaks and water-quality failures can compromise an entire collection within a short period, making them the most cost-effective targets for preventative intervention.
+                    </p>
+                </div>
+
+                <div class="content-text">
+                    <p>
+                        Water quality is therefore similarly prioritised because inadequate filtration or inappropriate water parameters compromise skin, ocular and immune health while increasing susceptibility to opportunistic infections <span class="citation">Colitz et al., 2019</span>. Nutritional deficiencies, including thiamine depletion associated with thiaminase-containing fish <span class="citation">Geraci, 1972</span>, together with chronic stress that may suppress immune function and impair welfare <span class="citation">Mason, 2010</span>, are generally lower-risk but require continuous monitoring because they can predispose animals to secondary health problems.
+                    </p>
+                </div>
+
+                <div class="success-callout">
+                    <div class="info-box-title">
+                        <i class="fas fa-bullseye"></i> Resource Allocation Principle
+                    </div>
+                    <p>
+                        An effective preventative health programme should allocate resources according to risk while remaining sufficiently adaptive to respond to changing environmental conditions, emerging disease threats and the health status of individual animals.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Risk Priority Matrix -->
+            <section class="content-section reveal" id="risk-matrix">
+                <div class="section-header">
+                    <span class="section-tag">Risk Assessment</span>
+                    <h2 class="section-title">Risk Priority Matrix</h2>
+                    <p class="section-subtitle">Visualising the relationship between likelihood of occurrence and consequence severity for each health priority</p>
+                </div>
+
+                <div class="risk-matrix">
+                    <div class="matrix-grid">
+                        <div class="matrix-cell matrix-corner"></div>
+                        <div class="matrix-cell matrix-header">Low Likelihood</div>
+                        <div class="matrix-cell matrix-header">Medium Likelihood</div>
+                        <div class="matrix-cell matrix-header">High Likelihood</div>
+
+                        <div class="matrix-cell matrix-row-header">Severe Consequence</div>
+                        <div class="matrix-cell matrix-medium">Chronic Stress <span class="citation" style="font-size: 0.7rem;">Mason, 2010</span></div>
+                        <div class="matrix-cell matrix-high">Infectious Disease <span class="citation" style="font-size: 0.7rem;">Siebert et al., 2024</span></div>
+                        <div class="matrix-cell matrix-high">Water Quality Failure <span class="citation" style="font-size: 0.7rem;">Colitz et al., 2019</span></div>
+
+                        <div class="matrix-cell matrix-row-header">Moderate Consequence</div>
+                        <div class="matrix-cell matrix-low">—</div>
+                        <div class="matrix-cell matrix-medium">Non-infectious Problems</div>
+                        <div class="matrix-cell matrix-medium">Nutritional Deficiencies <span class="citation" style="font-size: 0.7rem;">Geraci, 1972</span></div>
+
+                        <div class="matrix-cell matrix-row-header">Minor Consequence</div>
+                        <div class="matrix-cell matrix-low">—</div>
+                        <div class="matrix-cell matrix-low">—</div>
+                        <div class="matrix-cell matrix-low">—</div>
+                    </div>
+
+                    <div class="matrix-legend">
+                        <div class="legend-item">
+                            <div class="legend-color high"></div>
+                            <span>High Priority</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color medium"></div>
+                            <span>Medium Priority</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color low"></div>
+                            <span>Low Priority</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive Risk Ranking Table -->
+                <div class="table-container">
+                    <div class="table-controls">
+                        <div class="table-search">
+                            <i class="fas fa-search"></i>
+                            <input type="text" id="riskTableSearch" placeholder="Search risk categories..." aria-label="Search risk table">
+                        </div>
+                        <div class="table-filters">
+                            <button class="filter-btn active" data-filter="all">All</button>
+                            <button class="filter-btn" data-filter="high">High Priority</button>
+                            <button class="filter-btn" data-filter="medium">Medium Priority</button>
+                        </div>
+                    </div>
+
+                    <table class="data-table" id="riskTable">
+                        <thead>
+                            <tr>
+                                <th data-sort="category">Risk Category <i class="fas fa-sort"></i></th>
+                                <th data-sort="priority">Priority <i class="fas fa-sort"></i></th>
+                                <th data-sort="justification">Justification <i class="fas fa-sort"></i></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr data-priority="high">
+                                <td><strong>Infectious disease introduction</strong></td>
+                                <td><span class="priority-badge priority-high">High</span></td>
+                                <td>Can cause rapid, multi-animal morbidity/mortality and pose zoonotic risk to staff <span class="citation">Siebert et al., 2024</span></td>
+                            </tr>
+                            <tr data-priority="high">
+                                <td><strong>Water quality failure</strong></td>
+                                <td><span class="priority-badge priority-high">High</span></td>
+                                <td>Poor salinity and filtration strongly linked to keratopathy and skin disease <span class="citation">Colitz et al., 2019</span></td>
+                            </tr>
+                            <tr data-priority="medium">
+                                <td><strong>Nutritional deficiencies</strong></td>
+                                <td><span class="priority-badge priority-medium">Medium</span></td>
+                                <td>Thiaminase in prey fish can induce serious neurological deficiency states <span class="citation">Geraci, 1972</span></td>
+                            </tr>
+                            <tr data-priority="medium">
+                                <td><strong>Non-infectious health problems</strong></td>
+                                <td><span class="priority-badge priority-medium">Medium</span></td>
+                                <td>Trauma, dental and age-related conditions require ongoing but lower-intensity monitoring</td>
+                            </tr>
+                            <tr data-priority="medium">
+                                <td><strong>Chronic stress and welfare issues</strong></td>
+                                <td><span class="priority-badge priority-medium">Medium</span></td>
+                                <td>Sustained captivity stress associated with stereotypic behaviour and impaired welfare <span class="citation">Mason, 2010</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Staff Roles Section -->
+            <section class="content-section reveal" id="staff-roles">
+                <div class="section-header">
+                    <span class="section-tag">Team Structure</span>
+                    <h2 class="section-title">Preventative Health by Staff Roles</h2>
+                    <p class="section-subtitle">Three complementary roles working together to deliver coordinated, evidence-based preventative healthcare</p>
+                </div>
+
+                <div class="content-text">
+                    <p>
+                        Effective preventative health management requires coordinated effort across three key staff roles. Each contributes distinct expertise, with keepers providing continuous observation, curators delivering strategic oversight and veterinarians supplying clinical leadership. Together, they ensure that preventative healthcare is proactive, coordinated and responsive to the long-term health and welfare needs of the collection.
+                    </p>
+                </div>
+
+                <div class="staff-cards">
+                    <!-- Keeper Card -->
+                    <div class="staff-card keeper-card">
+                        <div class="staff-card-header keeper-header">
+                            <div class="staff-card-icon"><i class="fas fa-user-nurse"></i></div>
+                            <h3 class="staff-card-title">Keepers</h3>
+                            <p class="staff-card-role">First Line of Defence</p>
+                        </div>
+                        <div class="staff-card-body">
+                            <p class="staff-card-intro">
+                                Keepers represent the first line of preventative healthcare because they have the most frequent and sustained contact with harbour seals, enabling them to detect subtle deviations from normal behaviour before clinical disease develops <span class="citation">Young and Cipreste, 2004</span>.
+                            </p>
+                            <ul class="responsibilities-list">
+                                <li>Daily monitoring of appetite and food intake</li>
+                                <li>Confirming consumption of dietary supplements</li>
+                                <li>Recording swimming patterns, haul-out frequency and respiratory rate</li>
+                                <li>Observing social interactions and participation in husbandry training</li>
+                                <li>Routine visual inspection of skin, eyes and body condition</li>
+                                <li>Maintaining enclosure hygiene and prompt waste removal</li>
+                                <li>Daily monitoring of water temperature, salinity and filtration</li>
+                            </ul>
+                        </div>
+                        <div class="staff-card-footer">
+                            <span><i class="fas fa-clock"></i> Daily monitoring</span>
+                            <span><i class="fas fa-eye"></i> Continuous observation</span>
+                        </div>
+                        <div class="staff-card-overlay">
+                            <div class="overlay-content">
+                                <h4>Why Keepers Are Critical</h4>
+                                <p>Because keepers observe animals continuously, their ability to recognise subtle changes often determines whether preventative intervention occurs before disease progresses to a stage requiring intensive veterinary treatment.</p>
+                                <span class="overlay-stat"><i class="fas fa-quote-left"></i> <span class="citation" style="color: rgba(255,255,255,0.9);">Young and Cipreste, 2004</span></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Curator Card -->
+                    <div class="staff-card curator-card">
+                        <div class="staff-card-header curator-header">
+                            <div class="staff-card-icon"><i class="fas fa-user-tie"></i></div>
+                            <h3 class="staff-card-title">Curators</h3>
+                            <p class="staff-card-role">Strategic Oversight</p>
+                        </div>
+                        <div class="staff-card-body">
+                            <p class="staff-card-intro">
+                                Curators convert daily husbandry observations into collection-wide preventative health strategies by reviewing health records, water-quality reports and preventative medicine schedules to identify emerging trends and ensure consistent standards of care <span class="citation">National Research Council, 2004</span>.
+                            </p>
+                            <ul class="responsibilities-list">
+                                <li>Reviewing health records and water-quality reports</li>
+                                <li>Identifying emerging health trends across the collection</li>
+                                <li>Overseeing biosecurity and quarantine compliance</li>
+                                <li>Implementing EAZA and EAAM husbandry guidelines</li>
+                                <li>Coordinating staff training and competency assessments</li>
+                                <li>Managing emergency preparedness protocols</li>
+                                <li>Translating observations into coordinated management decisions</li>
+                            </ul>
+                        </div>
+                        <div class="staff-card-footer">
+                            <span><i class="fas fa-calendar-week"></i> Weekly/ongoing</span>
+                            <span><i class="fas fa-chart-line"></i> Strategic review</span>
+                        </div>
+                        <div class="staff-card-overlay">
+                            <div class="overlay-content">
+                                <h4>Strategic Coordination</h4>
+                                <p>This strategic oversight ensures that isolated husbandry observations are translated into coordinated management decisions, reducing the likelihood that recurring health issues remain undetected across the collection.</p>
+                                <span class="overlay-stat"><i class="fas fa-quote-left"></i> <span class="citation" style="color: rgba(255,255,255,0.9);">Gili, Meijer and Lacave, 2018</span></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Veterinarian Card -->
+                    <div class="staff-card vet-card">
+                        <div class="staff-card-header vet-header">
+                            <div class="staff-card-icon"><i class="fas fa-user-md"></i></div>
+                            <h3 class="staff-card-title">Veterinarians</h3>
+                            <p class="staff-card-role">Clinical Leadership</p>
+                        </div>
+                        <div class="staff-card-body">
+                            <p class="staff-card-intro">
+                                Veterinarians provide clinical oversight through routine physical examinations, diagnostic blood screening, parasite surveillance and review of vaccination protocols to identify disease before clinical signs become apparent <span class="citation">Meehan, 2012</span>.
+                            </p>
+                            <ul class="responsibilities-list">
+                                <li>Routine physical examinations and diagnostic screening</li>
+                                <li>Haematology and serum biochemistry interpretation</li>
+                                <li>Parasite surveillance and faecal screening</li>
+                                <li>Review and development of vaccination protocols</li>
+                                <li>Training voluntary husbandry behaviours for procedures</li>
+                                <li>Integrating clinical findings with keeper and curator input</li>
+                                <li>Evidence-based decision-making for disease prevention</li>
+                            </ul>
+                        </div>
+                        <div class="staff-card-footer">
+                            <span><i class="fas fa-calendar-alt"></i> Scheduled/periodic</span>
+                            <span><i class="fas fa-stethoscope"></i> Clinical oversight</span>
+                        </div>
+                        <div class="staff-card-overlay">
+                            <div class="overlay-content">
+                                <h4>Modern Clinical Practice</h4>
+                                <p>Increasingly, procedures are performed through trained voluntary husbandry behaviours rather than physical restraint, reducing stress while improving the quality of clinical assessments.</p>
+                                <span class="overlay-stat"><i class="fas fa-quote-left"></i> <span class="citation" style="color: rgba(255,255,255,0.9);">Martelli and Krishnasamy, 2023</span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Supporting Table -->
+                <div class="table-container">
+                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.3rem; margin-bottom: 1rem; color: var(--primary);">
+                        <i class="fas fa-table" style="color: var(--secondary);"></i> Staff Roles Summary
+                    </h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Staff Role</th>
+                                <th>Key Preventative Responsibilities</th>
+                                <th>Frequency</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Keepers</strong></td>
+                                <td>Behavioural and visual health observation, appetite/supplement monitoring, water quality recording, enclosure hygiene</td>
+                                <td><span class="priority-badge priority-high">Daily</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Curators/Collection Managers</strong></td>
+                                <td>Record and water quality review, biosecurity and quarantine oversight, staff training and competency assessment</td>
+                                <td><span class="priority-badge priority-medium">Weekly/Ongoing</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Veterinarians</strong></td>
+                                <td>Preventative physical examinations, diagnostic screening, parasite surveillance, vaccination review, protocol development</td>
+                                <td><span class="priority-badge" style="background: var(--info-border); color: var(--white);">Scheduled/Periodic</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Infectious Disease Section -->
+            <section class="content-section reveal" id="infectious">
+                <div class="section-header">
+                    <span class="section-tag">Infectious Disease</span>
+                    <h2 class="section-title">Major Infectious Disease Risks</h2>
+                    <p class="section-subtitle">Understanding the pathogens that pose the greatest threat to captive harbour seal collections</p>
+                </div>
+
+                <div class="content-text">
+                    <p>
+                        Infectious disease prevention is a major priority in captive harbour seal management because pathogens can spread rapidly through a collection, compromising animal welfare, biosecurity and conservation programmes. Phocine distemper virus (PDV) is considered the greatest infectious threat due to its efficient respiratory transmission and history of causing mass mortality during the 1988 and 2002 North Sea epizootics, which killed more than 20,000 and 30,000 harbour seals respectively <span class="citation">Härkönen et al., 2006</span>.
+                    </p>
+                    <p>
+                        Its capacity for rapid collection-wide transmission means that preventing pathogen introduction through quarantine and biosecurity is considerably more effective than attempting to control an outbreak after clinical disease becomes established. Influenza A viruses also pose a significant risk because they can be transmitted through respiratory droplets and contaminated environments, with some strains demonstrating adaptation to marine mammals <span class="citation">Anthony et al., 2012</span>.
+                    </p>
+                </div>
+
+                <div class="warning-callout">
+                    <div class="warning-title">
+                        <i class="fas fa-virus"></i> Rapid Transmission Risk
+                    </div>
+                    <p>
+                        Emerging influenza strains may evolve more rapidly than husbandry protocols. Consequently, routine respiratory monitoring, minimising contact with wild birds and participation in wildlife disease surveillance networks are important preventative measures <span class="citation">Anthony et al., 2012</span>.
+                    </p>
+                </div>
+
+                <div class="content-text">
+                    <p>
+                        Bacterial pathogens, including <em>Salmonella</em> spp. and <em>Erysipelothrix rhusiopathiae</em>, are primarily transmitted through contaminated food, water or faecal material and may persist within enclosures if hygiene standards are inadequate <span class="citation">Siebert et al., 2024</span>. Lungworm (<em>Otostrongylus circumlitus</em>) infection, acquired through infected prey or intermediate hosts, represents an important parasitic disease, particularly in juvenile seals, highlighting the need for routine faecal screening and parasite surveillance <span class="citation">van Wijngaarden et al., 2021</span>.
+                    </p>
+                    <p>
+                        Although bacterial and parasitic diseases can adversely affect individual animals, they are generally more amenable to targeted hygiene measures, feed management and surveillance than highly transmissible viral infections, reinforcing the need to prioritise resources according to transmission risk rather than disease severity alone.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Disease Comparison Cards -->
+            <section class="content-section reveal" id="disease-cards">
+                <div class="section-header">
+                    <span class="section-tag">Comparison</span>
+                    <h2 class="section-title">Disease Comparison</h2>
+                    <p class="section-subtitle">Comparing the five major infectious disease risks across transmission, collection impact and prevention</p>
+                </div>
+
+                <div class="disease-cards">
+                    <!-- PDV -->
+                    <div class="disease-card">
+                        <div class="disease-card-header disease-viral">
+                            <div class="disease-icon"><i class="fas fa-virus"></i></div>
+                            <div>
+                                <h3 class="disease-card-title">Phocine Distemper Virus</h3>
+                                <p class="disease-card-type">Viral · Morbillivirus</p>
+                            </div>
+                        </div>
+                        <div class="disease-card-body">
+                            <div class="disease-detail">
+                                <div class="disease-detail-label">Primary Transmission</div>
+                                <div class="disease-detail-value">Respiratory droplet / direct contact</div>
+                            </div>
+                            <div class="disease-detail">
+                                <div class="disease-detail-label">Collection Risk</div>
+                                <div class="disease-detail-value">High — rapid, high-mortality outbreaks</div>
+                                <div class="disease-risk-bar"><div class="disease-risk-fill risk-high" style="width: 95%;"></div></div>
+                            </div>
+                            <div class="disease-detail">
+                                <div class="disease-detail-label">Key Prevention</div>
+                                <div class="disease-detail-value">Quarantine, restricted wild-seal contact, biosecurity protocols</div>
+                            </div>
+                            <div class="disease-detail">
+                                <div class="disease-detail-label">Monitoring</div>
+                                <div class="disease-detail-value">Serological screening, clinical surveillance</div>
+                            </div>
+                        </div>
+                        <div class="disease-card-footer">
+                            <i class="fas fa-exclamation-triangle" style="color: var(--accent);"></i>
+                            <span>20,000+ deaths in 1988 & 30,000+ in 2002 epizootics</span>
+                        </div>
+                    </div>
+
+                    <!-- Influenza A -->
+                    <div class="disease-card">
+                        <div class="disease-card-header disease-viral">
+                            <div class="disease-icon"><i class="fas fa-lungs-virus"></i></div>
+                            <div>
+                                <h3 class="disease-card-title">Influenza A</h3>
+                                <p class="disease-card-type">Viral · Orthomyxovirus</p>
+                            </div>
+                        </div>
+                        <div class="disease-card-body">
+                            <div class="disease-detail">
+                                <div class="disease-detail-label">Primary Transmission</div>
+                                <div class="disease-detail-value">Respiratory droplet</div>
+                            </div>
+                            <div class="disease-detail">
+                                <div class="disease-detail-label">Collection Risk</div>
+                                <div class="disease-detail-value">High — rapid spread, zoonotic potential</div>
+                                <div class="disease-risk-bar"><div class="disease-risk-fill risk-high" style="width: 85%;"></div></div>
+                            </div>
+                            <div class="disease-detail">
+                                <div class="disease-detail-label">Key Prevention</div>
+                                <div class="disease-detail-value">Quarantine, respiratory monitoring, PPE, network reporting</div>
+                            </div>
+                            <div class="disease-detail">
+                                <div class="disease-detail-label">Monitoring</div>
+                                <div class="disease-detail-value">Virological/serological screening</div>
+                            </div>
+                        </div>
+                        <div class="disease-card-footer">
+                            <i class="fas fa-exclamation-triangle" style="color: var(--accent);"></i>
+                            <span>Some strains adapted to marine mammals <span class="citation">Anthony et al., 2012</span></span>
+                        </div>
+                    </div>
+
+                    <!-- Salmonella -->
+                    <div class="disease-card">
+                        <div class="disease-card-header disease-bacterial">
+                            <div class="disease-icon"><i class="fas fa-bacterium"></i></div>
+                            <div>
+                                <h3 class="disease-card-title">Salmonella spp.</h3>
+                                <p class="disease-card-type">Bacterial · Enteric pathogen</p>
+                            </div>
+                        </div>
+                        <div class="disease-card-body">
+                            <div class="disease-detail">
+                                <div class="disease-detail-label">Primary Transmission</div>
+                                <div class="disease-detail-value">Faeco-oral, contaminated water/fish</div>
+                            </div>
+                            <div class="disease-detail">
+                                <div class="disease-detail-label">Collection Risk</div>
+                                <div class="disease-detail-value">Moderate</div>
+                                <div class="disease-risk-bar"><div class="disease-risk-fill risk-medium" style="width: 60%;"></div></div>
+                            </div>
+                            <div class="disease-detail">
+                                <div class="disease-detail-label">Key Prevention</div>
+                                <div class="disease-detail-value">Water quality management, food safety, hygiene</div>
+                            </div>
+                            <div class="disease-detail">
+                                <div class="disease-detail-label">Monitoring</div>
+                                <div class="disease-detail-value">Faecal culture, water testing</div>
+                            </div>
+                        </div>
+                        <div class="disease-card-footer">
+                            <i class="fas fa-user-shield" style="color: var(--medium-risk);"></i>
+                            <span>Zoonotic risk to staff <span class="citation">Deepak et al., 2019</span></span>
+                        </div>
+                    </div>
+
+                    <!-- Erysipelothrix -->
+                    <div class="disease-card">
+                        <div class="disease-card-header disease-bacterial">
+                            <div class="disease-icon"><i class="fas fa-bacteria"></i></div>
+                            <div>
+                                <h3 class="disease-card-title">Erysipelothrix rhusiopathiae</h3>
+                                <p class="disease-card-type">Bacterial · Wound pathogen</p>
+                            </div>
+                        </div>
+                        <div class="disease-card-body">
+                            <div class="disease-detail">
+                                <div class="disease-detail-label">Primary Transmission</div>
+                                <div class="disease-detail-value">Contaminated water/fish, wound contact</div>
+                            </div>
+                            <div class="disease-detail">
+                                <div class="disease-detail-label">Collection Risk</div>
+                                <div class="disease-detail-value">Moderate</div>
+                                <div class="disease-risk-bar"><div class="disease-risk-fill risk-medium" style="width: 55%;"></div></div>
+                            </div>
+                            <div class="disease-detail">
+                                <div class="disease-detail-label">Key Prevention</div>
+                                <div class="disease-detail-value">Wound care, water quality control, hygiene</div>
+                            </div>
+                            <div class="disease-detail">
+                                <div class="disease-detail-label">Monitoring</div>
+                                <div class="disease-detail-value">Clinical monitoring, bacterial culture</div>
+                            </div>
+                        </div>
+                        <div class="disease-card-footer">
+                            <i class="fas fa-band-aid" style="color: var(--medium-risk);"></i>
+                            <span>Often enters through skin lesions</span>
+                        </div>
+                    </div>
+
+                    <!-- Lungworms -->
+                    <div class="disease-card">
+                        <div class="disease-card-header disease-parasitic">
+                            <div class="disease-icon"><i class="fas fa-worm"></i>🪱</div>
+                            <div>
+                                <h3 class="disease-card-title">Lungworms</h3>
+                                <p class="disease-card-type">Parasitic · <em>Otostrongylus circumlitus</em></p>
+                            </div>
+                        </div>
+                        <div class="disease-card-body">
+                            <div class="disease-detail">
+                                <div class="disease-detail-label">Primary Transmission</div>
+                                <div class="disease-detail-value">Indirect, via fish intermediate host</div>
+                            </div>
+                            <div class="disease-detail">
+                                <div class="disease-detail-label">Collection Risk</div>
+                                <div class="disease-detail-value">Low–moderate (higher in juveniles)</div>
+                                <div class="disease-risk-bar"><div class="disease-risk-fill risk-low" style="width: 40%;"></div></div>
+                            </div>
+                            <div class="disease-detail">
+                                <div class="disease-detail-label">Key Prevention</div>
+                                <div class="disease-detail-value">Diet/fish-source control, quarantine of new arrivals</div>
+                            </div>
+                            <div class="disease-detail">
+                                <div class="disease-detail-label">Monitoring</div>
+                                <div class="disease-detail-value">Faecal/serological screening</div>
+                            </div>
+                        </div>
+                        <div class="disease-card-footer">
+                            <i class="fas fa-baby" style="color: var(--low-risk);"></i>
+                            <span>Juveniles at higher risk <span class="citation">van Wijngaarden et al., 2021</span></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive Disease Table -->
+                <div class="table-container">
+                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.3rem; margin-bottom: 1rem; color: var(--primary);">
+                        <i class="fas fa-table" style="color: var(--secondary);"></i> Disease Prevention Overview
+                    </h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Disease</th>
+                                <th>Transmission</th>
+                                <th>Risk Level</th>
+                                <th>Prevention</th>
+                                <th>Monitoring</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>PDV</strong></td>
+                                <td>Respiratory droplet/direct contact</td>
+                                <td><span class="priority-badge priority-high">High</span></td>
+                                <td>Quarantine, restricted wild-seal contact, biosecurity</td>
+                                <td>Serological screening, clinical surveillance</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Influenza A</strong></td>
+                                <td>Respiratory droplet</td>
+                                <td><span class="priority-badge priority-high">High</span></td>
+                                <td>Quarantine, respiratory monitoring, PPE, network reporting</td>
+                                <td>Virological/serological screening</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Salmonella spp.</strong></td>
+                                <td>Faeco-oral, contaminated water/fish</td>
+                                <td><span class="priority-badge priority-medium">Moderate</span></td>
+                                <td>Water quality management, food safety, hygiene</td>
+                                <td>Faecal culture, water testing</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Erysipelothrix</strong></td>
+                                <td>Contaminated water/fish, wound contact</td>
+                                <td><span class="priority-badge priority-medium">Moderate</span></td>
+                                <td>Wound care, water quality control, hygiene</td>
+                                <td>Clinical monitoring, bacterial culture</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Lungworms</strong></td>
+                                <td>Indirect, via fish intermediate host</td>
+                                <td><span class="priority-badge" style="background: var(--low-risk); color: var(--white);">Low–Moderate</span></td>
+                                <td>Diet/fish-source control, quarantine</td>
+                                <td>Faecal/serological screening</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Zoonosis Section -->
+            <section class="content-section reveal" id="zoonosis">
+                <div class="section-header">
+                    <span class="section-tag">Occupational Health</span>
+                    <h2 class="section-title">Zoonotic Considerations</h2>
+                    <p class="section-subtitle">Protecting staff from pathogens that can transmit between animals and humans</p>
+                </div>
+
+                <div class="zoonosis-section">
+                    <h3 class="zoonosis-title"><i class="fas fa-shield-virus"></i> Occupational Zoonotic Risks</h3>
+                    <p class="zoonosis-intro">
+                        Several pathogens present occupational risks to animal-care staff through contact with infected animals, contaminated water or biological samples <span class="citation">Deepak et al., 2019</span>. Protecting staff from zoonotic infection also safeguards animal health by reducing opportunities for bidirectional pathogen transmission and maintaining continuity of animal care.
+                    </p>
+
+                    <div class="zoonosis-grid">
+                        <div class="zoonosis-card">
+                            <div class="zoonosis-icon"><i class="fas fa-bacterium"></i></div>
+                            <h4 class="zoonosis-name">Salmonella spp.</h4>
+                            <p class="zoonosis-desc">Enteric pathogen transmitted through contaminated water, fish or faecal material</p>
+                        </div>
+                        <div class="zoonosis-card">
+                            <div class="zoonosis-icon"><i class="fas fa-water"></i></div>
+                            <h4 class="zoonosis-name">Vibrio spp.</h4>
+                            <p class="zoonosis-desc">Marine bacteria associated with wound infections from contaminated water</p>
+                        </div>
+                        <div class="zoonosis-card">
+                            <div class="zoonosis-icon"><i class="fas fa-virus"></i></div>
+                            <h4 class="zoonosis-name">Brucella spp.</h4>
+                            <p class="zoonosis-desc">Systemic pathogen transmitted through biological samples and reproductive materials</p>
+                        </div>
+                    </div>
+
+                    <div class="zoonosis-prevention">
+                        <h4><i class="fas fa-user-shield"></i> Staff Protection Measures</h4>
+                        <ul class="prevention-list">
+                            <li>Appropriate personal protective equipment (PPE)</li>
+                            <li>Rigorous hand hygiene protocols</li>
+                            <li>Safe sample handling procedures</li>
+                            <li>Strict biosecurity protocols <span class="citation">Bjork et al., 2024</span></li>
+                            <li>Regular staff health surveillance</li>
+                            <li>Vaccination where available</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Non-Infectious Health Problems -->
+            <section class="content-section reveal" id="non-infectious">
+                <div class="section-header">
+                    <span class="section-tag">Non-Infectious</span>
+                    <h2 class="section-title">Non-Infectious Health Problems</h2>
+                    <p class="section-subtitle">Nutritional, physical and behavioural conditions that require the same preventative emphasis as infectious diseases</p>
+                </div>
+
+                <div class="content-text">
+                    <p>
+                        Non-infectious health conditions can significantly compromise the welfare of captive harbour seals and therefore require the same preventative emphasis as infectious diseases. Nutritional disorders include thiamine deficiency associated with thiaminase-containing fish and vitamin E deficiency resulting from oxidation of frozen-thawed prey, both of which are largely preventable through appropriate supplementation and feed-quality management <span class="citation">Mazzaro, Koutsos and Williams, 2016</span>.
+                    </p>
+                    <p>
+                        Unlike many infectious diseases, these disorders usually develop gradually, making routine nutritional monitoring particularly effective for preventing irreversible clinical consequences. Obesity may also develop when dietary energy intake exceeds expenditure, highlighting the importance of ration adjustment based on body weight and body condition scoring <span class="citation">MSD Veterinary Manual, 2024</span>.
+                    </p>
+                    <p>
+                        Physical health problems, including traumatic injuries and dental disease, may result from enclosure hazards, social interactions or ageing, and are minimised through safe enclosure design, husbandry training and routine veterinary examinations <span class="citation">Kahle et al., 2018</span>. Behavioural problems, including chronic stress, reduced activity and stereotypic behaviours, are recognised indicators of compromised welfare and can increase disease susceptibility <span class="citation">Mason, 2010</span>.
+                    </p>
+                </div>
+
+                <div class="problem-cards">
+                    <div class="problem-card">
+                        <div class="problem-card-header">
+                            <div class="problem-icon"><i class="fas fa-pills"></i></div>
+                            <h3 class="problem-title">Thiamine Deficiency</h3>
+                        </div>
+                        <p class="problem-body">Caused by thiaminase-containing fish and inadequate supplementation. Can lead to serious neurological deficiency states.</p>
+                        <div class="problem-meta">
+                            <span class="meta-tag"><i class="fas fa-exclamation"></i> Prevention: Thiamine supplementation</span>
+                            <span class="meta-tag"><i class="fas fa-search"></i> Monitoring: Diet review; clinical assessment</span>
+                        </div>
+                    </div>
+
+                    <div class="problem-card">
+                        <div class="problem-card-header">
+                            <div class="problem-icon"><i class="fas fa-shield-virus"></i></div>
+                            <h3 class="problem-title">Vitamin E Deficiency</h3>
+                        </div>
+                        <p class="problem-body">Results from oxidation of frozen-thawed prey. Compromises cell membrane protection and immune function.</p>
+                        <div class="problem-meta">
+                            <span class="meta-tag"><i class="fas fa-exclamation"></i> Prevention: Vitamin E supplementation</span>
+                            <span class="meta-tag"><i class="fas fa-search"></i> Monitoring: Clinical monitoring</span>
+                        </div>
+                    </div>
+
+                    <div class="problem-card">
+                        <div class="problem-card-header">
+                            <div class="problem-icon"><i class="fas fa-weight-scale"></i></div>
+                            <h3 class="problem-title">Obesity</h3>
+                        </div>
+                        <p class="problem-body">Develops when dietary energy intake exceeds expenditure. Requires ration adjustment and behavioural enrichment.</p>
+                        <div class="problem-meta">
+                            <span class="meta-tag"><i class="fas fa-exclamation"></i> Prevention: Diet adjustment; enrichment</span>
+                            <span class="meta-tag"><i class="fas fa-search"></i> Monitoring: Body weight; BCS</span>
+                        </div>
+                    </div>
+
+                    <div class="problem-card">
+                        <div class="problem-card-header">
+                            <div class="problem-icon"><i class="fas fa-bone"></i></div>
+                            <h3 class="problem-title">Trauma</h3>
+                        </div>
+                        <p class="problem-body">May result from enclosure hazards or social aggression. Minimized through safe design and husbandry training.</p>
+                        <div class="problem-meta">
+                            <span class="meta-tag"><i class="fas fa-exclamation"></i> Prevention: Enclosure maintenance</span>
+                            <span class="meta-tag"><i class="fas fa-search"></i> Monitoring: Daily inspections</span>
+                        </div>
+                    </div>
+
+                    <div class="problem-card">
+                        <div class="problem-card-header">
+                            <div class="problem-icon"><i class="fas fa-tooth"></i></div>
+                            <h3 class="problem-title">Dental Disease</h3>
+                        </div>
+                        <p class="problem-body">Associated with age, trauma and diet. Requires routine veterinary oral examinations.</p>
+                        <div class="problem-meta">
+                            <span class="meta-tag"><i class="fas fa-exclamation"></i> Prevention: Veterinary oral exams</span>
+                            <span class="meta-tag"><i class="fas fa-search"></i> Monitoring: Dental assessments</span>
+                        </div>
+                    </div>
+
+                    <div class="problem-card">
+                        <div class="problem-card-header">
+                            <div class="problem-icon"><i class="fas fa-brain"></i></div>
+                            <h3 class="problem-title">Chronic Stress/Stereotypies</h3>
+                        </div>
+                        <p class="problem-body">Indicators of compromised welfare linked to poor enrichment or routine disruption. Increases disease susceptibility.</p>
+                        <div class="problem-meta">
+                            <span class="meta-tag"><i class="fas fa-exclamation"></i> Prevention: Environmental enrichment</span>
+                            <span class="meta-tag"><i class="fas fa-search"></i> Monitoring: Behavioural observations</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Non-infectious Table -->
+                <div class="table-container">
+                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.3rem; margin-bottom: 1rem; color: var(--primary);">
+                        <i class="fas fa-table" style="color: var(--secondary);"></i> Non-Infectious Problems Overview
+                    </h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Problem</th>
+                                <th>Main Risk Factors</th>
+                                <th>Prevention</th>
+                                <th>Monitoring</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Thiamine deficiency</strong></td>
+                                <td>Thiaminase-containing fish; inadequate supplementation</td>
+                                <td>Thiamine supplementation</td>
+                                <td>Diet review; clinical assessment</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Vitamin E deficiency</strong></td>
+                                <td>Oxidised frozen fish</td>
+                                <td>Vitamin E supplementation</td>
+                                <td>Clinical monitoring</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Obesity</strong></td>
+                                <td>Excess energy intake</td>
+                                <td>Diet adjustment; enrichment</td>
+                                <td>Body weight; body condition score</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Trauma</strong></td>
+                                <td>Enclosure hazards; aggression</td>
+                                <td>Enclosure maintenance</td>
+                                <td>Daily inspections</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Dental disease</strong></td>
+                                <td>Age; trauma; diet</td>
+                                <td>Routine veterinary oral examinations</td>
+                                <td>Dental assessments</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Poor water quality</strong></td>
+                                <td>Water system failure</td>
+                                <td>Water quality management</td>
+                                <td>Daily water testing</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Thermal stress</strong></td>
+                                <td>Inappropriate temperatures</td>
+                                <td>Environmental control</td>
+                                <td>Behavioural and physiological monitoring</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Chronic stress/Stereotypies</strong></td>
+                                <td>Poor enrichment; routine disruption</td>
+                                <td>Environmental enrichment</td>
+                                <td>Behavioural observations</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Environmental Health -->
+            <section class="content-section reveal" id="environmental">
+                <div class="section-header">
+                    <span class="section-tag">Environmental</span>
+                    <h2 class="section-title">Environmental Health Factors</h2>
+                    <p class="section-subtitle">Water quality and thermal management as foundational pillars of preventative health</p>
+                </div>
+
+                <div class="content-text">
+                    <p>
+                        Environmental factors such as poor water quality and thermal stress can impair physiological function, reduce immune competence and predispose seals to disease, demonstrating that environmental management not only prevents direct pathology but also reduces vulnerability to secondary health problems <span class="citation">Colitz et al., 2019; Gili, Meijer and Lacave, 2018</span>. Consequently, preventative management should integrate nutritional, environmental, veterinary and behavioural monitoring because these risk factors frequently interact.
+                    </p>
+                </div>
+
+                <div class="env-cards">
+                    <div class="env-card">
+                        <div class="env-card-icon"><i class="fas fa-tint"></i></div>
+                        <h3 class="env-card-title">Water Quality Management</h3>
+                        <p class="env-card-text">
+                            Poor salinity and filtration are strongly linked to keratopathy and skin disease in captive pinnipeds. Daily monitoring of temperature, salinity, filtration performance and microbial load is essential to prevent ocular, dermatological and infectious diseases <span class="citation">Colitz et al., 2019</span>.
+                        </p>
+                        <div class="env-card-stats">
+                            <div class="env-stat">
+                                <div class="env-stat-value">Daily</div>
+                                <div class="env-stat-label">Testing Frequency</div>
+                            </div>
+                            <div class="env-stat">
+                                <div class="env-stat-value">High</div>
+                                <div class="env-stat-label">Priority Level</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="env-card">
+                        <div class="env-card-icon"><i class="fas fa-temperature-half"></i></div>
+                        <h3 class="env-card-title">Thermal Regulation</h3>
+                        <p class="env-card-text">
+                            Thermal stress can impair physiological function and reduce immune competence. Environmental control systems must maintain appropriate temperature ranges while providing haul-out areas that allow seals to thermoregulate behaviourally <span class="citation">Gili, Meijer and Lacave, 2018</span>.
+                        </p>
+                        <div class="env-card-stats">
+                            <div class="env-stat">
+                                <div class="env-stat-value">Continuous</div>
+                                <div class="env-stat-label">Monitoring</div>
+                            </div>
+                            <div class="env-stat">
+                                <div class="env-stat-value">Medium</div>
+                                <div class="env-stat-label">Priority Level</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quarantine Section -->
+            <section class="content-section reveal" id="quarantine">
+                <div class="section-header">
+                    <span class="section-tag">Biosecurity</span>
+                    <h2 class="section-title">Quarantine &amp; Biosecurity</h2>
+                    <p class="section-subtitle">A structured quarantine protocol to prevent pathogen introduction and support safe acclimatisation</p>
+                </div>
+
+                <div class="content-text">
+                    <p>
+                        Quarantine and biosecurity are fundamental components of preventative health management, preventing the introduction of infectious diseases while allowing newly acquired harbour seals to acclimatise safely to their new environment <span class="citation">MSD Veterinary Manual, 2026</span>. On arrival, animals should be housed in dedicated quarantine facilities with no direct contact with the resident collection and separate equipment used to minimise cross-contamination <span class="citation">Gili, Meijer and Lacave, 2018</span>.
+                    </p>
+                    <p>
+                        A minimum isolation period of 30 days is recommended, although this should be extended where clinical findings or disease risk assessments indicate <span class="citation">Meehan, 2012</span>. Release into the main collection should occur only after veterinary clearance confirms satisfactory clinical findings, negative diagnostic results, stable body condition and consistent normal feeding and behavioural patterns.
+                    </p>
+                </div>
+
+                <!-- Quarantine Flowchart -->
+                <div class="flowchart">
+                    <h3 class="flowchart-title">Quarantine Process Flowchart</h3>
+                    <p class="flowchart-subtitle">The step-by-step pathway from arrival to integration with the main collection</p>
+                    
+                    <div class="flowchart-steps">
+                        <div class="flow-step">
+                            <div class="flow-step-number">1</div>
+                            <div class="flow-step-content">
+                                <h4 class="flow-step-title">Arrival</h4>
+                                <p class="flow-step-desc">Animal arrives at dedicated quarantine facility with no direct contact with resident collection</p>
+                                <span class="flow-step-time"><i class="fas fa-clock"></i> Day 0</span>
+                            </div>
+                        </div>
+
+                        <div class="flow-step">
+                            <div class="flow-step-number">2</div>
+                            <div class="flow-step-content">
+                                <h4 class="flow-step-title">Isolation (Minimum 30 Days)</h4>
+                                <p class="flow-step-desc">Housed separately with dedicated equipment to minimise cross-contamination. Extended where clinical findings or disease risk assessments indicate <span class="citation">Meehan, 2012</span></p>
+                                <span class="flow-step-time"><i class="fas fa-clock"></i> Days 1–30+</span>
+                            </div>
+                        </div>
+
+                        <div class="flow-step">
+                            <div class="flow-step-number">3</div>
+                            <div class="flow-step-content">
+                                <h4 class="flow-step-title">Veterinary Examination</h4>
+                                <p class="flow-step-desc">Comprehensive physical examination, body condition assessment and clinical evaluation by veterinarian</p>
+                                <span class="flow-step-time"><i class="fas fa-clock"></i> Within 48 hours</span>
+                            </div>
+                        </div>
+
+                        <div class="flow-step">
+                            <div class="flow-step-number">4</div>
+                            <div class="flow-step-content">
+                                <h4 class="flow-step-title">Diagnostic Testing</h4>
+                                <p class="flow-step-desc">Haematology, serum biochemistry and faecal parasite screening to detect subclinical disease before integration</p>
+                                <span class="flow-step-time"><i class="fas fa-clock"></i> Days 2–7</span>
+                            </div>
+                        </div>
+
+                        <div class="flow-step">
+                            <div class="flow-step-number">5</div>
+                            <div class="flow-step-content">
+                                <h4 class="flow-step-title">Behavioural &amp; Feeding Observation</h4>
+                                <p class="flow-step-desc">Keepers monitor appetite, food intake, swimming behaviour, haul-out patterns, respiratory rate and responses to husbandry routines <span class="citation">Young and Cipreste, 2004</span></p>
+                                <span class="flow-step-time"><i class="fas fa-clock"></i> Ongoing</span>
+                            </div>
+                        </div>
+
+                        <div class="flow-step">
+                            <div class="flow-step-number">6</div>
+                            <div class="flow-step-content">
+                                <h4 class="flow-step-title">Veterinary Clearance</h4>
+                                <p class="flow-step-desc">Veterinary confirmation of satisfactory clinical findings, negative diagnostic results, stable body condition and consistent normal feeding and behavioural patterns</p>
+                                <span class="flow-step-time"><i class="fas fa-clock"></i> Day 30+</span>
+                            </div>
+                        </div>
+
+                        <div class="flow-step">
+                            <div class="flow-step-number">7</div>
+                            <div class="flow-step-content">
+                                <h4 class="flow-step-title">Release to Main Collection</h4>
+                                <p class="flow-step-desc">Integration into the resident collection following successful completion of quarantine protocol</p>
+                                <span class="flow-step-time"><i class="fas fa-check"></i> Complete</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <div class="info-box-title">
+                        <i class="fas fa-layer-group"></i> Multiple Safeguards
+                    </div>
+                    <p>
+                        Quarantine is most effective when integrated with rigorous biosecurity, continuous behavioural monitoring and risk-based veterinary assessment, creating multiple safeguards that minimise pathogen introduction while supporting safe acclimatisation, early disease detection and long-term collection resilience.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Biosecurity Timeline -->
+            <section class="content-section reveal" id="biosecurity">
+                <div class="section-header">
+                    <span class="section-tag">Historical Context</span>
+                    <h2 class="section-title">Biosecurity Milestones</h2>
+                    <p class="section-subtitle">Key events that have shaped modern biosecurity and disease prevention protocols for captive pinnipeds</p>
+                </div>
+
+                <div class="biosecurity-timeline">
+                    <h3 class="timeline-title"><i class="fas fa-clock-rotate-left"></i> Evolution of Biosecurity Standards</h3>
+                    <p class="timeline-subtitle">How major disease events have driven advances in captive marine mammal health management</p>
+                    
+                    <div class="timeline-items">
+                        <div class="timeline-item">
+                            <div class="timeline-item-year">1988</div>
+                            <h4 class="timeline-item-title">First PDV Epizootic</h4>
+                            <p class="timeline-item-desc">More than 20,000 harbour seals died in the first phocine distemper virus epidemic across the North Sea <span class="citation" style="color: rgba(255,255,255,0.9);">Härkönen et al., 2006</span></p>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-item-year">2002</div>
+                            <h4 class="timeline-item-title">Second PDV Epizootic</h4>
+                            <p class="timeline-item-desc">A second epidemic killed more than 30,000 harbour seals, reinforcing the need for rigorous quarantine protocols</p>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-item-year">2012</div>
+                            <h4 class="timeline-item-title">Influenza in Seals</h4>
+                            <p class="timeline-item-desc">Emergence of fatal avian influenza in New England harbour seals demonstrated cross-species transmission risks <span class="citation" style="color: rgba(255,255,255,0.9);">Anthony et al., 2012</span></p>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-item-year">2018</div>
+                            <h4 class="timeline-item-title">EAZA Best Practice Guidelines</h4>
+                            <p class="timeline-item-desc">Publication of comprehensive EAZA/EAAM guidelines standardising pinniped health management across European collections</p>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-item-year">2024</div>
+                            <h4 class="timeline-item-title">Modern Risk Assessment</h4>
+                            <p class="timeline-item-desc">Contemporary studies continue to refine understanding of infection risk and health status in harbour seal populations <span class="citation" style="color: rgba(255,255,255,0.9);">Siebert et al., 2024</span></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Monitoring Calendar -->
+            <section class="content-section reveal" id="monitoring">
+                <div class="section-header">
+                    <span class="section-tag">Monitoring Programme</span>
+                    <h2 class="section-title">Preventative Health Monitoring</h2>
+                    <p class="section-subtitle">A continuous, structured process integrating behavioural, nutritional, environmental and veterinary assessments</p>
+                </div>
+
+                <div class="content-text">
+                    <p>
+                        Preventative health monitoring should be a continuous, structured process that integrates behavioural, nutritional, environmental and veterinary assessments to identify health problems before clinical disease develops, thereby supporting evidence-based husbandry and long-term welfare <span class="citation">Gili, Meijer and Lacave, 2018</span>. Daily monitoring by keepers should include food intake, appetite, swimming and haul-out behaviour, respiratory rate, social interactions, supplement consumption and water-quality parameters, as changes in these indicators often provide the earliest evidence of illness, stress or environmental deterioration <span class="citation">EAZA/EAAM Husbandry Guidelines, n.d.</span>.
+                    </p>
+                    <p>
+                        Weekly monitoring should include body weight, body condition scoring, behavioural welfare assessments and review of husbandry records to detect gradual changes in health and nutritional status <span class="citation">Gulland et al., 2018</span>. Quarterly veterinary monitoring should comprise haematological and biochemical blood screening, faecal parasite surveillance and review of preventative medicine protocols, enabling the detection of subclinical abnormalities that may not be apparent through routine observation <span class="citation">MSD Veterinary Manual, 2023</span>.
+                    </p>
+                </div>
+
+                <!-- Interactive Calendar -->
+                <div class="calendar-container">
+                    <div class="calendar-header">
+                        <h3 class="calendar-title"><i class="fas fa-calendar-alt" style="color: var(--secondary);"></i> Yearly Monitoring Calendar</h3>
+                        <div class="calendar-legend">
+                            <div class="calendar-legend-item"><div class="legend-dot daily"></div> Daily</div>
+                            <div class="calendar-legend-item"><div class="legend-dot weekly"></div> Weekly</div>
+                            <div class="calendar-legend-item"><div class="legend-dot quarterly"></div> Quarterly</div>
+                            <div class="calendar-legend-item"><div class="legend-dot annual"></div> Annual</div>
+                        </div>
+                    </div>
+
+                    <div class="calendar-grid">
+                        <!-- Header Row -->
+                        <div class="calendar-cell calendar-header-cell">Activity</div>
+                        <div class="calendar-cell calendar-header-cell">Jan</div>
+                        <div class="calendar-cell calendar-header-cell">Feb</div>
+                        <div class="calendar-cell calendar-header-cell">Mar</div>
+                        <div class="calendar-cell calendar-header-cell">Apr</div>
+                        <div class="calendar-cell calendar-header-cell">May</div>
+                        <div class="calendar-cell calendar-header-cell">Jun</div>
+                        <div class="calendar-cell calendar-header-cell">Jul</div>
+                        <div class="calendar-cell calendar-header-cell">Aug</div>
+                        <div class="calendar-cell calendar-header-cell">Sep</div>
+                        <div class="calendar-cell calendar-header-cell">Oct</div>
+                        <div class="calendar-cell calendar-header-cell">Nov</div>
+                        <div class="calendar-cell calendar-header-cell">Dec</div>
+
+                        <!-- Food Intake - Daily -->
+                        <div class="calendar-cell calendar-row-header">Food intake &amp; appetite</div>
+                        <div class="calendar-cell calendar-active daily">31</div>
+                        <div class="calendar-cell calendar-active daily">28</div>
+                        <div class="calendar-cell calendar-active daily">31</div>
+                        <div class="calendar-cell calendar-active daily">30</div>
+                        <div class="calendar-cell calendar-active daily">31</div>
+                        <div class="calendar-cell calendar-active daily">30</div>
+                        <div class="calendar-cell calendar-active daily">31</div>
+                        <div class="calendar-cell calendar-active daily">31</div>
+                        <div class="calendar-cell calendar-active daily">30</div>
+                        <div class="calendar-cell calendar-active daily">31</div>
+                        <div class="calendar-cell calendar-active daily">30</div>
+                        <div class="calendar-cell calendar-active daily">31</div>
+
+                        <!-- Behavioural Observations - Daily -->
+                        <div class="calendar-cell calendar-row-header">Behavioural observations</div>
+                        <div class="calendar-cell calendar-active daily">31</div>
+                        <div class="calendar-cell calendar-active daily">28</div>
+                        <div class="calendar-cell calendar-active daily">31</div>
+                        <div class="calendar-cell calendar-active daily">30</div>
+                        <div class="calendar-cell calendar-active daily">31</div>
+                        <div class="calendar-cell calendar-active daily">30</div>
+                        <div class="calendar-cell calendar-active daily">31</div>
+                        <div class="calendar-cell calendar-active daily">31</div>
+                        <div class="calendar-cell calendar-active daily">30</div>
+                        <div class="calendar-cell calendar-active daily">31</div>
+                        <div class="calendar-cell calendar-active daily">30</div>
+                        <div class="calendar-cell calendar-active daily">31</div>
+
+                        <!-- Water Quality - Daily -->
+                        <div class="calendar-cell calendar-row-header">Water quality testing</div>
+                        <div class="calendar-cell calendar-active daily">31</div>
+                        <div class="calendar-cell calendar-active daily">28</div>
+                        <div class="calendar-cell calendar-active daily">31</div>
+                        <div class="calendar-cell calendar-active daily">30</div>
+                        <div class="calendar-cell calendar-active daily">31</div>
+                        <div class="calendar-cell calendar-active daily">30</div>
+                        <div class="calendar-cell calendar-active daily">31</div>
+                        <div class="calendar-cell calendar-active daily">31</div>
+                        <div class="calendar-cell calendar-active daily">30</div>
+                        <div class="calendar-cell calendar-active daily">31</div>
+                        <div class="calendar-cell calendar-active daily">30</div>
+                        <div class="calendar-cell calendar-active daily">31</div>
+
+                        <!-- Body Weight - Weekly -->
+                        <div class="calendar-cell calendar-row-header">Body weight &amp; BCS</div>
+                        <div class="calendar-cell calendar-active weekly">4–5</div>
+                        <div class="calendar-cell calendar-active weekly">4</div>
+                        <div class="calendar-cell calendar-active weekly">4–5</div>
+                        <div class="calendar-cell calendar-active weekly">4</div>
+                        <div class="calendar-cell calendar-active weekly">4–5</div>
+                        <div class="calendar-cell calendar-active weekly">4</div>
+                        <div class="calendar-cell calendar-active weekly">4–5</div>
+                        <div class="calendar-cell calendar-active weekly">4–5</div>
+                        <div class="calendar-cell calendar-active weekly">4</div>
+                        <div class="calendar-cell calendar-active weekly">4–5</div>
+                        <div class="calendar-cell calendar-active weekly">4</div>
+                        <div class="calendar-cell calendar-active weekly">4–5</div>
+
+                        <!-- Behavioural Welfare Audit - Weekly -->
+                        <div class="calendar-cell calendar-row-header">Behavioural welfare audit</div>
+                        <div class="calendar-cell calendar-active weekly">4–5</div>
+                        <div class="calendar-cell calendar-active weekly">4</div>
+                        <div class="calendar-cell calendar-active weekly">4–5</div>
+                        <div class="calendar-cell calendar-active weekly">4</div>
+                        <div class="calendar-cell calendar-active weekly">4–5</div>
+                        <div class="calendar-cell calendar-active weekly">4</div>
+                        <div class="calendar-cell calendar-active weekly">4–5</div>
+                        <div class="calendar-cell calendar-active weekly">4–5</div>
+                        <div class="calendar-cell calendar-active weekly">4</div>
+                        <div class="calendar-cell calendar-active weekly">4–5</div>
+                        <div class="calendar-cell calendar-active weekly">4</div>
+                        <div class="calendar-cell calendar-active weekly">4–5</div>
+
+                        <!-- Blood Screening - Quarterly -->
+                        <div class="calendar-cell calendar-row-header">Blood screening</div>
+                        <div class="calendar-cell calendar-active quarterly">✓</div>
+                        <div class="calendar-cell calendar-inactive">—</div>
+                        <div class="calendar-cell calendar-inactive">—</div>
+                        <div class="calendar-cell calendar-active quarterly">✓</div>
+                        <div class="calendar-cell calendar-inactive">—</div>
+                        <div class="calendar-cell calendar-inactive">—</div>
+                        <div class="calendar-cell calendar-active quarterly">✓</div>
+                        <div class="calendar-cell calendar-inactive">—</div>
+                        <div class="calendar-cell calendar-inactive">—</div>
+                        <div class="calendar-cell calendar-active quarterly">✓</div>
+                        <div class="calendar-cell calendar-inactive">—</div>
+                        <div class="calendar-cell calendar-inactive">—</div>
+
+                        <!-- Parasite Surveillance - Quarterly -->
+                        <div class="calendar-cell calendar-row-header">Parasite surveillance</div>
+                        <div class="calendar-cell calendar-active quarterly">✓</div>
+                        <div class="calendar-cell calendar-inactive">—</div>
+                        <div class="calendar-cell calendar-inactive">—</div>
+                        <div class="calendar-cell calendar-active quarterly">✓</div>
+                        <div class="calendar-cell calendar-inactive">—</div>
+                        <div class="calendar-cell calendar-inactive">—</div>
+                        <div class="calendar-cell calendar-active quarterly">✓</div>
+                        <div class="calendar-cell calendar-inactive">—</div>
+                        <div class="calendar-cell calendar-inactive">—</div>
+                        <div class="calendar-cell calendar-active quarterly">✓</div>
+                        <div class="calendar-cell calendar-inactive">—</div>
+                        <div class="calendar-cell calendar-inactive">—</div>
+
+                        <!-- Comprehensive Health Exam - Annual -->
+                        <div class="calendar-cell calendar-row-header">Comprehensive health exam</div>
+                        <div class="calendar-cell calendar-inactive">—</div>
+                        <div class="calendar-cell calendar-inactive">—</div>
+                        <div class="calendar-cell calendar-inactive">—</div>
+                        <div class="calendar-cell calendar-inactive">—</div>
+                        <div class="calendar-cell calendar-inactive">—</div>
+                        <div class="calendar-cell calendar-inactive">—</div>
+                        <div class="calendar-cell calendar-inactive">—</div>
+                        <div class="calendar-cell calendar-inactive">—</div>
+                        <div class="calendar-cell calendar-inactive">—</div>
+                        <div class="calendar-cell calendar-inactive">—</div>
+                        <div class="calendar-cell calendar-inactive">—</div>
+                        <div class="calendar-cell calendar-active annual">✓</div>
+                    </div>
+                </div>
+
+                <!-- Monitoring Schedule Table -->
+                <div class="table-container">
+                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.3rem; margin-bottom: 1rem; color: var(--primary);">
+                        <i class="fas fa-table" style="color: var(--secondary);"></i> Monitoring Schedule
+                    </h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Monitoring Activity</th>
+                                <th>Frequency</th>
+                                <th>Responsible Staff</th>
+                                <th>Purpose</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Food intake &amp; appetite</strong></td>
+                                <td><span class="priority-badge priority-high">Daily</span></td>
+                                <td>Keeper</td>
+                                <td>Early disease detection</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Behavioural observations</strong></td>
+                                <td><span class="priority-badge priority-high">Daily</span></td>
+                                <td>Keeper</td>
+                                <td>Welfare and illness monitoring</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Water quality testing</strong></td>
+                                <td><span class="priority-badge priority-high">Daily</span></td>
+                                <td>Keeper</td>
+                                <td>Maintain environmental health</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Body weight &amp; BCS</strong></td>
+                                <td><span class="priority-badge priority-medium">Weekly</span></td>
+                                <td>Keeper/Veterinarian</td>
+                                <td>Nutritional assessment</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Behavioural welfare audit</strong></td>
+                                <td><span class="priority-badge priority-medium">Weekly</span></td>
+                                <td>Keeper</td>
+                                <td>Detect stress and behavioural changes</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Blood screening</strong></td>
+                                <td><span class="priority-badge" style="background: var(--info-border); color: var(--white);">Quarterly</span></td>
+                                <td>Veterinarian</td>
+                                <td>Detect subclinical disease</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Parasite surveillance</strong></td>
+                                <td><span class="priority-badge" style="background: var(--info-border); color: var(--white);">Quarterly</span></td>
+                                <td>Veterinarian</td>
+                                <td>Identify parasite burdens</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Comprehensive health examination</strong></td>
+                                <td><span class="priority-badge" style="background: var(--low-risk); color: var(--white);">Annually</span></td>
+                                <td>Veterinarian</td>
+                                <td>Long-term health assessment</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="info-box">
+                    <div class="info-box-title">
+                        <i class="fas fa-puzzle-piece"></i> Integration Is Key
+                    </div>
+                    <p>
+                        Critically, the effectiveness of this programme depends not simply on the frequency of monitoring but on the integration and interpretation of findings across disciplines, enabling timely, evidence-based interventions that strengthen long-term health, welfare and resilience at both individual and collection levels <span class="citation">Gili, Meijer and Lacave, 2018</span>.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Critical Evaluation -->
+            <section class="content-section reveal" id="evaluation">
+                <div class="section-header">
+                    <span class="section-tag">Critical Analysis</span>
+                    <h2 class="section-title">Critical Evaluation</h2>
+                    <p class="section-subtitle">A balanced assessment of the integrated preventative health approach</p>
+                </div>
+
+                <div class="evaluation-panel">
+                    <h3 class="evaluation-title"><i class="fas fa-balance-scale"></i> An Integrated Approach</h3>
+                    <div class="evaluation-text">
+                        <p>
+                            An effective preventative health programme relies on integrating behavioural, nutritional, environmental and veterinary monitoring into a coordinated management strategy rather than treating each component independently. This multi-layered approach facilitates early disease detection, reduces the risk of infectious disease outbreaks and minimises the development of nutrition- and husbandry-related disorders.
+                        </p>
+                        <p>
+                            However, its success depends on consistent implementation, effective communication between keepers, curators and veterinarians, and adequate institutional resources. As new evidence on pinniped health and husbandry emerges, preventative protocols should be regularly reviewed and adapted to reflect current best practice.
+                        </p>
+                        <p>
+                            Consequently, preventative healthcare should be regarded as a dynamic, evidence-based process that underpins long-term health, welfare and sustainable collection management.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Key Takeaways -->
+            <section class="content-section reveal" id="takeaways">
+                <div class="section-header">
+                    <span class="section-tag">Summary</span>
+                    <h2 class="section-title">Key Takeaways</h2>
+                    <p class="section-subtitle">The essential principles underpinning effective preventative health management in captive harbour seals</p>
+                </div>
+
+                <div class="takeaways-panel">
+                    <h3 class="takeaways-title"><i class="fas fa-lightbulb"></i> Seven Principles of Preventative Health</h3>
+                    <p class="takeaways-subtitle">Core insights from this chapter that should guide captive management practice</p>
+
+                    <div class="takeaways-grid">
+                        <div class="takeaway-item">
+                            <div class="takeaway-number">1</div>
+                            <div class="takeaway-content">
+                                <h4>Prevention Over Treatment</h4>
+                                <p>Many health problems are more effectively prevented than treated after clinical disease develops <span class="citation">Gili, Meijer and Lacave, 2018</span></p>
+                            </div>
+                        </div>
+
+                        <div class="takeaway-item">
+                            <div class="takeaway-number">2</div>
+                            <div class="takeaway-content">
+                                <h4>Risk-Based Prioritisation</h4>
+                                <p>Hazards should be prioritised according to likelihood of occurrence and potential consequences <span class="citation">Ahl et al., 1993</span></p>
+                            </div>
+                        </div>
+
+                        <div class="takeaway-item">
+                            <div class="takeaway-number">3</div>
+                            <div class="takeaway-content">
+                                <h4>Infectious Disease Is Highest Priority</h4>
+                                <p>Pathogens such as PDV can compromise entire collections rapidly, making biosecurity the most cost-effective intervention <span class="citation">Siebert et al., 2024</span></p>
+                            </div>
+                        </div>
+
+                        <div class="takeaway-item">
+                            <div class="takeaway-number">4</div>
+                            <div class="takeaway-content">
+                                <h4>Keepers Are the First Line of Defence</h4>
+                                <p>Continuous observation by keepers enables detection of subtle deviations before clinical disease develops <span class="citation">Young and Cipreste, 2004</span></p>
+                            </div>
+                        </div>
+
+                        <div class="takeaway-item">
+                            <div class="takeaway-number">5</div>
+                            <div class="takeaway-content">
+                                <h4>Quarantine Is Non-Negotiable</h4>
+                                <p>A minimum 30-day isolation period with comprehensive diagnostic screening protects the resident collection <span class="citation">Meehan, 2012</span></p>
+                            </div>
+                        </div>
+
+                        <div class="takeaway-item">
+                            <div class="takeaway-number">6</div>
+                            <div class="takeaway-content">
+                                <h4>Environmental Health Underpins Animal Health</h4>
+                                <p>Poor water quality and thermal stress compromise immune function and predispose seals to disease <span class="citation">Colitz et al., 2019</span></p>
+                            </div>
+                        </div>
+
+                        <div class="takeaway-item">
+                            <div class="takeaway-number">7</div>
+                            <div class="takeaway-content">
+                                <h4>Integration Is Essential</h4>
+                                <p>Behavioural, nutritional, environmental and veterinary monitoring must be coordinated, not isolated <span class="citation">Gili, Meijer and Lacave, 2018</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- References Section -->
+    <section class="references-section" id="references">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <div class="section-header" style="text-align: center;">
+                <span class="section-tag">Academic Sources</span>
+                <h2 class="section-title">References</h2>
+                <p class="section-subtitle" style="margin: 0 auto;">Complete bibliography of sources cited on this page</p>
+            </div>
+
+            <div class="references-list">
+                <div class="reference-item">
+                    Ahl, A.S., Acree, J.A., Gipson, P.S., McDowell, R.M., Miller, L. and McElvaine, M.D. (1993) Standardization of nomenclature for animal health risk analysis. <em>Revue Scientifique et Technique (International Office of Epizootics)</em>, 12(4), pp.1045–1053.
+                </div>
+                <div class="reference-item">
+                    Anthony, S.J., St Leger, J.A., Pugliares, K., Ip, H.S., Chan, J.M., Carpenter, Z.W., Navarrete-Macias, I., Sanchez-Leon, M., Saliki, J.T., Pedersen, J., Karesh, W., Daszak, P., Rabadan, R., Rowles, T. and Lipkin, W.I. (2012) Emergence of fatal avian influenza in New England harbor seals. <em>mBio</em>, 3(4), e00166-12.
+                </div>
+                <div class="reference-item">
+                    Bjork, A., Stoddard, R.A., Anderson, A.D., de Perio, M.A., Niemeier, R.T., Self, J.S., Fitzpatrick, K.A., Gulland, F.M.D., Field, C.L., Kersh, G.J. and Gibbins, J.D. (2024) Zoonoses in the workplace: a seroprevalence study of Coxiella, Brucella, and Leptospira among marine mammal rescue and rehabilitation workers in California. <em>Public Health Challenges</em>, 3(2), e132.
+                </div>
+                <div class="reference-item">
+                    Colitz, C.M., Saville, W.J.A., Walsh, M.T. and Latson, E. (2019) Factors associated with keratopathy in captive pinnipeds. <em>Journal of the American Veterinary Medical Association</em>, 255(2), pp.224–230.
+                </div>
+                <div class="reference-item">
+                    Deepak, Vaishali, Gupta, R., Jadhav, V., Singh, D. and Farooq, S. (2019) Pinniped zoonoses: a review. <em>International Journal of Livestock Research</em>, 9(11), pp.1–11.
+                </div>
+                <div class="reference-item">
+                    EAZA/EAAM Husbandry Guidelines (n.d.) <em>Guidelines for the Management of Harbour Seals (Phoca vitulina) in European Zoos and Aquaria</em>. European Association of Zoos and Aquaria / European Association for Aquatic Mammals.
+                </div>
+                <div class="reference-item">
+                    Fowler, M.E. and Miller, R.E. (2015) <em>Fowler's Zoo and Wild Animal Medicine</em>. 8th edn. St Louis: Elsevier Saunders.
+                </div>
+                <div class="reference-item">
+                    Geraci, J.R. (1972) Experimental thiamine deficiency in captive harp seals, <em>Phoca groenlandica</em>, induced by eating herring, <em>Clupea harengus</em>, and smelts, <em>Osmerus mordax</em>. <em>Canadian Journal of Zoology</em>, 50(2), pp.179–195.
+                </div>
+                <div class="reference-item">
+                    Gili, C., Meijer, G. and Lacave, G. (2018) <em>EAZA and EAAM Best Practice Guidelines for Otariidae and Phocidae (Pinnipeds)</em>. Genoa: Acquario di Genova.
+                </div>
+                <div class="reference-item">
+                    Gulland, F.M.D., Dierauf, L.A. and Whitman, K.L. (eds) (2018) <em>CRC Handbook of Marine Mammal Medicine</em>. 3rd edn. Boca Raton: CRC Press.
+                </div>
+                <div class="reference-item">
+                    Härkönen, T., Dietz, R., Reijnders, P., Teilmann, J., Harding, K., Hall, A., Brasseur, S., Siebert, U., Goodman, S.J., Jepson, P.D., Rasmussen, T.D. and Thompson, P. (2006) The 1988 and 2002 phocine distemper virus epidemics in European harbour seals. <em>Diseases of Aquatic Organisms</em>, 68(2), pp.115–130.
+                </div>
+                <div class="reference-item">
+                    Kahle, P., Ludolphy, C., Kierdorf, H. and Kierdorf, U. (2018) Dental anomalies and lesions in Eastern Atlantic harbor seals, <em>Phoca vitulina vitulina</em> (Carnivora, Phocidae), from the German North Sea. <em>PLOS ONE</em>, 13(10), e0204079.
+                </div>
+                <div class="reference-item">
+                    Martelli, P. and Krishnasamy, K. (2023) The role of preventative medicine programs in animal welfare and wellbeing in zoological institutions. <em>Animals</em>, 13(14), 2299.
+                </div>
+                <div class="reference-item">
+                    Mason, G.J. (2010) Species differences in responses to captivity: stress, welfare and the comparative method. <em>Trends in Ecology &amp; Evolution</em>, 25(12), pp.713–721.
+                </div>
+                <div class="reference-item">
+                    Mazzaro, L.M., Koutsos, E.A. and Williams, J.J. (2016) Current practices in aquatic animal supplementation. <em>Journal of Zoo and Aquarium Research</em>, 4(4), pp.202–208.
+                </div>
+                <div class="reference-item">
+                    Meehan, T.P. (2012) AAZV guidelines for zoo and aquarium veterinary medical programs and veterinary hospitals. In: Miller, R.E. and Fowler, M.E. (eds) <em>Fowler's Zoo and Wild Animal Medicine: Current Therapy</em>, Volume 7. St Louis: Elsevier Saunders, Ch.16.
+                </div>
+                <div class="reference-item">
+                    MSD Veterinary Manual (2023) <em>Marine Mammals: Preventive Health Programs</em>. Available at: MSD Veterinary Manual.
+                </div>
+                <div class="reference-item">
+                    MSD Veterinary Manual (2024) <em>Nutrition and nutritional diseases of marine mammals</em>. Available at: <a href="https://www.msdvetmanual.com/exotic-and-laboratory-animals/marine-mammals/nutrition-and-nutritional-diseases-of-marine-mammals" target="_blank" rel="noopener">https://www.msdvetmanual.com</a>
+                </div>
+                <div class="reference-item">
+                    MSD Veterinary Manual (2026) <em>Handling disease outbreaks in animals</em>. Available at: <a href="https://www.msdvetmanual.com/public-health/biosecurity/handling-disease-outbreaks-in-animals" target="_blank" rel="noopener">https://www.msdvetmanual.com</a>
+                </div>
+                <div class="reference-item">
+                    National Research Council (US) Committee on a Review of the Smithsonian Institution's National Zoological Park (2004) <em>Animal Care and Management at the National Zoo: Interim Report</em>. Washington, DC: National Academies Press.
+                </div>
+                <div class="reference-item">
+                    Siebert, U., Lakemeyer, J., Runge, M., Lienau, P., Braune, S., Bartelt, E., Grilo, M.L. and Pund, R. (2024) Investigations on the health status and infection risk of harbour seals (<em>Phoca vitulina</em>) from waters of the Lower Saxon Wadden Sea, Germany. <em>Animals</em>, 14(20), 2920.
+                </div>
+                <div class="reference-item">
+                    van Wijngaarden, M.F.A., Geut, M.I.M., Vernooij, J.C.M., IJsseldijk, L.L. and Tobias, T.J. (2021) Determinants of mortality of juvenile harbour seals (<em>Phoca vitulina</em>) infected with lungworm submitted to a Dutch seal rehabilitation centre. <em>International Journal for Parasitology: Parasites and Wildlife</em>, 14, pp.1–6.
+                </div>
+                <div class="reference-item">
+                    Young, R. and Cipreste, C. (2004) Applying animal learning theory: training captive animals to comply with veterinary and husbandry procedures. <em>Animal Welfare</em>, 13(2), pp.225–232.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h3><i class="fas fa-water"></i> Phoca vitulina</h3>
+                <p>A comprehensive educational resource dedicated to the preventative health management and welfare of captive harbour seals.</p>
+                <div class="footer-social">
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <h4>Topics</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="nutrition.html">Nutrition</a></li>
+                    <li><a href="preventative-health.html">Preventative Health</a></li>
+                    <li><a href="enclosure-design.html">Enclosure Design</a></li>
+                    <li><a href="emerging-research.html">Emerging Research</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links">
+                <h4>Sections</h4>
+                <ul>
+                    <li><a href="#priorities">Health Priorities</a></li>
+                    <li><a href="#infectious">Infectious Disease</a></li>
+                    <li><a href="#quarantine">Quarantine Protocol</a></li>
+                    <li><a href="#monitoring">Monitoring Calendar</a></li>
+                    <li><a href="#references">References</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links">
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="#">About This Project</a></li>
+                    <li><a href="#">Author Information</a></li>
+                    <li><a href="#">Institutional Affiliation</a></li>
+                    <li><a href="#">Feedback</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Preventative Health Management of Captive Harbour Seals. All rights reserved.</p>
+            <p>Educational Resource | University Dissertation</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = mobileMenuToggle.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuToggle.querySelector('i').classList.remove('fa-times');
+                mobileMenuToggle.querySelector('i').classList.add('fa-bars');
+            });
+        });
+
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+        const themeIcon = themeToggle.querySelector('i');
+
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme === 'dark') {
+            html.setAttribute('data-theme', 'dark');
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            if (html.getAttribute('data-theme') === 'dark') {
+                html.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'light');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            } else {
+                html.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            }
+        });
+
+        // Reading Progress Bar
+        const progressBar = document.getElementById('progressBar');
+
+        window.addEventListener('scroll', () => {
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight - windowHeight;
+            const scrollTop = window.scrollY;
+            const progress = (scrollTop / documentHeight) * 100;
+            progressBar.style.width = progress + '%';
+
+            const backToTop = document.getElementById('backToTop');
+            if (scrollTop > 500) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        document.getElementById('backToTop').addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Scroll Reveal Animation
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealOnScroll = () => {
+            revealElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                if (elementTop < windowHeight - 100) {
+                    element.classList.add('active');
+                }
+            });
+        };
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+
+        // Sticky Side Navigation
+        const sideNavLinks = document.querySelectorAll('.side-nav-link');
+        const contentSections = document.querySelectorAll('.content-section');
+
+        const updateActiveSideNav = () => {
+            let currentSection = '';
+            contentSections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (window.scrollY >= sectionTop - 150) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+
+            sideNavLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', updateActiveSideNav);
+        window.addEventListener('load', updateActiveSideNav);
+
+        sideNavLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Risk Table Search
+        const riskTableSearch = document.getElementById('riskTableSearch');
+        const riskTableRows = document.querySelectorAll('#riskTable tbody tr');
+
+        riskTableSearch.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            riskTableRows.forEach(row => {
+                const text = row.textContent.toLowerCase();
+                row.style.display = text.includes(searchTerm) ? '' : 'none';
+            });
+        });
+
+        // Risk Table Filters
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                const filter = btn.getAttribute('data-filter');
+                riskTableRows.forEach(row => {
+                    if (filter === 'all') {
+                        row.style.display = '';
+                    } else {
+                        row.style.display = row.getAttribute('data-priority') === filter ? '' : 'none';
+                    }
+                });
+            });
+        });
+
+        // Table Sorting
+        const tableHeaders = document.querySelectorAll('.data-table th[data-sort]');
+        tableHeaders.forEach((header, index) => {
+            header.addEventListener('click', () => {
+                const table = header.closest('table');
+                const tbody = table.querySelector('tbody');
+                const rows = Array.from(tbody.querySelectorAll('tr'));
+                const isAscending = header.classList.contains('sort-asc');
+                
+                tableHeaders.forEach(h => {
+                    h.classList.remove('sort-asc', 'sort-desc');
+                    const icon = h.querySelector('i');
+                    if (icon) icon.className = 'fas fa-sort';
+                });
+                
+                rows.sort((a, b) => {
+                    const aText = a.children[index].textContent.trim();
+                    const bText = b.children[index].textContent.trim();
+                    return isAscending ? bText.localeCompare(aText) : aText.localeCompare(bText);
+                });
+                
+                header.classList.add(isAscending ? 'sort-desc' : 'sort-asc');
+                const icon = header.querySelector('i');
+                if (icon) icon.className = isAscending ? 'fas fa-sort-down' : 'fas fa-sort-up';
+                
+                rows.forEach(row => tbody.appendChild(row));
+            });
+        });
+
+        // Quarantine Flowchart Animation
+        const flowSteps = document.querySelectorAll('.flow-step');
+        const animateFlowchart = () => {
+            flowSteps.forEach((step, index) => {
+                const stepTop = step.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                if (stepTop < windowHeight - 100) {
+                    setTimeout(() => {
+                        step.classList.add('visible');
+                    }, index * 150);
+                }
+            });
+        };
+
+        window.addEventListener('scroll', animateFlowchart);
+        window.addEventListener('load', animateFlowchart);
+
+        // Parallax effect for hero image
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const heroImage = document.querySelector('.hero-image');
+            if (heroImage && scrolled < window.innerHeight) {
+                heroImage.style.transform = `translateY(${scrolled * 0.3}px)`;
+            }
+        });
+
+        // Animate disease risk bars on scroll
+        const diseaseCards = document.querySelectorAll('.disease-risk-fill');
+        const animateRiskBars = () => {
+            diseaseCards.forEach(bar => {
+                const barTop = bar.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                if (barTop < windowHeight - 50) {
+                    const width = bar.style.width;
+                    bar.style.width = '0';
+                    setTimeout(() => {
+                        bar.style.width = width;
+                    }, 100);
+                }
+            });
+        };
+
+        window.addEventListener('scroll', animateRiskBars);
+        window.addEventListener('load', () => {
+            setTimeout(animateRiskBars, 500);
+        });
+    </script>
+</body>
+</html>

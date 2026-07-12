@@ -1,0 +1,3082 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Enclosure Design for Health - Evidence-based facility design as preventative healthcare for captive harbour seals">
+    <title>Enclosure Design | Preventative Health Management of Captive Harbour Seals</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #0B3C5D;
+            --secondary: #2C7A7B;
+            --accent: #FF6B6B;
+            --background: #FFFFFF;
+            --light-grey: #F5F7F9;
+            --text: #222222;
+            --text-light: #666666;
+            --white: #FFFFFF;
+            --shadow: rgba(11, 60, 93, 0.1);
+            --shadow-strong: rgba(11, 60, 93, 0.15);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --warning-bg: #FFF5F5;
+            --warning-border: #FF6B6B;
+            --success-bg: #F0FFF4;
+            --success-border: #38A169;
+            --info-bg: #EBF8FF;
+            --info-border: #3182CE;
+            --water-blue: #4299E1;
+            --temp-red: #E53E3E;
+            --ph-green: #38A169;
+            --salinity-teal: #2C7A7B;
+        }
+
+        [data-theme="dark"] {
+            --background: #1a1a1a;
+            --light-grey: #2a2a2a;
+            --text: #f5f5f5;
+            --text-light: #b0b0b0;
+            --shadow: rgba(0, 0, 0, 0.3);
+            --shadow-strong: rgba(0, 0, 0, 0.5);
+            --warning-bg: #2d1f1f;
+            --success-bg: #1f2d1f;
+            --info-bg: #1f2530;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+            transition: var(--transition);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            line-height: 1.2;
+            color: var(--primary);
+        }
+
+        [data-theme="dark"] h1, [data-theme="dark"] h2, [data-theme="dark"] h3, [data-theme="dark"] h4 {
+            color: #ffffff;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--secondary), var(--accent));
+            z-index: 1001;
+            transition: width 0.1s;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px var(--shadow);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        [data-theme="dark"] .navbar {
+            background: rgba(26, 26, 26, 0.95);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        [data-theme="dark"] .logo { color: #ffffff; }
+        .logo i { color: var(--secondary); }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            font-size: 0.95rem;
+            color: var(--text);
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-links a.active { color: var(--secondary); }
+
+        .nav-controls {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .theme-toggle,
+        .mobile-menu-toggle {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            color: var(--text);
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover,
+        .mobile-menu-toggle:hover {
+            background: var(--light-grey);
+            color: var(--secondary);
+        }
+
+        .mobile-menu-toggle { display: none; }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--primary) 0%, #0a4a6b 50%, var(--secondary) 100%);
+            padding-top: 80px;
+        }
+
+        .hero-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: var(--white);
+            padding: 2rem;
+            max-width: 1100px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .breadcrumb {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1.25rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .breadcrumb a { color: rgba(255, 255, 255, 0.9); }
+        .breadcrumb a:hover { color: var(--white); }
+        .breadcrumb .separator { color: rgba(255, 255, 255, 0.6); }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255, 107, 107, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(255, 107, 107, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+            font-weight: 300;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-stat {
+            text-align: center;
+        }
+
+        .hero-stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1;
+        }
+
+        .hero-stat-label {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.8);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 0.5rem;
+        }
+
+        .wave-container {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+        }
+
+        .wave {
+            position: relative;
+            display: block;
+            width: calc(100% + 1.3px);
+            height: 100px;
+        }
+
+        .wave-path { fill: var(--background); }
+
+        /* Page Layout */
+        .page-layout {
+            display: grid;
+            grid-template-columns: 240px 1fr;
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* Sticky Side Nav */
+        .side-nav {
+            position: sticky;
+            top: 100px;
+            align-self: start;
+            max-height: calc(100vh - 120px);
+            overflow-y: auto;
+            padding: 1.5rem;
+            background: var(--light-grey);
+            border-radius: 16px;
+            border-left: 3px solid var(--secondary);
+        }
+
+        .side-nav-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        [data-theme="dark"] .side-nav-title { color: #ffffff; }
+
+        .side-nav ul { list-style: none; }
+        .side-nav li { margin-bottom: 0.5rem; }
+
+        .side-nav a {
+            display: block;
+            padding: 0.5rem 0.75rem;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            border-radius: 8px;
+            border-left: 2px solid transparent;
+            transition: var(--transition);
+        }
+
+        .side-nav a:hover {
+            color: var(--secondary);
+            background: rgba(44, 122, 123, 0.08);
+        }
+
+        .side-nav a.active {
+            color: var(--secondary);
+            background: rgba(44, 122, 123, 0.1);
+            border-left-color: var(--secondary);
+            font-weight: 600;
+        }
+
+        .main-content { min-width: 0; }
+
+        .content-section {
+            margin-bottom: 5rem;
+            scroll-margin-top: 100px;
+        }
+
+        .section-header { margin-bottom: 2.5rem; }
+
+        .section-tag {
+            display: inline-block;
+            color: var(--secondary);
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.75rem;
+        }
+
+        .section-title {
+            font-size: clamp(1.75rem, 3vw, 2.5rem);
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        [data-theme="dark"] .section-title { color: #ffffff; }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 700px;
+            line-height: 1.7;
+        }
+
+        /* Typography */
+        .content-text {
+            font-size: 1.05rem;
+            line-height: 1.85;
+            color: var(--text);
+            margin-bottom: 1.5rem;
+        }
+
+        .content-text p { margin-bottom: 1.25rem; }
+
+        .citation {
+            display: inline;
+            color: var(--secondary);
+            font-weight: 500;
+            font-size: 0.9em;
+            white-space: nowrap;
+        }
+
+        .citation::before { content: '('; }
+        .citation::after { content: ')'; }
+
+        /* Overview Cards Grid */
+        .overview-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .overview-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 10px 40px var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        [data-theme="dark"] .overview-card { background: var(--light-grey); }
+
+        .overview-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--secondary), var(--accent));
+            transform: scaleX(0);
+            transition: transform 0.3s;
+            transform-origin: left;
+        }
+
+        .overview-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px var(--shadow-strong);
+        }
+
+        .overview-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .overview-card-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .overview-card:hover .overview-card-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .overview-card h3 {
+            font-size: 1.35rem;
+            margin-bottom: 0.75rem;
+            color: var(--primary);
+        }
+
+        [data-theme="dark"] .overview-card h3 { color: #ffffff; }
+
+        .overview-card p {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .overview-card-number {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--secondary);
+            opacity: 0.1;
+        }
+
+        /* Water Quality Dashboard */
+        .dashboard-container {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 24px;
+            padding: 3rem;
+            margin: 2rem 0;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dashboard-container::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+        }
+
+        .dashboard-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.75rem;
+            color: var(--white);
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .dashboard-subtitle {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .gauges-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .gauge-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .gauge-card:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .gauge-svg {
+            width: 140px;
+            height: 140px;
+            margin: 0 auto 1rem;
+            position: relative;
+        }
+
+        .gauge-circle-bg {
+            fill: none;
+            stroke: rgba(255, 255, 255, 0.2);
+            stroke-width: 12;
+        }
+
+        .gauge-circle {
+            fill: none;
+            stroke-width: 12;
+            stroke-linecap: round;
+            transform: rotate(-90deg);
+            transform-origin: center;
+            transition: stroke-dashoffset 2s ease-out;
+        }
+
+        .gauge-value {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .gauge-unit {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 0.25rem;
+        }
+
+        .gauge-label {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .gauge-range {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .gauge-status {
+            display: inline-block;
+            margin-top: 0.75rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .status-optimal {
+            background: rgba(56, 161, 105, 0.3);
+            color: #68D391;
+        }
+
+        .status-warning {
+            background: rgba(221, 107, 32, 0.3);
+            color: #FBD38D;
+        }
+
+        /* Tables */
+        .table-container {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 40px var(--shadow);
+            margin: 2rem 0;
+            overflow: hidden;
+        }
+
+        [data-theme="dark"] .table-container { background: var(--light-grey); }
+
+        .table-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .table-search {
+            flex: 1;
+            max-width: 300px;
+            position: relative;
+        }
+
+        .table-search input {
+            width: 100%;
+            padding: 0.75rem 1rem 0.75rem 2.5rem;
+            border: 1px solid rgba(11, 60, 93, 0.15);
+            border-radius: 50px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            background: var(--background);
+            color: var(--text);
+            transition: var(--transition);
+        }
+
+        .table-search input:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(44, 122, 123, 0.1);
+        }
+
+        .table-search i {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-light);
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            overflow-x: auto;
+            display: block;
+        }
+
+        .data-table thead {
+            position: sticky;
+            top: 0;
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .data-table th {
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .data-table td {
+            padding: 1rem;
+            border-bottom: 1px solid rgba(11, 60, 93, 0.08);
+            font-size: 0.95rem;
+            vertical-align: top;
+        }
+
+        [data-theme="dark"] .data-table td {
+            border-bottom-color: rgba(255, 255, 255, 0.08);
+        }
+
+        .data-table tbody tr { transition: var(--transition); }
+
+        .data-table tbody tr:nth-child(even) {
+            background: var(--light-grey);
+        }
+
+        [data-theme="dark"] .data-table tbody tr:nth-child(even) {
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .data-table tbody tr:hover {
+            background: rgba(44, 122, 123, 0.08);
+        }
+
+        /* Blueprint Interactive */
+        .blueprint-container {
+            background: var(--white);
+            border-radius: 24px;
+            padding: 2rem;
+            box-shadow: 0 10px 40px var(--shadow);
+            margin: 2rem 0;
+            position: relative;
+        }
+
+        [data-theme="dark"] .blueprint-container { background: var(--light-grey); }
+
+        .blueprint-title {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        [data-theme="dark"] .blueprint-title { color: #ffffff; }
+
+        .blueprint-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+        }
+
+        .blueprint-svg {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            display: block;
+        }
+
+        .blueprint-zone {
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .blueprint-zone:hover {
+            opacity: 0.8;
+            transform: scale(1.02);
+        }
+
+        .blueprint-tooltip {
+            position: absolute;
+            background: var(--primary);
+            color: var(--white);
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            max-width: 250px;
+            opacity: 0;
+            pointer-events: none;
+            transition: var(--transition);
+            z-index: 100;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .blueprint-tooltip.active {
+            opacity: 1;
+        }
+
+        .blueprint-tooltip h4 {
+            color: var(--white);
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Cross Section */
+        .cross-section-container {
+            background: linear-gradient(180deg, #E6F7FF 0%, #B3E0FF 100%);
+            border-radius: 24px;
+            padding: 3rem 2rem;
+            margin: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        [data-theme="dark"] .cross-section-container {
+            background: linear-gradient(180deg, #1a3a4a 0%, #0a2a3a 100%);
+        }
+
+        .cross-section-title {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.75rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        [data-theme="dark"] .cross-section-title { color: #ffffff; }
+
+        .cross-section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+        }
+
+        .cross-section-svg {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+            display: block;
+        }
+
+        /* Haul Out Platform */
+        .haulout-container {
+            background: var(--white);
+            border-radius: 24px;
+            padding: 3rem 2rem;
+            box-shadow: 0 10px 40px var(--shadow);
+            margin: 2rem 0;
+        }
+
+        [data-theme="dark"] .haulout-container { background: var(--light-grey); }
+
+        .haulout-title {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        [data-theme="dark"] .haulout-title { color: #ffffff; }
+
+        .haulout-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .haulout-feature {
+            background: var(--light-grey);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        [data-theme="dark"] .haulout-feature { background: rgba(255, 255, 255, 0.05); }
+
+        .haulout-feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px var(--shadow);
+        }
+
+        .haulout-feature-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.25rem;
+            margin: 0 auto 1rem;
+        }
+
+        .haulout-feature h4 {
+            font-size: 1rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        [data-theme="dark"] .haulout-feature h4 { color: #ffffff; }
+
+        .haulout-feature p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            line-height: 1.5;
+        }
+
+        /* Enrichment Gallery */
+        .enrichment-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .enrichment-item {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px var(--shadow);
+            transition: var(--transition);
+        }
+
+        [data-theme="dark"] .enrichment-item { background: var(--light-grey); }
+
+        .enrichment-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px var(--shadow-strong);
+        }
+
+        .enrichment-image {
+            height: 180px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .enrichment-image i {
+            font-size: 4rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .enrichment-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(to top, rgba(11, 60, 93, 0.4), transparent);
+        }
+
+        .enrichment-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            color: var(--white);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            z-index: 1;
+        }
+
+        .enrichment-content {
+            padding: 2rem;
+        }
+
+        .enrichment-content h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            color: var(--primary);
+        }
+
+        [data-theme="dark"] .enrichment-content h3 { color: #ffffff; }
+
+        .enrichment-content p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .enrichment-meta {
+            display: flex;
+            gap: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(11, 60, 93, 0.08);
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        [data-theme="dark"] .enrichment-meta {
+            border-top-color: rgba(255, 255, 255, 0.08);
+        }
+
+        .enrichment-meta span {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        .enrichment-meta i {
+            color: var(--secondary);
+        }
+
+        /* Biosecurity Zoning */
+        .biosecurity-zoning {
+            background: var(--white);
+            border-radius: 24px;
+            padding: 3rem 2rem;
+            box-shadow: 0 10px 40px var(--shadow);
+            margin: 2rem 0;
+        }
+
+        [data-theme="dark"] .biosecurity-zoning { background: var(--light-grey); }
+
+        .zoning-title {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        [data-theme="dark"] .zoning-title { color: #ffffff; }
+
+        .zoning-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+        }
+
+        .zoning-diagram {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .zone-card {
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .zone-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px var(--shadow-strong);
+        }
+
+        .zone-resident {
+            background: linear-gradient(135deg, #38A169, #2C7A7B);
+            color: var(--white);
+        }
+
+        .zone-quarantine {
+            background: linear-gradient(135deg, #DD6B20, #C05621);
+            color: var(--white);
+        }
+
+        .zone-hospital {
+            background: linear-gradient(135deg, #E53E3E, #C53030);
+            color: var(--white);
+        }
+
+        .zone-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.5rem;
+        }
+
+        .zone-card h4 {
+            color: var(--white);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .zone-card p {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.5;
+        }
+
+        .zone-rules {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: left;
+        }
+
+        .zone-rules li {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 0.35rem;
+            padding-left: 1.25rem;
+            position: relative;
+        }
+
+        .zone-rules li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Maintenance Timeline */
+        .maintenance-timeline {
+            background: var(--white);
+            border-radius: 24px;
+            padding: 3rem 2rem;
+            box-shadow: 0 10px 40px var(--shadow);
+            margin: 2rem 0;
+        }
+
+        [data-theme="dark"] .maintenance-timeline { background: var(--light-grey); }
+
+        .timeline-title {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        [data-theme="dark"] .timeline-title { color: #ffffff; }
+
+        .timeline-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-track {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        .timeline-track::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 5%;
+            right: 5%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--temp-red), var(--medium-risk, #DD6B20), var(--info-border, #3182CE), var(--success-border, #38A169));
+            border-radius: 2px;
+            transform: translateY(-50%);
+            z-index: 0;
+        }
+
+        .timeline-point {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            flex: 1;
+        }
+
+        .timeline-dot {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: var(--white);
+            font-size: 1.25rem;
+            box-shadow: 0 5px 20px var(--shadow);
+            transition: var(--transition);
+        }
+
+        .timeline-point:hover .timeline-dot {
+            transform: scale(1.15);
+        }
+
+        .dot-daily { background: var(--temp-red); }
+        .dot-weekly { background: #DD6B20; }
+        .dot-monthly { background: #3182CE; }
+        .dot-annual { background: #38A169; }
+
+        .timeline-label {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            color: var(--primary);
+            margin-bottom: 0.25rem;
+        }
+
+        [data-theme="dark"] .timeline-label { color: #ffffff; }
+
+        .timeline-desc {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            max-width: 150px;
+            margin: 0 auto;
+        }
+
+        /* Preventative Architecture Infographic */
+        .architecture-infographic {
+            background: linear-gradient(135deg, var(--light-grey), var(--white));
+            border-radius: 24px;
+            padding: 3rem;
+            margin: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        [data-theme="dark"] .architecture-infographic {
+            background: linear-gradient(135deg, var(--light-grey), rgba(0, 0, 0, 0.3));
+        }
+
+        .architecture-title {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.75rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        [data-theme="dark"] .architecture-title { color: #ffffff; }
+
+        .architecture-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            margin-bottom: 2.5rem;
+        }
+
+        .architecture-layers {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .architecture-layer {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 1.5rem 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            box-shadow: 0 5px 20px var(--shadow);
+            transition: var(--transition);
+            border-left: 4px solid var(--secondary);
+        }
+
+        [data-theme="dark"] .architecture-layer { background: var(--background); }
+
+        .architecture-layer:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 30px var(--shadow-strong);
+        }
+
+        .layer-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .layer-content h4 {
+            font-size: 1.1rem;
+            color: var(--primary);
+            margin-bottom: 0.25rem;
+        }
+
+        [data-theme="dark"] .layer-content h4 { color: #ffffff; }
+
+        .layer-content p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            line-height: 1.5;
+        }
+
+        /* Critical Evaluation Editorial Card */
+        .editorial-card {
+            background: linear-gradient(135deg, #F7FAFC, #EDF2F7);
+            border-radius: 24px;
+            padding: 3.5rem;
+            margin: 3rem 0;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(44, 122, 123, 0.1);
+        }
+
+        [data-theme="dark"] .editorial-card {
+            background: linear-gradient(135deg, #1a202c, #2d3748);
+        }
+
+        .editorial-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, var(--secondary), var(--accent));
+        }
+
+        .editorial-card::after {
+            content: '\201C';
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            font-family: 'Playfair Display', serif;
+            font-size: 10rem;
+            color: var(--secondary);
+            opacity: 0.08;
+            line-height: 1;
+        }
+
+        .editorial-label {
+            display: inline-block;
+            background: var(--secondary);
+            color: var(--white);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 1.5rem;
+        }
+
+        .editorial-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+        }
+
+        [data-theme="dark"] .editorial-title { color: #ffffff; }
+
+        .editorial-text {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: var(--text);
+            position: relative;
+            z-index: 1;
+        }
+
+        .editorial-text p {
+            margin-bottom: 1.25rem;
+        }
+
+        /* Callout Boxes */
+        .info-box {
+            background: var(--info-bg);
+            border-left: 4px solid var(--info-border);
+            padding: 1.5rem 2rem;
+            border-radius: 0 12px 12px 0;
+            margin: 2rem 0;
+        }
+
+        .info-box-title {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        [data-theme="dark"] .info-box-title { color: #ffffff; }
+
+        .info-box p {
+            font-size: 0.95rem;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        .warning-callout {
+            background: var(--warning-bg);
+            border: 1px solid var(--warning-border);
+            border-left: 4px solid var(--warning-border);
+            padding: 1.5rem 2rem;
+            border-radius: 0 12px 12px 0;
+            margin: 2rem 0;
+            position: relative;
+        }
+
+        .warning-callout::before {
+            content: '\f071';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            color: var(--accent);
+            font-size: 1.5rem;
+            opacity: 0.3;
+        }
+
+        .warning-title {
+            font-family: 'Playfair Display', serif;
+            color: var(--accent);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+        }
+
+        .warning-callout p {
+            font-size: 0.95rem;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        /* References Section */
+        .references-section {
+            padding: 5rem 2rem;
+            background: var(--light-grey);
+        }
+
+        .references-list {
+            max-width: 1000px;
+            margin: 2rem auto 0;
+        }
+
+        .reference-item {
+            background: var(--white);
+            padding: 1.5rem 2rem;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--secondary);
+            box-shadow: 0 5px 20px var(--shadow);
+            transition: var(--transition);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        [data-theme="dark"] .reference-item { background: var(--background); }
+
+        .reference-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 10px 30px var(--shadow-strong);
+        }
+
+        .reference-item em {
+            color: var(--secondary);
+            font-style: italic;
+        }
+
+        .reference-item a {
+            color: var(--secondary);
+            word-break: break-all;
+        }
+
+        .reference-item a:hover { color: var(--accent); }
+
+        /* Footer */
+        .footer {
+            background: var(--primary);
+            color: var(--white);
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 4rem;
+            max-width: 1400px;
+            margin: 0 auto 3rem;
+        }
+
+        .footer-brand h3 {
+            color: var(--white);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-brand p {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .footer-social a:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        .footer-links h4 {
+            color: var(--white);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links ul { list-style: none; }
+        .footer-links li { margin-bottom: 0.75rem; }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: var(--secondary);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            box-shadow: 0 5px 20px rgba(44, 122, 123, 0.4);
+            z-index: 999;
+            border: none;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        /* Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+
+        .pulse-dot {
+            animation: pulse 2s infinite;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .page-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .side-nav {
+                position: relative;
+                top: 0;
+                max-height: none;
+            }
+
+            .side-nav ul {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.5rem;
+            }
+
+            .side-nav li { margin-bottom: 0; }
+
+            .side-nav a {
+                padding: 0.5rem 1rem;
+                border-left: none;
+                border-bottom: 2px solid transparent;
+            }
+
+            .side-nav a.active {
+                border-left: none;
+                border-bottom-color: var(--secondary);
+            }
+
+            .zoning-diagram {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline-track {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .timeline-track::before {
+                top: 5%;
+                bottom: 5%;
+                left: 50%;
+                width: 4px;
+                height: auto;
+                transform: translateX(-50%);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background: var(--background);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 27px var(--shadow);
+                padding: 2rem 0;
+                gap: 1.5rem;
+            }
+
+            .nav-links.active { left: 0; }
+            .mobile-menu-toggle { display: block; }
+            .hero { min-height: 70vh; }
+            .hero h1 { font-size: 2rem; }
+            .hero-stats { gap: 1.5rem; }
+            .hero-stat-number { font-size: 1.75rem; }
+
+            .dashboard-container,
+            .editorial-card,
+            .architecture-infographic {
+                padding: 2rem 1.5rem;
+            }
+
+            .gauges-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gauges-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .overview-cards,
+            .enrichment-gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-water"></i>
+                <span>Phoca vitulina</span>
+            </a>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="nutrition.html">Nutrition</a></li>
+                <li><a href="preventative-health.html">Preventative Health</a></li>
+                <li><a href="enclosure-design.html" class="active">Enclosure Design</a></li>
+                <li><a href="emerging-research.html">Emerging Research</a></li>
+            </ul>
+
+            <div class="nav-controls">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1920&h=1080&fit=crop" alt="Modern aquatic facility with harbour seals in professionally designed enclosure" class="hero-image">
+        
+        <div class="hero-content">
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+                <a href="index.html">Home</a>
+                <span class="separator">/</span>
+                <span>Enclosure Design</span>
+            </nav>
+            
+            <span class="hero-badge">Chapter 03</span>
+            <h1>Enclosure Design for Health</h1>
+            <p class="hero-subtitle">How evidence-based facility design functions as a proactive preventative healthcare intervention, eliminating environmental risks at their source</p>
+            
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <div class="hero-stat-number">200m³</div>
+                    <div class="hero-stat-label">Min. Pool Volume</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number">2.5m</div>
+                    <div class="hero-stat-label">Diving Column</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number">26–36</div>
+                    <div class="hero-stat-label">Salinity (ppt)</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number">5</div>
+                    <div class="hero-stat-label">Design Pillars</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="wave-container">
+            <svg class="wave" viewBox="0 0 1440 100" preserveAspectRatio="none">
+                <path class="wave-path" d="M0,32L60,42.7C120,53,240,75,360,74.7C480,75,600,53,720,48C840,43,960,53,1080,64C1200,75,1320,85,1380,90.7L1440,96L1440,100L1380,100C1320,100,1200,100,1080,100C960,100,840,100,720,100C600,100,480,100,360,100C240,100,120,100,60,100L0,100Z"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Page Layout -->
+    <div class="page-layout">
+        <!-- Sticky Side Navigation -->
+        <aside class="side-nav" aria-label="Page sections">
+            <div class="side-nav-title">
+                <i class="fas fa-list"></i> On This Page
+            </div>
+            <ul>
+                <li><a href="#introduction" class="side-nav-link">Introduction</a></li>
+                <li><a href="#overview" class="side-nav-link">Five Pillars</a></li>
+                <li><a href="#water-quality" class="side-nav-link">Water Quality</a></li>
+                <li><a href="#dashboard" class="side-nav-link">Live Dashboard</a></li>
+                <li><a href="#physical" class="side-nav-link">Physical Design</a></li>
+                <li><a href="#blueprint" class="side-nav-link">Enclosure Blueprint</a></li>
+                <li><a href="#cross-section" class="side-nav-link">Pool Cross-Section</a></li>
+                <li><a href="#enrichment" class="side-nav-link">Enrichment</a></li>
+                <li><a href="#biosecurity" class="side-nav-link">Biosecurity</a></li>
+                <li><a href="#zoning" class="side-nav-link">Biosecurity Zoning</a></li>
+                <li><a href="#maintenance" class="side-nav-link">Maintenance</a></li>
+                <li><a href="#architecture" class="side-nav-link">Architecture</a></li>
+                <li><a href="#evaluation" class="side-nav-link">Critical Evaluation</a></li>
+                <li><a href="#references" class="side-nav-link">References</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Introduction Section -->
+            <section class="content-section reveal" id="introduction">
+                <div class="section-header">
+                    <span class="section-tag">Foundation</span>
+                    <h2 class="section-title">Enclosure Design as Preventative Health Strategy</h2>
+                    <p class="section-subtitle">Moving beyond architecture to view enclosure design as an active healthcare intervention</p>
+                </div>
+
+                <div class="content-text">
+                    <p>
+                        Enclosure design should be regarded as a preventative healthcare intervention in its own right rather than merely an architectural or aesthetic consideration. Whereas veterinary treatment and routine husbandry largely respond to health problems after animals have been exposed to risk, well-designed facilities proactively eliminate many of the environmental conditions that promote disease, injury and chronic stress, reflecting the principles of the Five Domains framework, which integrates nutrition, environment, physical health and behaviour to optimise overall welfare <span class="citation">Mellor and Beausoleil, 2015</span>.
+                    </p>
+                    <p>
+                        For harbour seals, this requires replicating key features of their natural ecology, particularly access to both aquatic and terrestrial environments, as haul-out behaviour, thermoregulation and appropriate social spacing are fundamental to normal physiological and behavioural function <span class="citation">Gili, Meijer and Lacave, 2018</span>. Enclosures that fail to meet these ecological requirements may simultaneously increase the risk of dermatological and ocular disease, behavioural abnormalities and reduced reproductive performance, creating interconnected welfare challenges that are difficult to resolve through veterinary intervention alone <span class="citation">Mason, 2010</span>.
+                    </p>
+                </div>
+
+                <div class="info-box">
+                    <div class="info-box-title">
+                        <i class="fas fa-lightbulb"></i> The Preventative Value of Design
+                    </div>
+                    <p>
+                        Investment in evidence-based enclosure design offers greater long-term preventative value than reliance on reactive clinical management, because it removes health risks at their source while supporting sustainable welfare, reproductive success and collection resilience.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Five Pillars Overview Cards -->
+            <section class="content-section reveal" id="overview">
+                <div class="section-header">
+                    <span class="section-tag">Framework</span>
+                    <h2 class="section-title">The Five Pillars of Enclosure Design</h2>
+                    <p class="section-subtitle">An integrated approach to facility design that addresses every dimension of preventative health</p>
+                </div>
+
+                <div class="overview-cards">
+                    <div class="overview-card">
+                        <div class="overview-card-number">01</div>
+                        <div class="overview-card-icon"><i class="fas fa-tint"></i></div>
+                        <h3>Water Quality</h3>
+                        <p>Continuous mechanical and biological filtration, UV/ozone sterilisation, and precise chemical balance to prevent dermatological and ocular disease.</p>
+                    </div>
+
+                    <div class="overview-card">
+                        <div class="overview-card-number">02</div>
+                        <div class="overview-card-icon"><i class="fas fa-drafting-compass"></i></div>
+                        <h3>Physical Design</h3>
+                        <p>Non-slip substrates, adequate haul-out space, multiple water-access points and secure barriers that eliminate structural hazards.</p>
+                    </div>
+
+                    <div class="overview-card">
+                        <div class="overview-card-number">03</div>
+                        <div class="overview-card-icon"><i class="fas fa-puzzle-piece"></i></div>
+                        <h3>Environmental Enrichment</h3>
+                        <p>Variable swimming routes, manipulable objects and foraging devices that reduce chronic stress and stereotypic behaviours.</p>
+                    </div>
+
+                    <div class="overview-card">
+                        <div class="overview-card-number">04</div>
+                        <div class="overview-card-icon"><i class="fas fa-shield-virus"></i></div>
+                        <h3>Biosecurity</h3>
+                        <p>Dedicated access routes, separate quarantine systems and hygienic drainage engineered into infrastructure to prevent pathogen transfer.</p>
+                    </div>
+
+                    <div class="overview-card">
+                        <div class="overview-card-number">05</div>
+                        <div class="overview-card-icon"><i class="fas fa-tools"></i></div>
+                        <h3>Maintenance</h3>
+                        <p>Systematic monitoring and servicing schedules that transform enclosure management from reactive maintenance to evidence-based risk reduction.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Water Quality Section -->
+            <section class="content-section reveal" id="water-quality">
+                <div class="section-header">
+                    <span class="section-tag">Critical Component</span>
+                    <h2 class="section-title">Water Quality &amp; Aquatic Environment</h2>
+                    <p class="section-subtitle">The most critical component of preventative health management, influencing dermatological, ocular, respiratory, gastrointestinal and immune function</p>
+                </div>
+
+                <div class="content-text">
+                    <p>
+                        Water quality is arguably the most critical component of preventative health management for captive harbour seals because it simultaneously influences dermatological, ocular, respiratory, gastrointestinal and immune function. Unlike many enclosure features that affect only specific aspects of welfare, deterioration in water quality has collection-wide consequences because every animal is continuously exposed to the aquatic environment.
+                    </p>
+                    <p>
+                        Pools should therefore provide sufficient depth and volume to permit full submersion and natural diving behaviour; NSW regulatory standards recommend a minimum volume of approximately 200 m³ for a small group, an average depth of 2.0 m and a diving column of at least 2.5 m, with dimensions increased according to group size <span class="citation">NSW Department of Primary Industries, 2008</span>. Continuous mechanical and biological filtration, supported by protein skimming and UV or ozone sterilisation, removes organic waste and reduces bacterial and viral loads, while maintaining appropriate salinity is essential because inadequate filtration and unstable water chemistry are strongly associated with keratopathy and dermatological disease <span class="citation">Colitz et al., 2019</span>.
+                    </p>
+                </div>
+
+                <div class="warning-callout">
+                    <div class="warning-title">
+                        <i class="fas fa-exclamation-triangle"></i> Collection-Wide Impact
+                    </div>
+                    <p>
+                        Maintaining marine salinity between approximately 26–36 ppt, pH between 7.2 and 8.4, and temperatures generally below 26 °C preserves normal osmotic balance and minimises thermal stress <span class="citation">NSW Department of Primary Industries, 2008</span>. High water clarity and adequate turnover rates further facilitate behavioural observation while limiting pathogen accumulation and disease transmission across the collection <span class="citation">Siebert et al., 2024</span>.
+                    </p>
+                </div>
+
+                <!-- Water Quality Parameters Table -->
+                <div class="table-container">
+                    <div class="table-controls">
+                        <h3 style="font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--primary);">
+                            <i class="fas fa-table" style="color: var(--secondary);"></i> Water Quality Parameters
+                        </h3>
+                    </div>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Parameter</th>
+                                <th>Recommended Range</th>
+                                <th>Health Benefit</th>
+                                <th>Monitoring Frequency</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Pool depth</strong></td>
+                                <td>≥2.0 m average; ≥2.5 m diving column</td>
+                                <td>Enables natural diving and exercise, reduces musculoskeletal strain</td>
+                                <td>Daily visual/structural check</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Salinity</strong></td>
+                                <td>26–36 ppt</td>
+                                <td>Supports skin and mucosal integrity</td>
+                                <td>Daily</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Temperature</strong></td>
+                                <td>5–26 °C (max 28 °C)</td>
+                                <td>Prevents thermal stress and metabolic strain</td>
+                                <td>Daily</td>
+                            </tr>
+                            <tr>
+                                <td><strong>pH</strong></td>
+                                <td>7.2–8.4</td>
+                                <td>Prevents ocular and dermal irritation</td>
+                                <td>Daily</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Filtration/turnover</strong></td>
+                                <td>Continuous mechanical and biological filtration</td>
+                                <td>Removes organic waste, reduces pathogen load</td>
+                                <td>Continuous; weekly chemistry review</td>
+                            </tr>
+                            <tr>
+                                <td><strong>UV/ozone sterilisation</strong></td>
+                                <td>Continuous operation</td>
+                                <td>Reduces bacterial and viral load, supports ocular health</td>
+                                <td>Continuous; weekly efficacy check</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Visibility</strong></td>
+                                <td>Sufficient for full-pool observation</td>
+                                <td>Enables behavioural and health monitoring</td>
+                                <td>Daily</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Live Water Quality Dashboard -->
+            <section class="content-section reveal" id="dashboard">
+                <div class="section-header">
+                    <span class="section-tag">Live Monitoring</span>
+                    <h2 class="section-title">Water Quality Dashboard</h2>
+                    <p class="section-subtitle">Real-time monitoring of critical water parameters essential for harbour seal health</p>
+                </div>
+
+                <div class="dashboard-container">
+                    <h3 class="dashboard-title"><i class="fas fa-chart-line"></i> Live Environmental Monitoring</h3>
+                    <p class="dashboard-subtitle">Current readings from the main pool system — updated continuously</p>
+                    
+                    <div class="gauges-grid">
+                        <!-- Temperature Gauge -->
+                        <div class="gauge-card">
+                            <div class="gauge-svg">
+                                <svg viewBox="0 0 140 140">
+                                    <circle class="gauge-circle-bg" cx="70" cy="70" r="60"></circle>
+                                    <circle class="gauge-circle" cx="70" cy="70" r="60" stroke="#FF6B6B" 
+                                        stroke-dasharray="377" stroke-dashoffset="226" data-target="226"></circle>
+                                </svg>
+                                <div class="gauge-value">18°</div>
+                            </div>
+                            <div class="gauge-label">Temperature</div>
+                            <div class="gauge-unit">Celsius</div>
+                            <div class="gauge-range">Optimal: 5–26 °C</div>
+                            <div class="gauge-status status-optimal">Optimal</div>
+                        </div>
+
+                        <!-- pH Gauge -->
+                        <div class="gauge-card">
+                            <div class="gauge-svg">
+                                <svg viewBox="0 0 140 140">
+                                    <circle class="gauge-circle-bg" cx="70" cy="70" r="60"></circle>
+                                    <circle class="gauge-circle" cx="70" cy="70" r="60" stroke="#38A169" 
+                                        stroke-dasharray="377" stroke-dashoffset="150" data-target="150"></circle>
+                                </svg>
+                                <div class="gauge-value">7.8</div>
+                            </div>
+                            <div class="gauge-label">pH Level</div>
+                            <div class="gauge-unit">Scale</div>
+                            <div class="gauge-range">Optimal: 7.2–8.4</div>
+                            <div class="gauge-status status-optimal">Optimal</div>
+                        </div>
+
+                        <!-- Salinity Gauge -->
+                        <div class="gauge-card">
+                            <div class="gauge-svg">
+                                <svg viewBox="0 0 140 140">
+                                    <circle class="gauge-circle-bg" cx="70" cy="70" r="60"></circle>
+                                    <circle class="gauge-circle" cx="70" cy="70" r="60" stroke="#2C7A7B" 
+                                        stroke-dasharray="377" stroke-dashoffset="113" data-target="113"></circle>
+                                </svg>
+                                <div class="gauge-value">32</div>
+                            </div>
+                            <div class="gauge-label">Salinity</div>
+                            <div class="gauge-unit">Parts per thousand</div>
+                            <div class="gauge-range">Optimal: 26–36 ppt</div>
+                            <div class="gauge-status status-optimal">Optimal</div>
+                        </div>
+
+                        <!-- Filtration Gauge -->
+                        <div class="gauge-card">
+                            <div class="gauge-svg">
+                                <svg viewBox="0 0 140 140">
+                                    <circle class="gauge-circle-bg" cx="70" cy="70" r="60"></circle>
+                                    <circle class="gauge-circle" cx="70" cy="70" r="60" stroke="#4299E1" 
+                                        stroke-dasharray="377" stroke-dashoffset="38" data-target="38"></circle>
+                                </svg>
+                                <div class="gauge-value">95%</div>
+                            </div>
+                            <div class="gauge-label">Filtration</div>
+                            <div class="gauge-unit">Efficiency</div>
+                            <div class="gauge-range">Target: >90%</div>
+                            <div class="gauge-status status-optimal">Optimal</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <div class="info-box-title">
+                        <i class="fas fa-info-circle"></i> Long-Term Preventative Value
+                    </div>
+                    <p>
+                        Investment in robust water-management systems is likely to deliver greater long-term preventative health benefits than many reactive veterinary interventions, as effective water quality management removes multiple disease risks simultaneously rather than addressing their clinical consequences after they occur.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Physical Enclosure Design -->
+            <section class="content-section reveal" id="physical">
+                <div class="section-header">
+                    <span class="section-tag">Infrastructure</span>
+                    <h2 class="section-title">Physical Enclosure Design</h2>
+                    <p class="section-subtitle">The first line of preventative healthcare — eliminating structural hazards before they result in injury</p>
+                </div>
+
+                <div class="content-text">
+                    <p>
+                        Physical enclosure design functions as the first line of preventative healthcare by eliminating structural hazards before they result in injury, thereby reducing dependence on reactive veterinary treatment. Haul-out platforms and dry resting areas should occupy a substantial proportion of the enclosure and incorporate non-slip, gently sloping substrates that enable effortless water exit, minimise slipping injuries and support natural resting behaviour <span class="citation">NSW Department of Primary Industries, 2008</span>.
+                    </p>
+                    <p>
+                        Adequate shade and shelter are equally essential, as prolonged exposure to solar radiation increases the risk of thermal stress and ocular disease while reducing opportunities for behavioural thermoregulation <span class="citation">Clegg and Butterworth, 2017</span>. Sufficient haul-out space per individual, together with multiple water-access points, reduces crowding, social competition and dominance-related trauma, allowing seals greater behavioural choice and social flexibility.
+                    </p>
+                </div>
+
+                <!-- Interactive Enclosure Blueprint -->
+                <div id="blueprint" class="blueprint-container">
+                    <h3 class="blueprint-title"><i class="fas fa-drafting-compass"></i> Interactive Enclosure Blueprint</h3>
+                    <p class="blueprint-subtitle">Hover over each zone to explore design features and health benefits</p>
+                    
+                    <svg class="blueprint-svg" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Background Grid -->
+                        <defs>
+                            <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+                                <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(44, 122, 123, 0.1)" stroke-width="0.5"/>
+                            </pattern>
+                        </defs>
+                        <rect width="900" height="500" fill="url(#grid)"/>
+                        
+                        <!-- Main Pool Area -->
+                        <g class="blueprint-zone" data-zone="pool">
+                            <rect x="100" y="150" width="450" height="280" rx="20" fill="#4299E1" opacity="0.3" stroke="#4299E1" stroke-width="2"/>
+                            <text x="325" y="290" text-anchor="middle" fill="#0B3C5D" font-family="Playfair Display" font-size="20" font-weight="600">Main Pool</text>
+                            <text x="325" y="315" text-anchor="middle" fill="#0B3C5D" font-size="12">450m² · 2.5m depth</text>
+                            <!-- Water ripple effect -->
+                            <circle cx="200" cy="250" r="30" fill="none" stroke="#4299E1" stroke-width="1" opacity="0.5">
+                                <animate attributeName="r" from="20" to="40" dur="3s" repeatCount="indefinite"/>
+                                <animate attributeName="opacity" from="0.5" to="0" dur="3s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="400" cy="350" r="25" fill="none" stroke="#4299E1" stroke-width="1" opacity="0.5">
+                                <animate attributeName="r" from="15" to="35" dur="4s" repeatCount="indefinite"/>
+                                <animate attributeName="opacity" from="0.5" to="0" dur="4s" repeatCount="indefinite"/>
+                            </circle>
+                        </g>
+                        
+                        <!-- Haul-out Platform 1 -->
+                        <g class="blueprint-zone" data-zone="haulout1">
+                            <path d="M 550 150 L 750 150 L 750 250 L 600 250 Z" fill="#C6F6D5" stroke="#38A169" stroke-width="2"/>
+                            <text x="660" y="200" text-anchor="middle" fill="#22543D" font-family="Playfair Display" font-size="16" font-weight="600">Haul-out</text>
+                            <text x="660" y="220" text-anchor="middle" fill="#22543D" font-size="11">Non-slip substrate</text>
+                        </g>
+                        
+                        <!-- Haul-out Platform 2 -->
+                        <g class="blueprint-zone" data-zone="haulout2">
+                            <path d="M 550 300 L 750 300 L 750 430 L 600 430 Z" fill="#C6F6D5" stroke="#38A169" stroke-width="2"/>
+                            <text x="660" y="365" text-anchor="middle" fill="#22543D" font-family="Playfair Display" font-size="16" font-weight="600">Shade Area</text>
+                            <text x="660" y="385" text-anchor="middle" fill="#22543D" font-size="11">Thermal refuge</text>
+                        </g>
+                        
+                        <!-- Filter System -->
+                        <g class="blueprint-zone" data-zone="filter">
+                            <rect x="50" y="50" width="120" height="80" rx="10" fill="#FEEBC8" stroke="#DD6B20" stroke-width="2"/>
+                            <text x="110" y="85" text-anchor="middle" fill="#7B341E" font-family="Playfair Display" font-size="14" font-weight="600">Filtration</text>
+                            <text x="110" y="105" text-anchor="middle" fill="#7B341E" font-size="10">UV + Ozone</text>
+                            <!-- Connection line -->
+                            <path d="M 110 130 L 110 150" stroke="#DD6B20" stroke-width="2" stroke-dasharray="5,5"/>
+                        </g>
+                        
+                        <!-- Visitor Barrier -->
+                        <g class="blueprint-zone" data-zone="barrier">
+                            <rect x="780" y="150" width="100" height="280" rx="10" fill="#E9D8FD" stroke="#805AD5" stroke-width="2"/>
+                            <text x="830" y="290" text-anchor="middle" fill="#44337A" font-family="Playfair Display" font-size="14" font-weight="600">Visitor</text>
+                            <text x="830" y="310" text-anchor="middle" fill="#44337A" font-size="14" font-weight="600">Barrier</text>
+                        </g>
+                        
+                        <!-- Water Access Points -->
+                        <g class="blueprint-zone" data-zone="access">
+                            <circle cx="550" cy="200" r="15" fill="#38A169" stroke="#22543D" stroke-width="2"/>
+                            <circle cx="550" cy="370" r="15" fill="#38A169" stroke="#22543D" stroke-width="2"/>
+                            <text x="550" y="205" text-anchor="middle" fill="white" font-size="12" font-weight="bold">↓</text>
+                            <text x="550" y="375" text-anchor="middle" fill="white" font-size="12" font-weight="bold">↓</text>
+                        </g>
+                        
+                        <!-- Drainage System -->
+                        <g class="blueprint-zone" data-zone="drainage">
+                            <path d="M 100 450 L 750 450" stroke="#4A5568" stroke-width="3" stroke-dasharray="10,5"/>
+                            <text x="425" y="475" text-anchor="middle" fill="#4A5568" font-size="12">Drainage System</text>
+                        </g>
+                        
+                        <!-- Compass -->
+                        <g transform="translate(850, 50)">
+                            <circle cx="0" cy="0" r="20" fill="none" stroke="#0B3C5D" stroke-width="1"/>
+                            <text x="0" y="-25" text-anchor="middle" fill="#0B3C5D" font-size="10" font-weight="bold">N</text>
+                            <path d="M 0 -15 L 0 15 M -15 0 L 15 0" stroke="#0B3C5D" stroke-width="1"/>
+                        </g>
+                    </svg>
+                    
+                    <div class="blueprint-tooltip" id="blueprintTooltip"></div>
+                </div>
+
+                <!-- Pool Cross-Section -->
+                <div id="cross-section" class="cross-section-container">
+                    <h3 class="cross-section-title"><i class="fas fa-cut"></i> Pool Cross-Section Illustration</h3>
+                    <p class="cross-section-subtitle">Vertical profile showing depth zones, filtration inlets and haul-out gradient</p>
+                    
+                    <svg class="cross-section-svg" viewBox="0 0 1000 400" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Water body -->
+                        <path d="M 50 150 Q 200 140, 350 150 T 650 150 T 950 150 L 950 350 L 50 350 Z" 
+                              fill="#4299E1" opacity="0.4"/>
+                        
+                        <!-- Pool walls -->
+                        <path d="M 50 100 L 50 350 L 950 350 L 950 100" 
+                              fill="none" stroke="#0B3C5D" stroke-width="3"/>
+                        
+                        <!-- Haul-out slope -->
+                        <path d="M 700 150 L 900 100 L 950 100" 
+                              fill="#C6F6D5" stroke="#38A169" stroke-width="2"/>
+                        
+                        <!-- Depth markers -->
+                        <line x1="30" y1="150" x2="50" y2="150" stroke="#0B3C5D" stroke-width="1"/>
+                        <text x="20" y="155" text-anchor="end" fill="#0B3C5D" font-size="10">Surface</text>
+                        
+                        <line x1="30" y1="200" x2="50" y2="200" stroke="#0B3C5D" stroke-width="1"/>
+                        <text x="20" y="205" text-anchor="end" fill="#0B3C5D" font-size="10">1.0m</text>
+                        
+                        <line x1="30" y1="250" x2="50" y2="250" stroke="#0B3C5D" stroke-width="1"/>
+                        <text x="20" y="255" text-anchor="end" fill="#0B3C5D" font-size="10">2.0m</text>
+                        
+                        <line x1="30" y1="300" x2="50" y2="300" stroke="#0B3C5D" stroke-width="1"/>
+                        <text x="20" y="305" text-anchor="end" fill="#0B3C5D" font-size="10">2.5m</text>
+                        
+                        <!-- Diving column indicator -->
+                        <rect x="150" y="150" width="100" height="150" fill="none" stroke="#FF6B6B" stroke-width="2" stroke-dasharray="5,5"/>
+                        <text x="200" y="230" text-anchor="middle" fill="#FF6B6B" font-size="12" font-weight="600">Diving Column</text>
+                        <text x="200" y="245" text-anchor="middle" fill="#FF6B6B" font-size="10">≥2.5m</text>
+                        
+                        <!-- Filtration inlet -->
+                        <circle cx="100" cy="320" r="15" fill="#DD6B20" opacity="0.7"/>
+                        <text x="100" y="325" text-anchor="middle" fill="white" font-size="10" font-weight="bold">F</text>
+                        <text x="100" y="360" text-anchor="middle" fill="#0B3C5D" font-size="10">Filtration Inlet</text>
+                        
+                        <!-- UV Steriliser -->
+                        <rect x="400" y="310" width="80" height="30" rx="5" fill="#805AD5" opacity="0.7"/>
+                        <text x="440" y="330" text-anchor="middle" fill="white" font-size="10" font-weight="600">UV</text>
+                        <text x="440" y="360" text-anchor="middle" fill="#0B3C5D" font-size="10">UV Steriliser</text>
+                        
+                        <!-- Seal silhouette -->
+                        <g transform="translate(500, 220) scale(0.5)">
+                            <ellipse cx="0" cy="0" rx="60" ry="25" fill="#0B3C5D" opacity="0.6"/>
+                            <circle cx="-40" cy="-10" r="15" fill="#0B3C5D" opacity="0.6"/>
+                            <path d="M 50 -5 Q 70 -10, 80 0 Q 70 10, 50 5 Z" fill="#0B3C5D" opacity="0.6"/>
+                        </g>
+                        
+                        <!-- Surface ripples -->
+                        <path d="M 100 145 Q 150 140, 200 145 T 300 145 T 400 145 T 500 145 T 600 145" 
+                              fill="none" stroke="white" stroke-width="1" opacity="0.6"/>
+                        
+                        <!-- Labels -->
+                        <text x="500" y="50" text-anchor="middle" fill="#0B3C5D" font-family="Playfair Display" font-size="18" font-weight="600">Cross-Section: Main Pool Profile</text>
+                        <text x="500" y="75" text-anchor="middle" fill="#0B3C5D" font-size="12">Showing depth zones, filtration systems and natural haul-out gradient</text>
+                    </svg>
+                </div>
+
+                <!-- Haul-out Platform Features -->
+                <div class="haulout-container">
+                    <h3 class="haulout-title"><i class="fas fa-mountain"></i> Haul-out Platform Design Features</h3>
+                    
+                    <div class="haulout-features">
+                        <div class="haulout-feature">
+                            <div class="haulout-feature-icon"><i class="fas fa-shoe-prints"></i></div>
+                            <h4>Non-Slip Substrate</h4>
+                            <p>Gently sloping surfaces that enable effortless water exit and minimise slipping injuries</p>
+                        </div>
+                        <div class="haulout-feature">
+                            <div class="haulout-feature-icon"><i class="fas fa-umbrella"></i></div>
+                            <h4>Shade &amp; Shelter</h4>
+                            <p>Protection from solar radiation to prevent thermal stress and ocular disease</p>
+                        </div>
+                        <div class="haulout-feature">
+                            <div class="haulout-feature-icon"><i class="fas fa-door-open"></i></div>
+                            <h4>Multiple Access Points</h4>
+                            <p>Reduces crowding, social competition and dominance-related trauma</p>
+                        </div>
+                        <div class="haulout-feature">
+                            <div class="haulout-feature-icon"><i class="fas fa-water"></i></div>
+                            <h4>Proper Drainage</h4>
+                            <p>Prevents standing water, bacterial accumulation and associated foot disorders</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Environmental Enrichment -->
+            <section class="content-section reveal" id="enrichment">
+                <div class="section-header">
+                    <span class="section-tag">Behavioural Health</span>
+                    <h2 class="section-title">Environmental Enrichment &amp; Behavioural Design</h2>
+                    <p class="section-subtitle">An essential component of preventative healthcare that reduces chronic stress and promotes species-typical behaviours</p>
+                </div>
+
+                <div class="content-text">
+                    <p>
+                        Environmental enrichment should be regarded as an essential component of preventative healthcare rather than a welfare enhancement alone, because chronic stress produces measurable physiological effects, including immunosuppression, dysregulated cortisol secretion and increased susceptibility to infectious and non-infectious disease. Increasing environmental complexity through variable swimming routes, manipulable objects, foraging devices and sensory stimuli promotes species-typical behaviours while reducing abnormal repetitive behaviours; in captive common seals, structured environmental enrichment significantly decreased stereotypic circling, demonstrating a direct relationship between enclosure design and behavioural health <span class="citation">Grindrod and Cleaver, 2001</span>.
+                    </p>
+                    <p>
+                        Scatter- and puzzle-feeding extend natural foraging time, increase activity levels and reduce obesity associated with predictable feeding schedules. Positive reinforcement training areas facilitate voluntary participation in veterinary procedures, thereby reducing handling stress and improving preventative health monitoring, while carefully managed social groupings minimise isolation without increasing aggression. Providing animals with choice and control through multiple resting, swimming and retreat areas enhances adaptive coping and positive welfare states, consistent with the Five Domains framework <span class="citation">Mellor and Beausoleil, 2015</span>.
+                    </p>
+                </div>
+
+                <div class="warning-callout">
+                    <div class="warning-title">
+                        <i class="fas fa-sync-alt"></i> Dynamic, Not Static
+                    </div>
+                    <p>
+                        Enrichment should be continually reviewed and varied because predictable or static enrichment rapidly loses behavioural value through habituation. Behavioural design should be recognised as a dynamic preventative health intervention that strengthens resilience, reduces chronic disease risk and supports long-term physical and psychological wellbeing.
+                    </p>
+                </div>
+
+                <!-- Enrichment Gallery -->
+                <div class="enrichment-gallery">
+                    <div class="enrichment-item">
+                        <div class="enrichment-image" style="background: linear-gradient(135deg, #DD6B20, #C05621);">
+                            <span class="enrichment-badge">Daily</span>
+                            <i class="fas fa-puzzle-piece"></i>
+                        </div>
+                        <div class="enrichment-content">
+                            <h3>Foraging &amp; Puzzle Feeders</h3>
+                            <p>Extend natural foraging time, increase activity levels and reduce obesity associated with predictable feeding schedules.</p>
+                            <div class="enrichment-meta">
+                                <span><i class="fas fa-heartbeat"></i> Obesity prevention</span>
+                                <span><i class="fas fa-chart-line"></i> Activity monitoring</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="enrichment-item">
+                        <div class="enrichment-image" style="background: linear-gradient(135deg, #805AD5, #6B46C1);">
+                            <span class="enrichment-badge">Weekly</span>
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div class="enrichment-content">
+                            <h3>Sensory Enrichment</h3>
+                            <p>Variable scents, textures and objects that provide cognitive stimulation and reduce stress-related behaviours.</p>
+                            <div class="enrichment-meta">
+                                <span><i class="fas fa-heartbeat"></i> Stress reduction</span>
+                                <span><i class="fas fa-chart-line"></i> Behavioural scoring</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="enrichment-item">
+                        <div class="enrichment-image" style="background: linear-gradient(135deg, #38A169, #2C7A7B);">
+                            <span class="enrichment-badge">Daily</span>
+                            <i class="fas fa-hand-holding-heart"></i>
+                        </div>
+                        <div class="enrichment-content">
+                            <h3>Positive Reinforcement Training</h3>
+                            <p>Facilitates voluntary participation in veterinary procedures, reducing handling stress and improving health monitoring.</p>
+                            <div class="enrichment-meta">
+                                <span><i class="fas fa-heartbeat"></i> Cooperative care</span>
+                                <span><i class="fas fa-chart-line"></i> Session records</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="enrichment-item">
+                        <div class="enrichment-image" style="background: linear-gradient(135deg, #4299E1, #3182CE);">
+                            <span class="enrichment-badge">Rotated</span>
+                            <i class="fas fa-swimmer"></i>
+                        </div>
+                        <div class="enrichment-content">
+                            <h3>Variable Swimming Routes</h3>
+                            <p>Manipulable objects and changing pool layouts that reduce stereotypies and improve physical fitness.</p>
+                            <div class="enrichment-meta">
+                                <span><i class="fas fa-heartbeat"></i> Stereotypy reduction</span>
+                                <span><i class="fas fa-chart-line"></i> Frequency counts</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="enrichment-item">
+                        <div class="enrichment-image" style="background: linear-gradient(135deg, #E53E3E, #C53030);">
+                            <span class="enrichment-badge">Continuous</span>
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="enrichment-content">
+                            <h3>Social Grouping</h3>
+                            <p>Carefully managed social structures that minimise isolation-related distress without increasing aggression.</p>
+                            <div class="enrichment-meta">
+                                <span><i class="fas fa-heartbeat"></i> Isolation prevention</span>
+                                <span><i class="fas fa-chart-line"></i> Interaction observation</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="enrichment-item">
+                        <div class="enrichment-image" style="background: linear-gradient(135deg, #2C7A7B, #0B3C5D);">
+                            <span class="enrichment-badge">Continuous</span>
+                            <i class="fas fa-th-large"></i>
+                        </div>
+                        <div class="enrichment-content">
+                            <h3>Choice &amp; Control</h3>
+                            <p>Multiple resting, swimming and retreat areas that enhance adaptive coping and positive welfare states.</p>
+                            <div class="enrichment-meta">
+                                <span><i class="fas fa-heartbeat"></i> Improved affective state</span>
+                                <span><i class="fas fa-chart-line"></i> Behavioural diversity</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Enrichment Outcomes Table -->
+                <div class="table-container">
+                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.3rem; margin-bottom: 1rem; color: var(--primary);">
+                        <i class="fas fa-table" style="color: var(--secondary);"></i> Enrichment &amp; Health Outcomes
+                    </h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Enrichment Type</th>
+                                <th>Health Benefit</th>
+                                <th>Frequency</th>
+                                <th>Evaluation Method</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Foraging/puzzle feeders</strong></td>
+                                <td>Increased activity, obesity prevention</td>
+                                <td>Daily</td>
+                                <td>Behavioural observation; body condition scoring</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Sensory enrichment (scent, texture)</strong></td>
+                                <td>Reduced stress, cognitive stimulation</td>
+                                <td>Several times weekly</td>
+                                <td>Behavioural response scoring</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Positive reinforcement training</strong></td>
+                                <td>Reduced handling stress, cooperative care</td>
+                                <td>Daily</td>
+                                <td>Session records; behavioural monitoring</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Variable swimming routes/objects</strong></td>
+                                <td>Reduced stereotypies, improved fitness</td>
+                                <td>Rotated weekly</td>
+                                <td>Stereotypy frequency counts</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Social grouping</strong></td>
+                                <td>Reduced isolation-related distress</td>
+                                <td>Continuous, reviewed regularly</td>
+                                <td>Social interaction observation</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Choice and control (multiple zones)</strong></td>
+                                <td>Improved affective state, agency</td>
+                                <td>Continuous</td>
+                                <td>Behavioural diversity index</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Biosecurity Section -->
+            <section class="content-section reveal" id="biosecurity">
+                <div class="section-header">
+                    <span class="section-tag">Disease Prevention</span>
+                    <h2 class="section-title">Biosecurity &amp; Enclosure Management</h2>
+                    <p class="section-subtitle">Engineering biosecurity into enclosure infrastructure for reliable, sustainable disease prevention</p>
+                </div>
+
+                <div class="content-text">
+                    <p>
+                        Enclosure design fundamentally determines biosecurity effectiveness and should therefore be regarded as an integral component of preventative health management rather than a separate architectural consideration. Dedicated keeper access routes and equipment assigned exclusively to quarantine, hospital and resident animal areas minimise cross-contamination, consistent with EAZA/EAAM biosecurity guidance for pinnipeds <span class="citation">Gili, Meijer and Lacave, 2018</span>.
+                    </p>
+                    <p>
+                        Physically separate quarantine pools with independent filtration and drainage systems are essential to prevent pathogen transfer during isolation and safeguard the resident collection <span class="citation">Meehan, 2012</span>. Footbaths at controlled access points, drainage systems directing waste away from animal areas and surfaces designed for rapid cleaning and disinfection collectively reduce faecal-oral and water-borne transmission, as inadequate sanitation permits persistent environmental contamination <span class="citation">Siebert et al., 2024</span>.
+                    </p>
+                </div>
+
+                <div class="info-box">
+                    <div class="info-box-title">
+                        <i class="fas fa-shield-alt"></i> Engineered, Not Just Managed
+                    </div>
+                    <p>
+                        Biosecurity is most effective when engineered into enclosure infrastructure because reliance on staff compliance alone is inherently vulnerable to human error. Incorporating quarantine separation, controlled access and hygienic drainage during the design stage therefore creates a more resilient, sustainable and reliable disease-prevention system than retrofitting these measures after construction.
+                    </p>
+                </div>
+
+                <!-- Biosecurity Zoning Diagram -->
+                <div id="zoning" class="biosecurity-zoning">
+                    <h3 class="zoning-title"><i class="fas fa-border-all"></i> Biosecurity Zoning Layout</h3>
+                    <p class="zoning-subtitle">Three distinct zones with dedicated access routes, equipment and filtration systems</p>
+                    
+                    <div class="zoning-diagram">
+                        <div class="zone-card zone-resident">
+                            <div class="zone-icon"><i class="fas fa-home"></i></div>
+                            <h4>Resident Collection</h4>
+                            <p>Main enclosure housing established healthy animals</p>
+                            <ul class="zone-rules">
+                                <li>Dedicated keeper access route</li>
+                                <li>Independent filtration system</li>
+                                <li>Standard biosecurity protocols</li>
+                                <li>Regular health monitoring</li>
+                            </ul>
+                        </div>
+
+                        <div class="zone-card zone-quarantine">
+                            <div class="zone-icon"><i class="fas fa-shield-virus"></i></div>
+                            <h4>Quarantine Facility</h4>
+                            <p>Isolated area for new arrivals (minimum 30 days)</p>
+                            <ul class="zone-rules">
+                                <li>Physically separate from residents</li>
+                                <li>Independent filtration &amp; drainage</li>
+                                <li>Dedicated equipment only</li>
+                                <li>Enhanced PPE requirements</li>
+                            </ul>
+                        </div>
+
+                        <div class="zone-card zone-hospital">
+                            <div class="zone-icon"><i class="fas fa-hospital"></i></div>
+                            <h4>Hospital Pool</h4>
+                            <p>Medical treatment area for sick or injured animals</p>
+                            <ul class="zone-rules">
+                                <li>Complete physical separation</li>
+                                <li>Independent life-support system</li>
+                                <li>Enhanced disinfection protocols</li>
+                                <li>Restricted staff access</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="warning-callout">
+                    <div class="warning-title">
+                        <i class="fas fa-exclamation-circle"></i> External Biosecurity
+                    </div>
+                    <p>
+                        Secure visitor barriers and wildlife-exclusion measures, including bird netting and rodent-proof fencing, further reduce opportunities for pathogen introduction from external reservoirs <span class="citation">MSD Veterinary Manual, 2026</span>.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Maintenance Section -->
+            <section class="content-section reveal" id="maintenance">
+                <div class="section-header">
+                    <span class="section-tag">Ongoing Care</span>
+                    <h2 class="section-title">Environmental Monitoring &amp; Maintenance</h2>
+                    <p class="section-subtitle">Systematic monitoring that transforms enclosure design into an active preventative health strategy</p>
+                </div>
+
+                <div class="content-text">
+                    <p>
+                        Systematic environmental monitoring transforms enclosure design into an active preventative health strategy by identifying environmental and mechanical failures before they compromise animal welfare. Daily procedures should include testing water quality parameters such as pH, salinity and temperature, alongside visual inspections of the enclosure, filtration systems and animal behaviour, with routine cleaning of haul-out areas and pool surrounds to minimise pathogen accumulation <span class="citation">NSW Department of Primary Industries, 2008</span>.
+                    </p>
+                    <p>
+                        Weekly inspections of pumps, valves, barriers and other critical infrastructure enable early identification of mechanical deterioration before system failure disrupts environmental conditions, while monthly servicing of filtration, UV and ozone treatment systems maintains optimal water quality and disease control <span class="citation">Gili, Meijer and Lacave, 2018</span>. Annual infrastructure audits should evaluate structural integrity, drainage efficiency and biosecurity zoning against current husbandry standards, ensuring facilities remain effective as operational demands and best-practice guidance evolve <span class="citation">Meehan, 2012</span>.
+                    </p>
+                </div>
+
+                <!-- Maintenance Timeline -->
+                <div class="maintenance-timeline">
+                    <h3 class="timeline-title"><i class="fas fa-calendar-alt"></i> Maintenance Schedule Timeline</h3>
+                    <p class="timeline-subtitle">A structured approach to preventative maintenance across all timeframes</p>
+                    
+                    <div class="timeline-track">
+                        <div class="timeline-point">
+                            <div class="timeline-dot dot-daily"><i class="fas fa-calendar-day"></i></div>
+                            <div class="timeline-label">Daily</div>
+                            <div class="timeline-desc">Water testing, visual inspections, cleaning</div>
+                        </div>
+                        <div class="timeline-point">
+                            <div class="timeline-dot dot-weekly"><i class="fas fa-calendar-week"></i></div>
+                            <div class="timeline-label">Weekly</div>
+                            <div class="timeline-desc">Equipment inspection, chemistry review</div>
+                        </div>
+                        <div class="timeline-point">
+                            <div class="timeline-dot dot-monthly"><i class="fas fa-calendar"></i></div>
+                            <div class="timeline-label">Monthly</div>
+                            <div class="timeline-desc">Filtration servicing, UV/ozone maintenance</div>
+                        </div>
+                        <div class="timeline-point">
+                            <div class="timeline-dot dot-annual"><i class="fas fa-calendar-check"></i></div>
+                            <div class="timeline-label">Annual</div>
+                            <div class="timeline-desc">Infrastructure audit, biosecurity review</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Monitoring Schedule Table -->
+                <div class="table-container">
+                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.3rem; margin-bottom: 1rem; color: var(--primary);">
+                        <i class="fas fa-table" style="color: var(--secondary);"></i> Monitoring Schedule
+                    </h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Monitoring Activity</th>
+                                <th>Frequency</th>
+                                <th>Responsible Staff</th>
+                                <th>Preventative Purpose</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Water testing (pH, salinity, temperature)</strong></td>
+                                <td>Daily</td>
+                                <td>Keepers</td>
+                                <td>Detects water quality deviation before health impact</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Visual inspection of enclosure and animals</strong></td>
+                                <td>Daily</td>
+                                <td>Keepers</td>
+                                <td>Early identification of injury, hazard or fault</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Cleaning of pool and haul-out surrounds</strong></td>
+                                <td>Daily</td>
+                                <td>Keepers</td>
+                                <td>Reduces pathogen accumulation</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Equipment inspection (pumps, valves, barriers)</strong></td>
+                                <td>Weekly</td>
+                                <td>Keepers/maintenance staff</td>
+                                <td>Identifies mechanical wear before failure</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Filtration and UV/ozone servicing</strong></td>
+                                <td>Monthly</td>
+                                <td>Maintenance staff/veterinary team</td>
+                                <td>Sustains water treatment efficacy</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Infrastructure audit</strong></td>
+                                <td>Annual</td>
+                                <td>Curator/collection manager</td>
+                                <td>Confirms structural and biosecurity compliance</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="info-box">
+                    <div class="info-box-title">
+                        <i class="fas fa-sync"></i> Continuous Feedback System
+                    </div>
+                    <p>
+                        Crucially, monitoring should function as a continuous feedback system rather than a routine checklist, allowing management decisions to be adapted proactively. This preventative approach shifts enclosure management from reactive maintenance to evidence-based risk reduction, ensuring that environmental conditions consistently support the long-term health, welfare and resilience of the collection.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Preventative Architecture Infographic -->
+            <section class="content-section reveal" id="architecture">
+                <div class="section-header">
+                    <span class="section-tag">Integration</span>
+                    <h2 class="section-title">Preventative Architecture Framework</h2>
+                    <p class="section-subtitle">How the five pillars integrate to create a comprehensive preventative health system</p>
+                </div>
+
+                <div class="architecture-infographic">
+                    <h3 class="architecture-title"><i class="fas fa-layer-group"></i> The Integrated Design Approach</h3>
+                    <p class="architecture-subtitle">Each layer builds upon the previous to create comprehensive disease prevention</p>
+                    
+                    <div class="architecture-layers">
+                        <div class="architecture-layer">
+                            <div class="layer-number">1</div>
+                            <div class="layer-content">
+                                <h4>Foundation: Evidence-Based Design</h4>
+                                <p>Enclosure design informed by species ecology, Five Domains framework and current husbandry guidelines <span class="citation">Mellor and Beausoleil, 2015</span></p>
+                            </div>
+                        </div>
+                        <div class="architecture-layer">
+                            <div class="layer-number">2</div>
+                            <div class="layer-content">
+                                <h4>Core: Water Quality Management</h4>
+                                <p>Continuous filtration, UV/ozone sterilisation and precise chemical balance to prevent collection-wide disease <span class="citation">Colitz et al., 2019</span></p>
+                            </div>
+                        </div>
+                        <div class="architecture-layer">
+                            <div class="layer-number">3</div>
+                            <div class="layer-content">
+                                <h4>Structure: Physical Infrastructure</h4>
+                                <p>Non-slip substrates, adequate haul-out space, shade, multiple access points and secure barriers <span class="citation">NSW Department of Primary Industries, 2008</span></p>
+                            </div>
+                        </div>
+                        <div class="architecture-layer">
+                            <div class="layer-number">4</div>
+                            <div class="layer-content">
+                                <h4>Behaviour: Environmental Enrichment</h4>
+                                <p>Dynamic enrichment programme reducing chronic stress and promoting species-typical behaviours <span class="citation">Grindrod and Cleaver, 2001</span></p>
+                            </div>
+                        </div>
+                        <div class="architecture-layer">
+                            <div class="layer-number">5</div>
+                            <div class="layer-content">
+                                <h4>Protection: Biosecurity Engineering</h4>
+                                <p>Quarantine separation, controlled access and hygienic drainage engineered into infrastructure <span class="citation">Gili, Meijer and Lacave, 2018</span></p>
+                            </div>
+                        </div>
+                        <div class="architecture-layer">
+                            <div class="layer-number">6</div>
+                            <div class="layer-content">
+                                <h4>Maintenance: Continuous Monitoring</h4>
+                                <p>Systematic environmental monitoring functioning as a continuous feedback system for proactive adaptation <span class="citation">Meehan, 2012</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Critical Evaluation -->
+            <section class="content-section reveal" id="evaluation">
+                <div class="section-header">
+                    <span class="section-tag">Critical Analysis</span>
+                    <h2 class="section-title">Critical Evaluation</h2>
+                </div>
+
+                <div class="editorial-card">
+                    <span class="editorial-label">Editorial Analysis</span>
+                    <h3 class="editorial-title">Beyond Compliance: The True Measure of Enclosure Design</h3>
+                    <div class="editorial-text">
+                        <p>
+                            Ultimately, enclosure design should not be evaluated solely against minimum regulatory standards; its true effectiveness lies in the extent to which it proactively prevents disease, injury and chronic stress before veterinary or behavioural intervention becomes necessary.
+                        </p>
+                        <p>
+                            Integrating water quality, physical infrastructure, biosecurity, environmental enrichment and ongoing maintenance into a single adaptive management system, rather than treating them as isolated design features, determines whether an enclosure simply meets compliance requirements or actively promotes long-term health, welfare and resilience in captive harbour seals.
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- References Section -->
+    <section class="references-section" id="references">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <div class="section-header" style="text-align: center;">
+                <span class="section-tag">Academic Sources</span>
+                <h2 class="section-title">References</h2>
+                <p class="section-subtitle" style="margin: 0 auto;">Complete bibliography of sources cited on this page</p>
+            </div>
+
+            <div class="references-list">
+                <div class="reference-item">
+                    Clegg, I.L.K. and Butterworth, A. (2017) Assessing the welfare of pinnipeds. In: Butterworth, A. (ed.) <em>Marine Mammal Welfare: Human Induced Change in the Marine Environment and its Impacts on Marine Mammal Welfare</em>. Cham: Springer, pp.273–295.
+                </div>
+                <div class="reference-item">
+                    Colitz, C.M., Saville, W.J.A., Walsh, M.T. and Latson, E. (2019) Factors associated with keratopathy in captive pinnipeds. <em>Journal of the American Veterinary Medical Association</em>, 255(2), pp.224–230.
+                </div>
+                <div class="reference-item">
+                    Gili, C., Meijer, G. and Lacave, G. (2018) <em>EAZA and EAAM Best Practice Guidelines for Otariidae and Phocidae (Pinnipeds)</em>. Genoa: Acquario di Genova.
+                </div>
+                <div class="reference-item">
+                    Grindrod, J.A.E. and Cleaver, J.A. (2001) Environmental enrichment reduces the performance of stereotypic circling behaviour in captive common seals (<em>Phoca vitulina</em>). <em>Animal Welfare</em>, 10(1), pp.53–63.
+                </div>
+                <div class="reference-item">
+                    Mason, G.J. (2010) Species differences in responses to captivity: stress, welfare and the comparative method. <em>Trends in Ecology &amp; Evolution</em>, 25(12), pp.713–721.
+                </div>
+                <div class="reference-item">
+                    Meehan, T.P. (2012) AAZV guidelines for zoo and aquarium veterinary medical programs and veterinary hospitals. In: Miller, R.E. and Fowler, M.E. (eds) <em>Fowler's Zoo and Wild Animal Medicine: Current Therapy</em>, Volume 7. St Louis: Elsevier Saunders, Ch.16.
+                </div>
+                <div class="reference-item">
+                    Mellor, D.J. and Beausoleil, N.J. (2015) Extending the 'Five Domains' model for animal welfare assessment to incorporate positive welfare states. <em>Animal Welfare</em>, 24(3), pp.241–253.
+                </div>
+                <div class="reference-item">
+                    MSD Veterinary Manual (2026) <em>Handling disease outbreaks in animals</em>. Available at: <a href="https://www.msdvetmanual.com/public-health/biosecurity/handling-disease-outbreaks-in-animals" target="_blank" rel="noopener">https://www.msdvetmanual.com</a>
+                </div>
+                <div class="reference-item">
+                    NSW Department of Primary Industries (2008) <em>Standards for Exhibiting Seals in New South Wales</em>. Sydney: NSW Department of Primary Industries.
+                </div>
+                <div class="reference-item">
+                    Siebert, U., Lakemeyer, J., Runge, M., Lienau, P., Braune, S., Bartelt, E., Grilo, M.L. and Pund, R. (2024) Investigations on the health status and infection risk of harbour seals (<em>Phoca vitulina</em>) from waters of the Lower Saxon Wadden Sea, Germany. <em>Animals</em>, 14(20), 2920.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h3><i class="fas fa-water"></i> Phoca vitulina</h3>
+                <p>A comprehensive educational resource dedicated to the preventative health management and welfare of captive harbour seals.</p>
+                <div class="footer-social">
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <h4>Topics</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="nutrition.html">Nutrition</a></li>
+                    <li><a href="preventative-health.html">Preventative Health</a></li>
+                    <li><a href="enclosure-design.html">Enclosure Design</a></li>
+                    <li><a href="emerging-research.html">Emerging Research</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links">
+                <h4>Sections</h4>
+                <ul>
+                    <li><a href="#water-quality">Water Quality</a></li>
+                    <li><a href="#blueprint">Enclosure Blueprint</a></li>
+                    <li><a href="#enrichment">Enrichment</a></li>
+                    <li><a href="#biosecurity">Biosecurity</a></li>
+                    <li><a href="#references">References</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links">
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="#">About This Project</a></li>
+                    <li><a href="#">Author Information</a></li>
+                    <li><a href="#">Institutional Affiliation</a></li>
+                    <li><a href="#">Feedback</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Preventative Health Management of Captive Harbour Seals. All rights reserved.</p>
+            <p>Educational Resource | University Dissertation</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = mobileMenuToggle.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuToggle.querySelector('i').classList.remove('fa-times');
+                mobileMenuToggle.querySelector('i').classList.add('fa-bars');
+            });
+        });
+
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+        const themeIcon = themeToggle.querySelector('i');
+
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme === 'dark') {
+            html.setAttribute('data-theme', 'dark');
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            if (html.getAttribute('data-theme') === 'dark') {
+                html.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'light');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            } else {
+                html.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            }
+        });
+
+        // Reading Progress Bar
+        const progressBar = document.getElementById('progressBar');
+
+        window.addEventListener('scroll', () => {
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight - windowHeight;
+            const scrollTop = window.scrollY;
+            const progress = (scrollTop / documentHeight) * 100;
+            progressBar.style.width = progress + '%';
+
+            const backToTop = document.getElementById('backToTop');
+            if (scrollTop > 500) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        document.getElementById('backToTop').addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Scroll Reveal Animation
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealOnScroll = () => {
+            revealElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                if (elementTop < windowHeight - 100) {
+                    element.classList.add('active');
+                }
+            });
+        };
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+
+        // Sticky Side Navigation
+        const sideNavLinks = document.querySelectorAll('.side-nav-link');
+        const contentSections = document.querySelectorAll('.content-section');
+
+        const updateActiveSideNav = () => {
+            let currentSection = '';
+            contentSections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (window.scrollY >= sectionTop - 150) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+
+            sideNavLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', updateActiveSideNav);
+        window.addEventListener('load', updateActiveSideNav);
+
+        sideNavLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Interactive Blueprint Tooltips
+        const blueprintZones = document.querySelectorAll('.blueprint-zone');
+        const blueprintTooltip = document.getElementById('blueprintTooltip');
+        const blueprintContainer = document.querySelector('.blueprint-container');
+
+        const zoneData = {
+            pool: {
+                title: 'Main Pool',
+                desc: '450m² surface area with 2.5m diving column. Continuous mechanical and biological filtration with UV/ozone sterilisation. Enables natural diving behaviour and full submersion.'
+            },
+            haulout1: {
+                title: 'Primary Haul-out',
+                desc: 'Non-slip, gently sloping substrate enabling effortless water exit. Minimises slipping injuries and supports natural resting behaviour.'
+            },
+            haulout2: {
+                title: 'Shaded Resting Area',
+                desc: 'Protected from solar radiation to prevent thermal stress and ocular disease. Provides behavioural thermoregulation opportunities.'
+            },
+            filter: {
+                title: 'Filtration System',
+                desc: 'Continuous mechanical and biological filtration with protein skimming. UV and ozone sterilisation reduces bacterial and viral loads.'
+            },
+            barrier: {
+                title: 'Visitor Barrier',
+                desc: 'Secure enclosure boundary protecting both animals and staff. Minimises stress from visitor proximity while allowing educational viewing.'
+            },
+            access: {
+                title: 'Water Access Points',
+                desc: 'Multiple entry/exit points reducing crowding, social competition and dominance-related trauma. Allows behavioural choice and social flexibility.'
+            },
+            drainage: {
+                title: 'Drainage System',
+                desc: 'Engineered to prevent standing water, bacterial accumulation and associated foot disorders. Directs waste away from animal areas.'
+            }
+        };
+
+        blueprintZones.forEach(zone => {
+            zone.addEventListener('mouseenter', (e) => {
+                const zoneKey = zone.getAttribute('data-zone');
+                const data = zoneData[zoneKey];
+                if (data) {
+                    blueprintTooltip.innerHTML = `<h4>${data.title}</h4><p>${data.desc}</p>`;
+                    blueprintTooltip.classList.add('active');
+                }
+            });
+
+            zone.addEventListener('mousemove', (e) => {
+                const rect = blueprintContainer.getBoundingClientRect();
+                const x = e.clientX - rect.left + 20;
+                const y = e.clientY - rect.top - 20;
+                blueprintTooltip.style.left = x + 'px';
+                blueprintTooltip.style.top = y + 'px';
+            });
+
+            zone.addEventListener('mouseleave', () => {
+                blueprintTooltip.classList.remove('active');
+            });
+        });
+
+        // Animate Gauges on Scroll
+        const gaugeCircles = document.querySelectorAll('.gauge-circle');
+        const animateGauges = () => {
+            const dashboard = document.querySelector('.dashboard-container');
+            if (!dashboard) return;
+            
+            const dashboardTop = dashboard.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
+            
+            if (dashboardTop < windowHeight - 100) {
+                gaugeCircles.forEach(circle => {
+                    const target = circle.getAttribute('data-target');
+                    circle.style.strokeDashoffset = target;
+                });
+            }
+        };
+
+        window.addEventListener('scroll', animateGauges);
+        window.addEventListener('load', () => {
+            setTimeout(animateGauges, 500);
+        });
+
+        // Parallax effect for hero image
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const heroImage = document.querySelector('.hero-image');
+            if (heroImage && scrolled < window.innerHeight) {
+                heroImage.style.transform = `translateY(${scrolled * 0.3}px)`;
+            }
+        });
+    </script>
+</body>
+</html>

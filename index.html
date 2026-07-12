@@ -1,0 +1,1442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Preventative Health Management of Captive Harbour Seals - An evidence-based educational resource on veterinary care, nutrition, and welfare">
+    <title>Preventative Health Management of Captive Harbour Seals | Phoca vitulina</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* CSS Variables */
+        :root {
+            --primary: #0B3C5D;
+            --secondary: #2C7A7B;
+            --accent: #FF6B6B;
+            --background: #FFFFFF;
+            --light-grey: #F5F7F9;
+            --text: #222222;
+            --text-light: #666666;
+            --white: #FFFFFF;
+            --shadow: rgba(11, 60, 93, 0.1);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        [data-theme="dark"] {
+            --background: #1a1a1a;
+            --light-grey: #2a2a2a;
+            --text: #f5f5f5;
+            --text-light: #b0b0b0;
+            --shadow: rgba(0, 0, 0, 0.3);
+        }
+
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: var(--transition);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            line-height: 1.2;
+            color: var(--primary);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--secondary), var(--accent));
+            z-index: 1001;
+            transition: width 0.1s;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px var(--shadow);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        [data-theme="dark"] .navbar {
+            background: rgba(26, 26, 26, 0.95);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo i {
+            color: var(--secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            font-size: 0.95rem;
+            color: var(--text);
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-links a.active {
+            color: var(--secondary);
+        }
+
+        .nav-controls {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .theme-toggle,
+        .mobile-menu-toggle {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            color: var(--text);
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover,
+        .mobile-menu-toggle:hover {
+            background: var(--light-grey);
+            color: var(--secondary);
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+        }
+
+        .hero-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.4;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: var(--white);
+            padding: 2rem;
+            max-width: 900px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: var(--accent);
+            color: var(--white);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
+            transition: var(--transition);
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 107, 107, 0.4);
+        }
+
+        /* Wave Animation */
+        .wave-container {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+        }
+
+        .wave {
+            position: relative;
+            display: block;
+            width: calc(100% + 1.3px);
+            height: 150px;
+        }
+
+        .wave-path {
+            fill: var(--background);
+        }
+
+        .wave-path-2 {
+            fill: var(--light-grey);
+            opacity: 0.5;
+        }
+
+        /* Introduction Section */
+        .intro {
+            padding: 6rem 2rem;
+            background: var(--background);
+            position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-tag {
+            display: inline-block;
+            color: var(--secondary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .section-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .intro-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 1.15rem;
+            line-height: 1.9;
+            color: var(--text);
+        }
+
+        .intro-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        .intro-content .citation {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            font-style: italic;
+        }
+
+        /* Navigation Cards */
+        .nav-section {
+            padding: 6rem 2rem;
+            background: var(--light-grey);
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .nav-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 3rem 2.5rem;
+            text-align: center;
+            box-shadow: 0 10px 40px var(--shadow);
+            transition: var(--transition);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            display: block;
+        }
+
+        .nav-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--secondary), var(--accent));
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .nav-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px var(--shadow);
+        }
+
+        .nav-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .nav-card-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: var(--white);
+            font-size: 2rem;
+            transition: var(--transition);
+        }
+
+        .nav-card:hover .nav-card-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .nav-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .nav-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .nav-card-arrow {
+            margin-top: 1.5rem;
+            color: var(--secondary);
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .nav-card:hover .nav-card-arrow {
+            gap: 1rem;
+            color: var(--accent);
+        }
+
+        /* Statistics Section */
+        .stats-section {
+            padding: 6rem 2rem;
+            background: var(--primary);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stats-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 50%;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 300;
+        }
+
+        .stat-description {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 0.5rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 8rem 2rem;
+            background: linear-gradient(135deg, var(--light-grey) 0%, var(--white) 100%);
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .cta-text {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--secondary);
+            color: var(--white);
+            box-shadow: 0 10px 30px rgba(44, 122, 123, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(44, 122, 123, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        /* References Section */
+        .references-section {
+            padding: 6rem 2rem;
+            background: var(--background);
+            position: relative;
+        }
+
+        .references-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .reference-card {
+            background: var(--light-grey);
+            border-radius: 16px;
+            padding: 2.5rem;
+            border-left: 4px solid var(--secondary);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        [data-theme="dark"] .reference-card {
+            background: var(--light-grey);
+        }
+
+        .reference-card::before {
+            content: '\201C';
+            position: absolute;
+            top: -20px;
+            right: 20px;
+            font-size: 8rem;
+            font-family: 'Playfair Display', serif;
+            color: var(--secondary);
+            opacity: 0.08;
+            line-height: 1;
+        }
+
+        .reference-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px var(--shadow);
+            border-left-color: var(--accent);
+        }
+
+        .reference-type {
+            display: inline-block;
+            background: var(--secondary);
+            color: var(--white);
+            padding: 0.3rem 0.9rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1.25rem;
+        }
+
+        .reference-type.guideline {
+            background: var(--primary);
+        }
+
+        .reference-type.journal {
+            background: var(--secondary);
+        }
+
+        .reference-citation {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text);
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .reference-citation em {
+            font-style: italic;
+            color: var(--secondary);
+        }
+
+        .reference-meta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            padding-top: 1.25rem;
+            border-top: 1px solid rgba(44, 122, 123, 0.15);
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .reference-meta span {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .reference-meta i {
+            color: var(--secondary);
+            font-size: 0.9rem;
+        }
+
+        .references-note {
+            margin-top: 3rem;
+            text-align: center;
+            font-size: 0.95rem;
+            color: var(--text-light);
+            font-style: italic;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .references-note i {
+            color: var(--secondary);
+            margin-right: 0.5rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary);
+            color: var(--white);
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand h3 {
+            color: var(--white);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-brand p {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .footer-social a:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        .footer-links h4 {
+            color: var(--white);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: var(--secondary);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            box-shadow: 0 5px 20px rgba(44, 122, 123, 0.4);
+            z-index: 999;
+            border: none;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .nav-links {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background: var(--background);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 27px var(--shadow);
+                padding: 2rem 0;
+                gap: 1.5rem;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .references-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .nav-container {
+                padding: 1rem;
+            }
+
+            .nav-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .stat-number {
+                font-size: 3rem;
+            }
+
+            .reference-card {
+                padding: 1.75rem;
+            }
+        }
+
+        /* Loading Animation */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s;
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loader-content {
+            text-align: center;
+        }
+
+        .loader-seal {
+            width: 80px;
+            height: 80px;
+            background: var(--secondary);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.8;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loader" id="loader">
+        <div class="loader-content">
+            <div class="loader-seal">
+                <i class="fas fa-fish"></i>
+            </div>
+            <p style="margin-top: 1rem; color: var(--primary); font-family: 'Playfair Display', serif;">Loading...</p>
+        </div>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-water"></i>
+                <span>Phoca vitulina</span>
+            </a>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="nutrition.html">Nutrition</a></li>
+                <li><a href="preventative-health.html">Preventative Health</a></li>
+                <li><a href="enclosure-design.html">Enclosure Design</a></li>
+                <li><a href="emerging-research.html">Emerging Research</a></li>
+            </ul>
+
+            <div class="nav-controls">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <img src="https://images.unsplash.com/photo-1535591273668-578e31182c4f?w=1920&h=1080&fit=crop" alt="Harbour seals resting on rocks by the ocean" class="hero-image">
+        
+        <div class="hero-content">
+            <span class="hero-badge">Educational Resource</span>
+            <h1>Preventative Health Management of Captive Harbour Seals</h1>
+            <p class="hero-subtitle">Evidence-based strategies for optimal welfare and conservation of <em>Phoca vitulina</em></p>
+            <a href="#introduction" class="hero-cta">
+                Explore the Resource
+                <i class="fas fa-arrow-down"></i>
+            </a>
+        </div>
+
+        <div class="wave-container">
+            <svg class="wave" viewBox="0 0 1440 150" preserveAspectRatio="none">
+                <path class="wave-path" d="M0,64L48,69.3C96,75,192,85,288,80C384,75,480,53,576,48C672,43,768,53,864,69.3C960,85,1056,107,1152,106.7C1248,107,1344,85,1392,74.7L1440,64L1440,150L1392,150C1344,150,1248,150,1152,150C1056,150,960,150,864,150C768,150,672,150,576,150C480,150,384,150,288,150C192,150,96,150,48,150L0,150Z"></path>
+            </svg>
+            <svg class="wave" viewBox="0 0 1440 150" preserveAspectRatio="none" style="position: absolute; bottom: 0; opacity: 0.5;">
+                <path class="wave-path-2" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,165.3C1248,171,1344,149,1392,138.7L1440,128L1440,150L1392,150C1344,150,1248,150,1152,150C1056,150,960,150,864,150C768,150,672,150,576,150C480,150,384,150,288,150C192,150,96,150,48,150L0,150Z"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Introduction Section -->
+    <section class="intro" id="introduction">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Introduction</span>
+                <h2 class="section-title">Advancing Marine Mammal Welfare</h2>
+                <p class="section-subtitle">A comprehensive guide to modern preventative healthcare strategies</p>
+            </div>
+
+            <div class="intro-content reveal">
+                <p>
+                    Healthy harbour seals don't stay healthy by chance. Behind every thriving animal in a zoo, aquarium or rehabilitation centre is a carefully planned system of preventative healthcare that integrates nutrition, enclosure design, environmental management and veterinary medicine.
+                </p>
+                <p>
+                    Rather than focusing on treating illness after it occurs, modern captive management aims to identify and reduce health risks before they develop, improving welfare while supporting conservation goals <span class="citation">(Gili, Meijer and Lacave, 2018)</span>.
+                </p>
+                <p>
+                    This resource explores the evidence-based strategies used to protect the health of captive harbour seals (<em>Phoca vitulina</em>), from disease prevention and biosecurity to enclosure design and the latest welfare research. Whether you are a student, animal-care professional or wildlife enthusiast, these pages provide an accessible overview of current best practices grounded in scientific literature and contemporary zoological management <span class="citation">(Mellor and Beausoleil, 2015)</span>.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Navigation Cards Section -->
+    <section class="nav-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Explore Topics</span>
+                <h2 class="section-title">Key Areas of Study</h2>
+                <p class="section-subtitle">Dive into the four core pillars of captive harbour seal health management</p>
+            </div>
+
+            <div class="cards-grid">
+                <a href="nutrition.html" class="nav-card reveal">
+                    <div class="nav-card-icon">
+                        <i class="fas fa-fish"></i>
+                    </div>
+                    <h3>Nutrition</h3>
+                    <p>Dietary requirements, feeding strategies, and nutritional management for optimal health and development.</p>
+                    <span class="nav-card-arrow">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </span>
+                </a>
+
+                <a href="preventative-health.html" class="nav-card reveal">
+                    <div class="nav-card-icon">
+                        <i class="fas fa-stethoscope"></i>
+                    </div>
+                    <h3>Preventative Health</h3>
+                    <p>Veterinary care protocols, disease prevention, vaccination programmes, and health monitoring systems.</p>
+                    <span class="nav-card-arrow">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </span>
+                </a>
+
+                <a href="enclosure-design.html" class="nav-card reveal">
+                    <div class="nav-card-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3>Enclosure Design</h3>
+                    <p>Habitat requirements, environmental enrichment, water quality management, and facility design principles.</p>
+                    <span class="nav-card-arrow">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </span>
+                </a>
+
+                <a href="emerging-research.html" class="nav-card reveal">
+                    <div class="nav-card-icon">
+                        <i class="fas fa-microscope"></i>
+                    </div>
+                    <h3>Emerging Research</h3>
+                    <p>Latest scientific advances, innovative technologies, and future directions in marine mammal care.</p>
+                    <span class="nav-card-arrow">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag" style="color: var(--accent);">Conservation Impact</span>
+                <h2 class="section-title" style="color: var(--white);">Why Preventative Care Matters</h2>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card reveal">
+                    <div class="stat-number" data-target="85">0</div>
+                    <div class="stat-label">Reduction in Disease</div>
+                    <div class="stat-description">Through proactive health management protocols</div>
+                </div>
+
+                <div class="stat-card reveal">
+                    <div class="stat-number" data-target="40">0</div>
+                    <div class="stat-label">Year Average Lifespan</div>
+                    <div class="stat-description">In well-managed captive environments</div>
+                </div>
+
+                <div class="stat-card reveal">
+                    <div class="stat-number" data-target="12">0</div>
+                    <div class="stat-label">Key Health Indicators</div>
+                    <div class="stat-description">Monitored for early intervention</div>
+                </div>
+
+                <div class="stat-card reveal">
+                    <div class="stat-number" data-target="100">0</div>
+                    <div class="stat-label">Percent Commitment</div>
+                    <div class="stat-description">To evidence-based welfare standards</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content reveal">
+                <h2 class="cta-title">Begin Your Journey</h2>
+                <p class="cta-text">
+                    Explore our comprehensive resource on harbour seal health management. 
+                    From nutrition science to cutting-edge research, discover the evidence behind 
+                    exceptional animal care.
+                </p>
+                <div class="cta-buttons">
+                    <a href="nutrition.html" class="btn btn-primary">
+                        Start Learning
+                        <i class="fas fa-play"></i>
+                    </a>
+                    <a href="preventative-health.html" class="btn btn-secondary">
+                        Explore Health Protocols
+                        <i class="fas fa-stethoscope"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- References Section -->
+    <section class="references-section" id="references">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Academic Sources</span>
+                <h2 class="section-title">References</h2>
+                <p class="section-subtitle">The foundational literature underpinning this home page's discussion of preventative health management and welfare assessment</p>
+            </div>
+
+            <div class="references-grid">
+                <article class="reference-card reveal">
+                    <span class="reference-type guideline">Best Practice Guideline</span>
+                    <p class="reference-citation">
+                        Gili, C., Meijer, G. and Lacave, G. (2018) <em>EAZA and EAAM Best Practice Guidelines for Otariidae and Phocidae (Pinnipeds)</em>. Amsterdam: European Association of Zoos and Aquaria.
+                    </p>
+                    <div class="reference-meta">
+                        <span><i class="fas fa-building"></i> EAZA</span>
+                        <span><i class="fas fa-calendar"></i> 2018</span>
+                        <span><i class="fas fa-tag"></i> Pinniped Management</span>
+                    </div>
+                </article>
+
+                <article class="reference-card reveal">
+                    <span class="reference-type journal">Journal Article</span>
+                    <p class="reference-citation">
+                        Mellor, D.J. and Beausoleil, N.J. (2015) 'Extending the "Five Domains" model for animal welfare assessment to incorporate positive welfare states', <em>Animal Welfare</em>, 24(3), pp. 241–253.
+                    </p>
+                    <div class="reference-meta">
+                        <span><i class="fas fa-book"></i> Animal Welfare</span>
+                        <span><i class="fas fa-calendar"></i> 2015</span>
+                        <span><i class="fas fa-tag"></i> Welfare Assessment</span>
+                    </div>
+                </article>
+            </div>
+
+            <p class="references-note reveal">
+                <i class="fas fa-info-circle"></i>
+                Each topic page within this resource includes its own dedicated reference list. Explore the sections above for discipline-specific citations.
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3><i class="fas fa-water"></i> Phoca vitulina</h3>
+                    <p>A comprehensive educational resource dedicated to the preventative health management and welfare of captive harbour seals.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Topics</h4>
+                    <ul>
+                        <li><a href="nutrition.html">Nutrition</a></li>
+                        <li><a href="preventative-health.html">Preventative Health</a></li>
+                        <li><a href="enclosure-design.html">Enclosure Design</a></li>
+                        <li><a href="emerging-research.html">Emerging Research</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#introduction">Introduction</a></li>
+                        <li><a href="#references">References</a></li>
+                        <li><a href="#">Download PDF</a></li>
+                        <li><a href="#">Citation Guide</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="#">About This Project</a></li>
+                        <li><a href="#">Author Information</a></li>
+                        <li><a href="#">Institutional Affiliation</a></li>
+                        <li><a href="#">Feedback</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Preventative Health Management of Captive Harbour Seals. All rights reserved.</p>
+                <p>Educational Resource | University Dissertation</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Remove loader when page loads
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loader').classList.add('hidden');
+            }, 500);
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = mobileMenuToggle.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuToggle.querySelector('i').classList.remove('fa-times');
+                mobileMenuToggle.querySelector('i').classList.add('fa-bars');
+            });
+        });
+
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+        const icon = themeToggle.querySelector('i');
+
+        // Check for saved theme preference
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme === 'dark') {
+            html.setAttribute('data-theme', 'dark');
+            icon.classList.remove('fa-moon');
+            icon.classList.add('fa-sun');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            if (html.getAttribute('data-theme') === 'dark') {
+                html.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'light');
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            } else {
+                html.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            }
+        });
+
+        // Reading Progress Bar
+        const progressBar = document.getElementById('progressBar');
+
+        window.addEventListener('scroll', () => {
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight - windowHeight;
+            const scrollTop = window.scrollY;
+            const progress = (scrollTop / documentHeight) * 100;
+            
+            progressBar.style.width = progress + '%';
+
+            // Show/hide back to top button
+            const backToTop = document.getElementById('backToTop');
+            if (scrollTop > 500) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+
+            // Navbar background on scroll
+            const navbar = document.getElementById('navbar');
+            if (scrollTop > 100) {
+                navbar.style.boxShadow = '0 2px 20px rgba(11, 60, 93, 0.15)';
+            } else {
+                navbar.style.boxShadow = '0 2px 20px var(--shadow)';
+            }
+        });
+
+        // Back to Top
+        document.getElementById('backToTop').addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Scroll Reveal Animation
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const revealOnScroll = () => {
+            revealElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                const revealPoint = 150;
+
+                if (elementTop < windowHeight - revealPoint) {
+                    element.classList.add('active');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+
+        // Animated Counters
+        const statNumbers = document.querySelectorAll('.stat-number');
+        let counted = false;
+
+        const animateCounters = () => {
+            const statsSection = document.querySelector('.stats-section');
+            const sectionTop = statsSection.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
+
+            if (sectionTop < windowHeight - 100 && !counted) {
+                counted = true;
+                statNumbers.forEach(stat => {
+                    const target = parseInt(stat.getAttribute('data-target'));
+                    const duration = 2000;
+                    const step = target / (duration / 16);
+                    let current = 0;
+
+                    const timer = setInterval(() => {
+                        current += step;
+                        if (current >= target) {
+                            stat.textContent = target + (target === 100 ? '%' : target === 40 ? '+' : '%');
+                            clearInterval(timer);
+                        } else {
+                            stat.textContent = Math.floor(current);
+                        }
+                    }, 16);
+                });
+            }
+        };
+
+        window.addEventListener('scroll', animateCounters);
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Active navigation highlighting
+        const sections = document.querySelectorAll('section[id]');
+        const navItems = document.querySelectorAll('.nav-links a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (scrollY >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            // Only highlight nav links that have matching section IDs on this page
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (current && item.getAttribute('href') === '#' + current) {
+                    item.classList.add('active');
+                }
+            });
+
+            // Always keep Home as active on the index page when not scrolled to a specific section
+            if (scrollY < 200) {
+                document.querySelector('.nav-links a[href="index.html"]').classList.add('active');
+            }
+        });
+
+        // Add parallax effect to hero image
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const heroImage = document.querySelector('.hero-image');
+            if (heroImage && scrolled < window.innerHeight) {
+                heroImage.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+    </script>
+</body>
+</html>

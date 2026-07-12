@@ -1,0 +1,2925 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Nutrition - Evidence-based dietary management for captive harbour seals (Phoca vitulina)">
+    <title>Nutrition | Preventative Health Management of Captive Harbour Seals</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* CSS Variables */
+        :root {
+            --primary: #0B3C5D;
+            --secondary: #2C7A7B;
+            --accent: #FF6B6B;
+            --background: #FFFFFF;
+            --light-grey: #F5F7F9;
+            --text: #222222;
+            --text-light: #666666;
+            --white: #FFFFFF;
+            --shadow: rgba(11, 60, 93, 0.1);
+            --shadow-strong: rgba(11, 60, 93, 0.15);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --warning-bg: #FFF5F5;
+            --warning-border: #FF6B6B;
+            --success-bg: #F0FFF4;
+            --info-bg: #EBF8FF;
+        }
+
+        [data-theme="dark"] {
+            --background: #1a1a1a;
+            --light-grey: #2a2a2a;
+            --text: #f5f5f5;
+            --text-light: #b0b0b0;
+            --shadow: rgba(0, 0, 0, 0.3);
+            --shadow-strong: rgba(0, 0, 0, 0.5);
+            --warning-bg: #2d1f1f;
+            --success-bg: #1f2d1f;
+            --info-bg: #1f2530;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+            transition: var(--transition);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            line-height: 1.2;
+            color: var(--primary);
+        }
+
+        [data-theme="dark"] h1, [data-theme="dark"] h2, [data-theme="dark"] h3, [data-theme="dark"] h4 {
+            color: #ffffff;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--secondary), var(--accent));
+            z-index: 1001;
+            transition: width 0.1s;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px var(--shadow);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        [data-theme="dark"] .navbar {
+            background: rgba(26, 26, 26, 0.95);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        [data-theme="dark"] .logo {
+            color: #ffffff;
+        }
+
+        .logo i {
+            color: var(--secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            font-size: 0.95rem;
+            color: var(--text);
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-links a.active {
+            color: var(--secondary);
+        }
+
+        .nav-controls {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .theme-toggle,
+        .mobile-menu-toggle {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            color: var(--text);
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover,
+        .mobile-menu-toggle:hover {
+            background: var(--light-grey);
+            color: var(--secondary);
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            padding-top: 80px;
+        }
+
+        .hero-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: var(--white);
+            padding: 2rem;
+            max-width: 1000px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .breadcrumb {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1.25rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .breadcrumb a {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .breadcrumb a:hover {
+            color: var(--white);
+        }
+
+        .breadcrumb .separator {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255, 107, 107, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(255, 107, 107, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+            font-weight: 300;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-stat {
+            text-align: center;
+        }
+
+        .hero-stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1;
+        }
+
+        .hero-stat-label {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.8);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 0.5rem;
+        }
+
+        .wave-container {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+        }
+
+        .wave {
+            position: relative;
+            display: block;
+            width: calc(100% + 1.3px);
+            height: 100px;
+        }
+
+        .wave-path {
+            fill: var(--background);
+        }
+
+        /* Page Layout with Sticky Side Nav */
+        .page-layout {
+            display: grid;
+            grid-template-columns: 240px 1fr;
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* Sticky Side Navigation */
+        .side-nav {
+            position: sticky;
+            top: 100px;
+            align-self: start;
+            max-height: calc(100vh - 120px);
+            overflow-y: auto;
+            padding: 1.5rem;
+            background: var(--light-grey);
+            border-radius: 16px;
+            border-left: 3px solid var(--secondary);
+        }
+
+        .side-nav-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        [data-theme="dark"] .side-nav-title {
+            color: #ffffff;
+        }
+
+        .side-nav ul {
+            list-style: none;
+        }
+
+        .side-nav li {
+            margin-bottom: 0.5rem;
+        }
+
+        .side-nav a {
+            display: block;
+            padding: 0.5rem 0.75rem;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            border-radius: 8px;
+            border-left: 2px solid transparent;
+            transition: var(--transition);
+        }
+
+        .side-nav a:hover {
+            color: var(--secondary);
+            background: rgba(44, 122, 123, 0.08);
+        }
+
+        .side-nav a.active {
+            color: var(--secondary);
+            background: rgba(44, 122, 123, 0.1);
+            border-left-color: var(--secondary);
+            font-weight: 600;
+        }
+
+        /* Main Content */
+        .main-content {
+            min-width: 0;
+        }
+
+        .content-section {
+            margin-bottom: 5rem;
+            scroll-margin-top: 100px;
+        }
+
+        .section-header {
+            margin-bottom: 2.5rem;
+        }
+
+        .section-tag {
+            display: inline-block;
+            color: var(--secondary);
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.75rem;
+        }
+
+        .section-title {
+            font-size: clamp(1.75rem, 3vw, 2.5rem);
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        [data-theme="dark"] .section-title {
+            color: #ffffff;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 700px;
+            line-height: 1.7;
+        }
+
+        /* Content Typography */
+        .content-text {
+            font-size: 1.05rem;
+            line-height: 1.85;
+            color: var(--text);
+            margin-bottom: 1.5rem;
+        }
+
+        .content-text p {
+            margin-bottom: 1.25rem;
+        }
+
+        .citation {
+            display: inline;
+            color: var(--secondary);
+            font-weight: 500;
+            font-size: 0.9em;
+            white-space: nowrap;
+        }
+
+        .citation::before {
+            content: '(';
+        }
+
+        .citation::after {
+            content: ')';
+        }
+
+        .citation-group {
+            display: inline;
+        }
+
+        /* Two Column Layout */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .two-col-reverse {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .two-col-reverse > :first-child {
+            order: 2;
+        }
+
+        /* Info Box */
+        .info-box {
+            background: var(--info-bg);
+            border-left: 4px solid var(--secondary);
+            padding: 1.5rem 2rem;
+            border-radius: 0 12px 12px 0;
+            margin: 2rem 0;
+        }
+
+        .info-box-title {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        [data-theme="dark"] .info-box-title {
+            color: #ffffff;
+        }
+
+        .info-box p {
+            font-size: 0.95rem;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        /* Warning Callout */
+        .warning-callout {
+            background: var(--warning-bg);
+            border: 1px solid var(--warning-border);
+            border-left: 4px solid var(--warning-border);
+            padding: 1.5rem 2rem;
+            border-radius: 0 12px 12px 0;
+            margin: 2rem 0;
+            position: relative;
+        }
+
+        .warning-callout::before {
+            content: '\f071';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            color: var(--accent);
+            font-size: 1.5rem;
+            opacity: 0.3;
+        }
+
+        .warning-title {
+            font-family: 'Playfair Display', serif;
+            color: var(--accent);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+        }
+
+        .warning-callout p {
+            font-size: 0.95rem;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        /* Fish Species Cards */
+        .fish-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .fish-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(11, 60, 93, 0.05);
+        }
+
+        [data-theme="dark"] .fish-card {
+            background: var(--light-grey);
+            border-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .fish-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px var(--shadow-strong);
+        }
+
+        .fish-card-image {
+            height: 180px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .fish-card-image i {
+            font-size: 4rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .fish-card-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(to top, rgba(11, 60, 93, 0.4), transparent);
+        }
+
+        .fish-card-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            color: var(--white);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            z-index: 1;
+        }
+
+        .fish-card-content {
+            padding: 2rem;
+        }
+
+        .fish-card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin-bottom: 0.25rem;
+        }
+
+        [data-theme="dark"] .fish-card-title {
+            color: #ffffff;
+        }
+
+        .fish-card-latin {
+            font-style: italic;
+            color: var(--secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .fish-card-description {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 1.25rem;
+        }
+
+        .fish-card-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            padding-top: 1.25rem;
+            border-top: 1px solid rgba(11, 60, 93, 0.1);
+        }
+
+        [data-theme="dark"] .fish-card-stats {
+            border-top-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .fish-stat {
+            text-align: center;
+        }
+
+        .fish-stat-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+
+        .fish-stat-label {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 0.25rem;
+        }
+
+        /* Interactive Nutrient Table */
+        .table-container {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 40px var(--shadow);
+            margin: 2rem 0;
+            overflow: hidden;
+        }
+
+        [data-theme="dark"] .table-container {
+            background: var(--light-grey);
+        }
+
+        .table-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .table-search {
+            flex: 1;
+            max-width: 300px;
+            position: relative;
+        }
+
+        .table-search input {
+            width: 100%;
+            padding: 0.75rem 1rem 0.75rem 2.5rem;
+            border: 1px solid rgba(11, 60, 93, 0.15);
+            border-radius: 50px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            background: var(--background);
+            color: var(--text);
+            transition: var(--transition);
+        }
+
+        .table-search input:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(44, 122, 123, 0.1);
+        }
+
+        .table-search i {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-light);
+        }
+
+        .table-filters {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1rem;
+            background: var(--background);
+            border: 1px solid rgba(11, 60, 93, 0.15);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: var(--transition);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--secondary);
+            color: var(--white);
+            border-color: var(--secondary);
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            overflow-x: auto;
+            display: block;
+        }
+
+        .data-table thead {
+            position: sticky;
+            top: 0;
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .data-table th {
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            user-select: none;
+            transition: var(--transition);
+        }
+
+        .data-table th:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .data-table th i {
+            margin-left: 0.5rem;
+            font-size: 0.7rem;
+            opacity: 0.6;
+        }
+
+        .data-table td {
+            padding: 1rem;
+            border-bottom: 1px solid rgba(11, 60, 93, 0.08);
+            font-size: 0.95rem;
+        }
+
+        [data-theme="dark"] .data-table td {
+            border-bottom-color: rgba(255, 255, 255, 0.08);
+        }
+
+        .data-table tbody tr {
+            transition: var(--transition);
+        }
+
+        .data-table tbody tr:nth-child(even) {
+            background: var(--light-grey);
+        }
+
+        [data-theme="dark"] .data-table tbody tr:nth-child(even) {
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .data-table tbody tr:hover {
+            background: rgba(44, 122, 123, 0.08);
+            transform: scale(1.005);
+        }
+
+        .nutrient-bar {
+            display: inline-block;
+            height: 6px;
+            background: linear-gradient(90deg, var(--secondary), var(--accent));
+            border-radius: 3px;
+            margin-left: 0.5rem;
+            vertical-align: middle;
+        }
+
+        /* Daily Requirements Section */
+        .requirements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .requirement-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        [data-theme="dark"] .requirement-card {
+            background: var(--light-grey);
+        }
+
+        .requirement-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--secondary), var(--accent));
+        }
+
+        .requirement-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px var(--shadow-strong);
+        }
+
+        .requirement-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: var(--white);
+            font-size: 1.5rem;
+        }
+
+        .requirement-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.25rem;
+        }
+
+        [data-theme="dark"] .requirement-value {
+            color: #ffffff;
+        }
+
+        .requirement-label {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .requirement-desc {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            line-height: 1.5;
+        }
+
+        /* Vitamin Deficiency Cards */
+        .deficiency-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .deficiency-card {
+            background: var(--warning-bg);
+            border: 1px solid var(--warning-border);
+            border-radius: 20px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .deficiency-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(255, 107, 107, 0.15);
+        }
+
+        .deficiency-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(255, 107, 107, 0.1), transparent);
+            border-radius: 50%;
+        }
+
+        .deficiency-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .deficiency-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--accent);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .deficiency-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: var(--primary);
+        }
+
+        [data-theme="dark"] .deficiency-title {
+            color: #ffffff;
+        }
+
+        .deficiency-subtitle {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            font-style: italic;
+        }
+
+        .deficiency-body {
+            position: relative;
+            z-index: 1;
+        }
+
+        .deficiency-body p {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        .symptoms-list {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .symptoms-list li {
+            padding: 0.5rem 0 0.5rem 1.75rem;
+            position: relative;
+            font-size: 0.9rem;
+            color: var(--text);
+        }
+
+        .symptoms-list li::before {
+            content: '\f071';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-size: 0.8rem;
+        }
+
+        /* Supplement Infographic */
+        .infographic {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 24px;
+            padding: 3rem;
+            margin: 2rem 0;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .infographic::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+        }
+
+        .infographic::after {
+            content: '';
+            position: absolute;
+            bottom: -150px;
+            left: -150px;
+            width: 500px;
+            height: 500px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 50%;
+        }
+
+        .infographic-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--white);
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .infographic-subtitle {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .infographic-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .infographic-step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .step-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem;
+            margin-bottom: 0.5rem;
+            color: var(--white);
+        }
+
+        .step-desc {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.6;
+        }
+
+        /* Food Chain Illustration */
+        .food-chain {
+            background: var(--light-grey);
+            border-radius: 24px;
+            padding: 3rem 2rem;
+            margin: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .food-chain-title {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.75rem;
+            color: var(--primary);
+            margin-bottom: 2.5rem;
+        }
+
+        [data-theme="dark"] .food-chain-title {
+            color: #ffffff;
+        }
+
+        .food-chain-visual {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            position: relative;
+        }
+
+        .food-chain-item {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 5px 20px var(--shadow);
+            min-width: 140px;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        [data-theme="dark"] .food-chain-item {
+            background: var(--background);
+        }
+
+        .food-chain-item:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px var(--shadow-strong);
+        }
+
+        .food-chain-item i {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 0.75rem;
+        }
+
+        .food-chain-item-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            color: var(--primary);
+            margin-bottom: 0.25rem;
+        }
+
+        [data-theme="dark"] .food-chain-item-title {
+            color: #ffffff;
+        }
+
+        .food-chain-item-sub {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            font-style: italic;
+        }
+
+        .food-chain-arrow {
+            color: var(--secondary);
+            font-size: 1.5rem;
+            animation: arrowPulse 2s infinite;
+        }
+
+        @keyframes arrowPulse {
+            0%, 100% { opacity: 0.4; transform: translateX(0); }
+            50% { opacity: 1; transform: translateX(5px); }
+        }
+
+        .seal-item {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+        }
+
+        .seal-item i {
+            color: var(--white);
+        }
+
+        .seal-item .food-chain-item-title {
+            color: var(--white);
+        }
+
+        .seal-item .food-chain-item-sub {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Accordion */
+        .accordion {
+            margin: 2rem 0;
+        }
+
+        .accordion-item {
+            background: var(--white);
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            box-shadow: 0 5px 20px var(--shadow);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        [data-theme="dark"] .accordion-item {
+            background: var(--light-grey);
+        }
+
+        .accordion-item:hover {
+            box-shadow: 0 10px 30px var(--shadow-strong);
+        }
+
+        .accordion-header {
+            padding: 1.25rem 1.75rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: var(--transition);
+            user-select: none;
+        }
+
+        .accordion-header:hover {
+            background: rgba(44, 122, 123, 0.05);
+        }
+
+        .accordion-header-left {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .accordion-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .accordion-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem;
+            color: var(--primary);
+        }
+
+        [data-theme="dark"] .accordion-title {
+            color: #ffffff;
+        }
+
+        .accordion-subtitle {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-top: 0.25rem;
+        }
+
+        .accordion-toggle {
+            color: var(--secondary);
+            font-size: 1.25rem;
+            transition: transform 0.3s;
+        }
+
+        .accordion-item.active .accordion-toggle {
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+
+        .accordion-item.active .accordion-content {
+            max-height: 1000px;
+        }
+
+        .accordion-body {
+            padding: 0 1.75rem 1.75rem;
+            padding-left: calc(1.75rem + 45px + 1rem);
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: var(--text);
+        }
+
+        .accordion-body p {
+            margin-bottom: 1rem;
+        }
+
+        .accordion-body ul {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .accordion-body li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Feeding Schedule */
+        .feeding-schedule {
+            background: var(--light-grey);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin: 2rem 0;
+        }
+
+        .schedule-timeline {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+            position: relative;
+        }
+
+        .schedule-timeline::before {
+            content: '';
+            position: absolute;
+            top: 30px;
+            left: 5%;
+            right: 5%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--secondary), var(--accent));
+            border-radius: 2px;
+            z-index: 0;
+        }
+
+        .schedule-item {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .schedule-time {
+            width: 60px;
+            height: 60px;
+            background: var(--white);
+            border: 3px solid var(--secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: var(--secondary);
+            font-size: 1.1rem;
+            box-shadow: 0 5px 15px var(--shadow);
+        }
+
+        .schedule-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            color: var(--primary);
+            margin-bottom: 0.25rem;
+        }
+
+        [data-theme="dark"] .schedule-title {
+            color: #ffffff;
+        }
+
+        .schedule-desc {
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        /* Critical Evaluation */
+        .evaluation-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .evaluation-card {
+            padding: 2rem;
+            border-radius: 16px;
+            position: relative;
+        }
+
+        .evaluation-strengths {
+            background: var(--success-bg);
+            border-left: 4px solid var(--secondary);
+        }
+
+        .evaluation-limitations {
+            background: var(--warning-bg);
+            border-left: 4px solid var(--accent);
+        }
+
+        .evaluation-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .evaluation-strengths .evaluation-title {
+            color: var(--secondary);
+        }
+
+        .evaluation-limitations .evaluation-title {
+            color: var(--accent);
+        }
+
+        .evaluation-list {
+            list-style: none;
+        }
+
+        .evaluation-list li {
+            padding: 0.5rem 0 0.5rem 1.75rem;
+            position: relative;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: var(--text);
+        }
+
+        .evaluation-strengths .evaluation-list li::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+        }
+
+        .evaluation-limitations .evaluation-list li::before {
+            content: '\f06a';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        /* References Section */
+        .references-section {
+            padding: 5rem 2rem;
+            background: var(--light-grey);
+        }
+
+        .references-list {
+            max-width: 1000px;
+            margin: 2rem auto 0;
+        }
+
+        .reference-item {
+            background: var(--white);
+            padding: 1.5rem 2rem;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--secondary);
+            box-shadow: 0 5px 20px var(--shadow);
+            transition: var(--transition);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        [data-theme="dark"] .reference-item {
+            background: var(--background);
+        }
+
+        .reference-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 10px 30px var(--shadow-strong);
+        }
+
+        .reference-item em {
+            color: var(--secondary);
+            font-style: italic;
+        }
+
+        .reference-item a {
+            color: var(--secondary);
+            word-break: break-all;
+        }
+
+        .reference-item a:hover {
+            color: var(--accent);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary);
+            color: var(--white);
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 3rem;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand h3 {
+            color: var(--white);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-brand p {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .footer-social a:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        .footer-links h4 {
+            color: var(--white);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: var(--secondary);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            box-shadow: 0 5px 20px rgba(44, 122, 123, 0.4);
+            z-index: 999;
+            border: none;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        /* Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .page-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .side-nav {
+                position: relative;
+                top: 0;
+                max-height: none;
+            }
+
+            .side-nav ul {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.5rem;
+            }
+
+            .side-nav li {
+                margin-bottom: 0;
+            }
+
+            .side-nav a {
+                padding: 0.5rem 1rem;
+                border-left: none;
+                border-bottom: 2px solid transparent;
+            }
+
+            .side-nav a.active {
+                border-left: none;
+                border-bottom-color: var(--secondary);
+            }
+
+            .two-col,
+            .two-col-reverse,
+            .evaluation-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .two-col-reverse > :first-child {
+                order: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background: var(--background);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 27px var(--shadow);
+                padding: 2rem 0;
+                gap: 1.5rem;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .hero {
+                min-height: 60vh;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-stats {
+                gap: 1.5rem;
+            }
+
+            .hero-stat-number {
+                font-size: 1.75rem;
+            }
+
+            .infographic {
+                padding: 2rem 1.5rem;
+            }
+
+            .food-chain-visual {
+                flex-direction: column;
+            }
+
+            .food-chain-arrow {
+                transform: rotate(90deg);
+            }
+
+            .accordion-body {
+                padding-left: 1.75rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .table-container {
+                padding: 1.5rem 1rem;
+            }
+
+            .data-table {
+                font-size: 0.85rem;
+            }
+
+            .data-table th,
+            .data-table td {
+                padding: 0.75rem 0.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .deficiency-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .fish-cards-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-water"></i>
+                <span>Phoca vitulina</span>
+            </a>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="nutrition.html" class="active">Nutrition</a></li>
+                <li><a href="preventative-health.html">Preventative Health</a></li>
+                <li><a href="enclosure-design.html">Enclosure Design</a></li>
+                <li><a href="emerging-research.html">Emerging Research</a></li>
+            </ul>
+
+            <div class="nav-controls">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <img src="https://images.unsplash.com/photo-1583391733981-8498408d4b65?w=1920&h=1080&fit=crop" alt="Fresh fish including herring and mackerel - key prey species for harbour seals" class="hero-image">
+        
+        <div class="hero-content">
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+                <a href="index.html">Home</a>
+                <span class="separator">/</span>
+                <span>Nutrition</span>
+            </nav>
+            
+            <span class="hero-badge">Chapter 01</span>
+            <h1>Nutritional Ecology &amp; Dietary Management</h1>
+            <p class="hero-subtitle">Understanding the biological basis, prey selection, and evidence-based feeding strategies that support the health of captive harbour seals</p>
+            
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <div class="hero-stat-number">4</div>
+                    <div class="hero-stat-label">Prey Species</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number">4.5kg</div>
+                    <div class="hero-stat-label">Daily Ration</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number">29MJ</div>
+                    <div class="hero-stat-label">Metabolizable Energy</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number">5–8%</div>
+                    <div class="hero-stat-label">Body Weight/Day</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="wave-container">
+            <svg class="wave" viewBox="0 0 1440 100" preserveAspectRatio="none">
+                <path class="wave-path" d="M0,32L60,42.7C120,53,240,75,360,74.7C480,75,600,53,720,48C840,43,960,53,1080,64C1200,75,1320,85,1380,90.7L1440,96L1440,100L1380,100C1320,100,1200,100,1080,100C960,100,840,100,720,100C600,100,480,100,360,100C240,100,120,100,60,100L0,100Z"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Page Layout with Sticky Side Navigation -->
+    <div class="page-layout">
+        <!-- Sticky Side Navigation -->
+        <aside class="side-nav" aria-label="Page sections">
+            <div class="side-nav-title">
+                <i class="fas fa-list"></i> On This Page
+            </div>
+            <ul>
+                <li><a href="#ecology" class="side-nav-link">Nutritional Ecology</a></li>
+                <li><a href="#biological-basis" class="side-nav-link">Biological Basis</a></li>
+                <li><a href="#prey-species" class="side-nav-link">Prey Species</a></li>
+                <li><a href="#nutrient-table" class="side-nav-link">Nutrient Comparison</a></li>
+                <li><a href="#daily-requirements" class="side-nav-link">Daily Requirements</a></li>
+                <li><a href="#nutrient-accordion" class="side-nav-link">Nutrient Breakdown</a></li>
+                <li><a href="#deficiencies" class="side-nav-link">Vitamin Deficiencies</a></li>
+                <li><a href="#supplementation" class="side-nav-link">Supplementation</a></li>
+                <li><a href="#feeding-strategy" class="side-nav-link">Feeding Strategy</a></li>
+                <li><a href="#food-chain" class="side-nav-link">Food Chain</a></li>
+                <li><a href="#evaluation" class="side-nav-link">Critical Evaluation</a></li>
+                <li><a href="#references" class="side-nav-link">References</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Nutritional Ecology Section -->
+            <section class="content-section reveal" id="ecology">
+                <div class="section-header">
+                    <span class="section-tag">Foundation</span>
+                    <h2 class="section-title">Nutritional Ecology &amp; Biological Basis</h2>
+                    <p class="section-subtitle">How the natural feeding behaviour of harbour seals informs captive dietary management</p>
+                </div>
+
+                <div class="two-col">
+                    <div class="content-text">
+                        <p>
+                            Harbour seals (<em>Phoca vitulina</em>) are opportunistic generalist predators whose diet varies according to prey availability, habitat and seasonal fluctuations <span class="citation">Luxa and Acevedo-Gutiérrez, 2013; Thomas et al., 2022</span>. Across their geographical range, they consume a diverse range of pelagic and demersal fish, cephalopods and, to a lesser extent, crustaceans, demonstrating considerable dietary flexibility that enables them to exploit locally abundant prey resources <span class="citation">Luxa and Acevedo-Gutiérrez, 2013; Thomas et al., 2022</span>.
+                        </p>
+                        <p>
+                            This ecological adaptability indicates that harbour seals have evolved to obtain nutrients from a variety of prey species rather than a single food source. Consequently, captive diets should aim to replicate this diversity while meeting nutritional requirements.
+                        </p>
+
+                        <div class="info-box">
+                            <div class="info-box-title">
+                                <i class="fas fa-lightbulb"></i> Key Insight
+                            </div>
+                            <p>
+                                The dietary flexibility of wild harbour seals is a fundamental principle that should guide captive feeding programmes. Replicating natural prey diversity is essential for both nutritional adequacy and behavioural enrichment <span class="citation">Gili, Meijer and Lacave, 2018</span>.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="content-text">
+                        <h3 style="font-size: 1.3rem; margin-bottom: 1rem; color: var(--primary);">Biological Adaptations</h3>
+                        <p>
+                            As obligate carnivores, harbour seals possess a simple monogastric stomach, a relatively short intestinal tract and limited hindgut fermentation, adaptations that enable efficient digestion of animal-derived proteins and lipids while providing minimal capacity to utilise plant material <span class="citation">Gili, Meijer and Lacave, 2018</span>.
+                        </p>
+                        <p>
+                            These physiological characteristics make whole-prey diets biologically appropriate because they more closely resemble the nutritional composition of natural prey. Therefore, the formulation of captive diets should be guided by both the nutritional ecology and digestive adaptations of the species to support normal physiological function and promote long-term health.
+                        </p>
+
+                        <div class="warning-callout">
+                            <div class="warning-title">
+                                <i class="fas fa-exclamation-triangle"></i> Important Consideration
+                            </div>
+                            <p>
+                                The monogastric digestive system of harbour seals means they cannot efficiently process plant-based foods. Diets must be composed entirely of animal-derived ingredients to meet their physiological needs <span class="citation">Gili, Meijer and Lacave, 2018</span>.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Prey Species Cards Section -->
+            <section class="content-section reveal" id="prey-species">
+                <div class="section-header">
+                    <span class="section-tag">Selection</span>
+                    <h2 class="section-title">Selection &amp; Justification of the Captive Diet</h2>
+                    <p class="section-subtitle">The four complementary prey species that form the foundation of a nutritionally balanced diet</p>
+                </div>
+
+                <div class="content-text">
+                    <p>
+                        Captive harbour seals are typically fed frozen-thawed whole fish and cephalopods, with Atlantic herring (<em>Clupea harengus</em>), Atlantic mackerel (<em>Scomber scombrus</em>), capelin (<em>Mallotus villosus</em>), smelt (<em>Osmerus spp.</em>) and squid among the most commonly used prey species in zoological collections <span class="citation">Mazzaro, Koutsos and Williams, 2016; MSD Veterinary Manual, 2025</span>. Whole-prey diets are preferred because they provide muscle, organs and skeletal tissues, supplying a broad spectrum of nutrients that closely resemble the composition of natural prey.
+                    </p>
+                    <p>
+                        Current husbandry guidelines discourage reliance on a single prey species because the nutrient composition of marine fish varies considerably between species and seasons <span class="citation">Gili, Meijer and Lacave, 2018</span>. Both the MSD Veterinary Manual (2025) and EAZA/EAAM husbandry guidelines recommend offering a combination of high-fat and lean prey species to provide a balanced intake of protein, energy, essential fatty acids and micronutrients <span class="citation">Gili, Meijer and Lacave, 2018</span>.
+                    </p>
+                </div>
+
+                <div class="fish-cards-grid">
+                    <div class="fish-card">
+                        <div class="fish-card-image" style="background: linear-gradient(135deg, #1e4d6b, #2C7A7B);">
+                            <span class="fish-card-badge">Primary Energy</span>
+                            <i class="fas fa-fish"></i>
+                        </div>
+                        <div class="fish-card-content">
+                            <h3 class="fish-card-title">Atlantic Herring</h3>
+                            <p class="fish-card-latin">Clupea harengus</p>
+                            <p class="fish-card-description">
+                                Energy-dense oily fish rich in omega-3 fatty acids, serving as the primary energy source for thermoregulation and metabolic function.
+                            </p>
+                            <div class="fish-card-stats">
+                                <div class="fish-stat">
+                                    <div class="fish-stat-value">High</div>
+                                    <div class="fish-stat-label">Energy</div>
+                                </div>
+                                <div class="fish-stat">
+                                    <div class="fish-stat-value">Rich</div>
+                                    <div class="fish-stat-label">Omega-3</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="fish-card">
+                        <div class="fish-card-image" style="background: linear-gradient(135deg, #0B3C5D, #1e4d6b);">
+                            <span class="fish-card-badge">Seasonal Support</span>
+                            <i class="fas fa-fish-fins"></i>
+                        </div>
+                        <div class="fish-card-content">
+                            <h3 class="fish-card-title">Atlantic Mackerel</h3>
+                            <p class="fish-card-latin">Scomber scombrus</p>
+                            <p class="fish-card-description">
+                                High lipid content and caloric density support seasonal energy demands, particularly during colder months and reproductive periods.
+                            </p>
+                            <div class="fish-card-stats">
+                                <div class="fish-stat">
+                                    <div class="fish-stat-value">High</div>
+                                    <div class="fish-stat-label">Lipids</div>
+                                </div>
+                                <div class="fish-stat">
+                                    <div class="fish-stat-value">Dense</div>
+                                    <div class="fish-stat-label">Calories</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="fish-card">
+                        <div class="fish-card-image" style="background: linear-gradient(135deg, #2C7A7B, #FF6B6B);">
+                            <span class="fish-card-badge">Lean Protein</span>
+                            <i class="fas fa-shrimp" style="font-size: 3.5rem;">🦑</i>
+                        </div>
+                        <div class="fish-card-content">
+                            <h3 class="fish-card-title">Squid</h3>
+                            <p class="fish-card-latin">Loligo spp.</p>
+                            <p class="fish-card-description">
+                                Highly digestible lean protein source that provides dietary diversity, prevents excessive fat intake and increases prey variety.
+                            </p>
+                            <div class="fish-card-stats">
+                                <div class="fish-stat">
+                                    <div class="fish-stat-value">High</div>
+                                    <div class="fish-stat-label">Protein</div>
+                                </div>
+                                <div class="fish-stat">
+                                    <div class="fish-stat-value">Low</div>
+                                    <div class="fish-stat-label">Fat</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="fish-card">
+                        <div class="fish-card-image" style="background: linear-gradient(135deg, #1e4d6b, #0B3C5D);">
+                            <span class="fish-card-badge">Dietary Variety</span>
+                            <i class="fas fa-fish"></i>
+                        </div>
+                        <div class="fish-card-content">
+                            <h3 class="fish-card-title">Capelin</h3>
+                            <p class="fish-card-latin">Mallotus villosus</p>
+                            <p class="fish-card-description">
+                                Good protein source with useful micronutrients, providing dietary variation and flexibility throughout the year.
+                            </p>
+                            <div class="fish-card-stats">
+                                <div class="fish-stat">
+                                    <div class="fish-stat-value">Good</div>
+                                    <div class="fish-stat-label">Protein</div>
+                                </div>
+                                <div class="fish-stat">
+                                    <div class="fish-stat-value">Rich</div>
+                                    <div class="fish-stat-label">Minerals</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Interactive Nutrient Comparison Table -->
+            <section class="content-section reveal" id="nutrient-table">
+                <div class="section-header">
+                    <span class="section-tag">Analysis</span>
+                    <h2 class="section-title">Interactive Nutrient Comparison</h2>
+                    <p class="section-subtitle">Compare the nutritional profiles, strengths and limitations of each prey species used in the captive diet</p>
+                </div>
+
+                <div class="table-container">
+                    <div class="table-controls">
+                        <div class="table-search">
+                            <i class="fas fa-search"></i>
+                            <input type="text" id="tableSearch" placeholder="Search nutrients or species..." aria-label="Search table">
+                        </div>
+                        <div class="table-filters">
+                            <button class="filter-btn active" data-filter="all">All</button>
+                            <button class="filter-btn" data-filter="high">High Nutrient</button>
+                            <button class="filter-btn" data-filter="limitation">Limitations</button>
+                        </div>
+                    </div>
+
+                    <table class="data-table" id="nutrientTable">
+                        <thead>
+                            <tr>
+                                <th data-sort="prey">Prey Species <i class="fas fa-sort"></i></th>
+                                <th data-sort="strength">Nutritional Strength <i class="fas fa-sort"></i></th>
+                                <th data-sort="limitation">Limitation <i class="fas fa-sort"></i></th>
+                                <th data-sort="reason">Reason Selected <i class="fas fa-sort"></i></th>
+                                <th data-sort="energy">Energy Density <i class="fas fa-sort"></i></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr data-category="high">
+                                <td><strong>Herring</strong><br><em style="font-size: 0.85rem; color: var(--text-light);">Clupea harengus</em></td>
+                                <td>High energy, rich in omega-3 fatty acids <span class="nutrient-bar" style="width: 80px;"></span></td>
+                                <td>High thiaminase activity; prone to lipid oxidation</td>
+                                <td>Primary energy source for thermoregulation</td>
+                                <td><strong style="color: var(--secondary);">Very High</strong></td>
+                            </tr>
+                            <tr data-category="high">
+                                <td><strong>Mackerel</strong><br><em style="font-size: 0.85rem; color: var(--text-light);">Scomber scombrus</em></td>
+                                <td>High lipid content and caloric density <span class="nutrient-bar" style="width: 75px;"></span></td>
+                                <td>Oxidative deterioration during storage</td>
+                                <td>Supports seasonal energy demands</td>
+                                <td><strong style="color: var(--secondary);">High</strong></td>
+                            </tr>
+                            <tr data-category="high">
+                                <td><strong>Squid</strong><br><em style="font-size: 0.85rem; color: var(--text-light);">Loligo spp.</em></td>
+                                <td>Highly digestible lean protein; dietary diversity <span class="nutrient-bar" style="width: 60px;"></span></td>
+                                <td>Lower energy density</td>
+                                <td>Prevents excessive dietary fat and increases prey variety</td>
+                                <td><strong style="color: var(--text-light);">Moderate</strong></td>
+                            </tr>
+                            <tr data-category="high">
+                                <td><strong>Capelin</strong><br><em style="font-size: 0.85rem; color: var(--text-light);">Mallotus villosus</em></td>
+                                <td>Good protein source with useful micronutrients <span class="nutrient-bar" style="width: 55px;"></span></td>
+                                <td>Seasonal availability</td>
+                                <td>Provides dietary variation and flexibility</td>
+                                <td><strong style="color: var(--text-light);">Moderate</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="info-box">
+                    <div class="info-box-title">
+                        <i class="fas fa-info-circle"></i> Dietary Diversity Principle
+                    </div>
+                    <p>
+                        Together, these prey species provide complementary nutritional profiles that reduce reliance on a single food source and more closely replicate the dietary diversity observed in wild harbour seals <span class="citation">Luxa and Acevedo-Gutiérrez, 2013; Thomas et al., 2022</span>.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Daily Nutritional Requirements -->
+            <section class="content-section reveal" id="daily-requirements">
+                <div class="section-header">
+                    <span class="section-tag">Requirements</span>
+                    <h2 class="section-title">Daily Nutritional Requirements</h2>
+                    <p class="section-subtitle">Evidence-based feeding quantities for a healthy adult harbour seal under typical captive conditions</p>
+                </div>
+
+                <div class="content-text">
+                    <p>
+                        Harbour seals maintained in zoological collections typically consume 5–8% of their body weight daily, although requirements vary with age, reproductive status, activity level and environmental temperature <span class="citation">MSD Veterinary Manual, 2025; Gili, Meijer and Lacave, 2018</span>. For a healthy 75 kg adult, this equates to approximately 3.75–6.0 kg of whole prey per day. The proposed ration of approximately 4.5 kg/day provides around 29 MJ of metabolizable energy, meeting the estimated maintenance requirements of a healthy adult harbour seal under typical captive conditions <span class="citation">Gili, Meijer and Lacave, 2018</span>.
+                    </p>
+                    <p>
+                        Diet formulation should be based on energy and nutrient provision rather than feed mass alone, as the energy density of herring, mackerel, squid and capelin varies according to species, season and lipid content <span class="citation">Gili, Meijer and Lacave, 2018; Mazzaro, Koutsos and Williams, 2016</span>.
+                    </p>
+                </div>
+
+                <div class="requirements-grid">
+                    <div class="requirement-card">
+                        <div class="requirement-icon"><i class="fas fa-weight-scale"></i></div>
+                        <div class="requirement-value">75 kg</div>
+                        <div class="requirement-label">Adult Body Weight</div>
+                        <div class="requirement-desc">Reference weight for ration calculations</div>
+                    </div>
+                    <div class="requirement-card">
+                        <div class="requirement-icon"><i class="fas fa-fish"></i></div>
+                        <div class="requirement-value">4.5 kg</div>
+                        <div class="requirement-label">Daily Ration</div>
+                        <div class="requirement-desc">Mixed whole-prey diet per day</div>
+                    </div>
+                    <div class="requirement-card">
+                        <div class="requirement-icon"><i class="fas fa-bolt"></i></div>
+                        <div class="requirement-value">29 MJ</div>
+                        <div class="requirement-label">Metabolizable Energy</div>
+                        <div class="requirement-desc">Daily maintenance requirement</div>
+                    </div>
+                    <div class="requirement-card">
+                        <div class="requirement-icon"><i class="fas fa-percent"></i></div>
+                        <div class="requirement-value">5–8%</div>
+                        <div class="requirement-label">Body Weight/Day</div>
+                        <div class="requirement-desc">Typical daily consumption range</div>
+                    </div>
+                </div>
+
+                <div class="warning-callout">
+                    <div class="warning-title">
+                        <i class="fas fa-chart-line"></i> Monitoring Over Fixed Quantities
+                    </div>
+                    <p>
+                        As published nutrient requirements for harbour seals remain limited, dietary adequacy should be assessed through routine monitoring rather than fixed feeding quantities alone <span class="citation">Gili, Meijer and Lacave, 2018</span>. Regular evaluation of body weight, body condition score and feeding behaviour enables ration size and prey proportions to be adjusted according to individual health, activity level and reproductive status.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Nutrient Accordion -->
+            <section class="content-section reveal" id="nutrient-accordion">
+                <div class="section-header">
+                    <span class="section-tag">Breakdown</span>
+                    <h2 class="section-title">Nutrient Breakdown</h2>
+                    <p class="section-subtitle">Detailed analysis of the key nutrients provided by the mixed-prey diet</p>
+                </div>
+
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <div class="accordion-header-left">
+                                <div class="accordion-icon"><i class="fas fa-drumstick-bite"></i></div>
+                                <div>
+                                    <div class="accordion-title">Protein</div>
+                                    <div class="accordion-subtitle">Essential for tissue maintenance and repair</div>
+                                </div>
+                            </div>
+                            <i class="fas fa-chevron-down accordion-toggle"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>
+                                    The mixed-prey formulation provides high-quality digestible protein to support tissue maintenance and repair. Whole fish and cephalopods supply all essential amino acids required by harbour seals, with squid being particularly rich in highly digestible lean protein <span class="citation">Mazzaro, Koutsos and Williams, 2016</span>.
+                                </p>
+                                <p>
+                                    Protein requirements vary with life stage — growing pups, pregnant and lactating females have elevated needs compared to healthy adult maintenance. The combination of fish and squid ensures a complete amino acid profile while avoiding excessive protein intake, which could place unnecessary metabolic demands on the kidneys <span class="citation">MSD Veterinary Manual, 2025</span>.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <div class="accordion-header-left">
+                                <div class="accordion-icon"><i class="fas fa-droplet"></i></div>
+                                <div>
+                                    <div class="accordion-title">Lipids &amp; Energy</div>
+                                    <div class="accordion-subtitle">Primary fuel for thermoregulation and metabolism</div>
+                                </div>
+                            </div>
+                            <i class="fas fa-chevron-down accordion-toggle"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>
+                                    Lipids provide the primary energy source for harbour seals, supporting thermoregulation in cold aquatic environments and fuelling normal metabolic function. Herring and mackerel are particularly rich in lipid-derived energy, providing the caloric density needed to meet daily maintenance requirements of approximately 29 MJ <span class="citation">Gili, Meijer and Lacave, 2018</span>.
+                                </p>
+                                <p>
+                                    Combining oily fish with leaner prey such as squid produces a more balanced nutrient profile than reliance on a single prey species. The energy density of the diet must be carefully managed, as excessive lipid intake can lead to obesity in captive animals with reduced activity levels compared to wild counterparts <span class="citation">Mazzaro, Koutsos and Williams, 2016</span>.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <div class="accordion-header-left">
+                                <div class="accordion-icon"><i class="fas fa-atom"></i></div>
+                                <div>
+                                    <div class="accordion-title">Omega-3 Fatty Acids</div>
+                                    <div class="accordion-subtitle">Essential for cardiovascular and immune health</div>
+                                </div>
+                            </div>
+                            <i class="fas fa-chevron-down accordion-toggle"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>
+                                    Omega-3 fatty acids (EPA and DHA) are abundant in oily fish such as herring and mackerel. These essential fatty acids play critical roles in cardiovascular function, immune response, anti-inflammatory processes and neurological health <span class="citation">MSD Veterinary Manual, 2025</span>.
+                                </p>
+                                <p>
+                                    However, the high concentration of polyunsaturated fatty acids in oily fish makes them susceptible to oxidative deterioration during frozen storage. This is one of the key reasons why vitamin E supplementation is essential in captive diets — it protects these valuable fatty acids from oxidation and prevents the development of rancidity that could compromise nutritional quality <span class="citation">Mazzaro, Koutsos and Williams, 2016</span>.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <div class="accordion-header-left">
+                                <div class="accordion-icon"><i class="fas fa-pills"></i></div>
+                                <div>
+                                    <div class="accordion-title">Vitamins</div>
+                                    <div class="accordion-subtitle">Fat-soluble and water-soluble micronutrients</div>
+                                </div>
+                            </div>
+                            <i class="fas fa-chevron-down accordion-toggle"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>
+                                    Whole fish provide a range of fat-soluble vitamins (A, D, E, K) and water-soluble B-complex vitamins. However, the freezing, storage and thawing processes significantly reduce the concentration and bioavailability of several key vitamins, particularly thiamine (B₁) and vitamin E <span class="citation">Mazzaro, Koutsos and Williams, 2016; MSD Veterinary Manual, 2025</span>.
+                                </p>
+                                <p>
+                                    Additionally, oily fish such as herring contain thiaminase, an enzyme that actively degrades thiamine. Without routine supplementation, this can lead to serious deficiency states with neurological consequences <span class="citation">MSD Veterinary Manual, 2025; Croft et al., 2013</span>. See the Vitamin Deficiencies section below for more detail.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <div class="accordion-header-left">
+                                <div class="accordion-icon"><i class="fas fa-gem"></i></div>
+                                <div>
+                                    <div class="accordion-title">Minerals &amp; Micronutrients</div>
+                                    <div class="accordion-subtitle">Calcium, phosphorus, selenium and trace elements</div>
+                                </div>
+                            </div>
+                            <i class="fas fa-chevron-down accordion-toggle"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>
+                                    Whole-prey diets are particularly valuable because they include skeletal tissues, organs and bones, providing a natural balance of calcium, phosphorus and trace minerals. This is a significant advantage over muscle-meat-only diets, which can produce calcium–phosphorus imbalances <span class="citation">Gili, Meijer and Lacave, 2018</span>.
+                                </p>
+                                <p>
+                                    Capelin contributes useful micronutrients including selenium and iodine, while squid provides copper and other trace elements. The variety of prey species in the proposed diet ensures a broad spectrum of mineral intake that more closely mirrors the nutritional profile of wild-caught prey <span class="citation">Mazzaro, Koutsos and Williams, 2016</span>.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Vitamin Deficiency Cards -->
+            <section class="content-section reveal" id="deficiencies">
+                <div class="section-header">
+                    <span class="section-tag">Critical Awareness</span>
+                    <h2 class="section-title">Vitamin Deficiency Risks</h2>
+                    <p class="section-subtitle">Understanding the primary nutritional risks associated with frozen-thawed prey diets</p>
+                </div>
+
+                <div class="content-text">
+                    <p>
+                        Although whole fish provide the foundation of captive harbour seal diets, routine supplementation is essential because freezing, storage and thawing reduce the concentration and bioavailability of several nutrients <span class="citation">Mazzaro, Koutsos and Williams, 2016; MSD Veterinary Manual, 2025</span>. Two vitamins require particular attention in captive management.
+                    </p>
+                </div>
+
+                <div class="deficiency-cards">
+                    <div class="deficiency-card">
+                        <div class="deficiency-header">
+                            <div class="deficiency-icon"><i class="fas fa-brain"></i></div>
+                            <div>
+                                <h3 class="deficiency-title">Thiamine (Vitamin B₁)</h3>
+                                <p class="deficiency-subtitle">Critical neurological cofactor</p>
+                            </div>
+                        </div>
+                        <div class="deficiency-body">
+                            <p>
+                                Particular attention should be given to thiamine, as oily fish such as herring contain <strong>thiaminase</strong>, an enzyme that degrades thiamine and can lead to deficiency if supplementation is not provided <span class="citation">MSD Veterinary Manual, 2025</span>.
+                            </p>
+                            <p><strong>Common clinical signs:</strong></p>
+                            <ul class="symptoms-list">
+                                <li>Neurological disorders and seizures</li>
+                                <li>Anorexia and weight loss</li>
+                                <li>Impaired coordination and ataxia</li>
+                                <li>Lethargy and behavioural changes</li>
+                            </ul>
+                            <p style="font-size: 0.85rem; color: var(--text-light); margin-top: 1rem;">
+                                <i class="fas fa-bookmark" style="color: var(--accent);"></i> <span class="citation">Croft et al., 2013</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="deficiency-card">
+                        <div class="deficiency-header">
+                            <div class="deficiency-icon"><i class="fas fa-shield-virus"></i></div>
+                            <div>
+                                <h3 class="deficiency-title">Vitamin E</h3>
+                                <p class="deficiency-subtitle">Lipid-soluble antioxidant</p>
+                            </div>
+                        </div>
+                        <div class="deficiency-body">
+                            <p>
+                                Vitamin E supplementation is also recommended because the high concentration of polyunsaturated fatty acids in oily fish is susceptible to oxidative deterioration during frozen storage <span class="citation">Mazzaro, Koutsos and Williams, 2016</span>.
+                            </p>
+                            <p><strong>Key functions compromised:</strong></p>
+                            <ul class="symptoms-list">
+                                <li>Cell membrane protection from oxidative damage</li>
+                                <li>Immune function suppression</li>
+                                <li>Reproductive performance decline</li>
+                                <li>Steatitis (inflammation of fat tissue)</li>
+                            </ul>
+                            <p style="font-size: 0.85rem; color: var(--text-light); margin-top: 1rem;">
+                                <i class="fas fa-bookmark" style="color: var(--accent);"></i> <span class="citation">Mazzaro, Koutsos and Williams, 2016</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="warning-callout">
+                    <div class="warning-title">
+                        <i class="fas fa-exclamation-circle"></i> Clinical Significance
+                    </div>
+                    <p>
+                        Thiamine deficiency has been associated with neurological disorders, anorexia and impaired coordination in captive marine mammals <span class="citation">Croft et al., 2013</span>. Because clinical signs can develop rapidly and may be irreversible if not addressed promptly, routine prophylactic supplementation is considered a standard of care in zoological collections <span class="citation">MSD Veterinary Manual, 2025</span>.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Supplementation Infographic -->
+            <section class="content-section reveal" id="supplementation">
+                <div class="section-header">
+                    <span class="section-tag">Protocol</span>
+                    <h2 class="section-title">Supplementation Protocol</h2>
+                    <p class="section-subtitle">A systematic approach to maintaining nutritional adequacy in frozen-thawed prey diets</p>
+                </div>
+
+                <div class="content-text">
+                    <p>
+                        Routine supplementation with thiamine and vitamin E should form an integral part of captive dietary management to maintain nutritional adequacy and minimise the risk of deficiency associated with long-term feeding of frozen-thawed prey <span class="citation">Mazzaro, Koutsos and Williams, 2016; MSD Veterinary Manual, 2025</span>.
+                    </p>
+                </div>
+
+                <div class="infographic">
+                    <h3 class="infographic-title">The Supplementation Process</h3>
+                    <p class="infographic-subtitle">Four essential steps to ensure nutritional adequacy in every meal</p>
+                    
+                    <div class="infographic-steps">
+                        <div class="infographic-step">
+                            <div class="step-number">1</div>
+                            <h4 class="step-title">Thaw</h4>
+                            <p class="step-desc">Safely thaw frozen prey at controlled refrigeration temperatures to minimise bacterial growth and nutrient loss</p>
+                        </div>
+                        <div class="infographic-step">
+                            <div class="step-number">2</div>
+                            <h4 class="step-title">Supplement</h4>
+                            <p class="step-desc">Administer thiamine (B₁) and vitamin E supplements according to veterinary protocol at each feeding session</p>
+                        </div>
+                        <div class="infographic-step">
+                            <div class="step-number">3</div>
+                            <h4 class="step-title">Verify</h4>
+                            <p class="step-desc">Confirm supplement consumption through target feeding and record individual intake in daily logs</p>
+                        </div>
+                        <div class="infographic-step">
+                            <div class="step-number">4</div>
+                            <h4 class="step-title">Monitor</h4>
+                            <p class="step-desc">Track body condition, blood parameters and clinical signs to adjust supplementation as needed</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Feeding Strategy -->
+            <section class="content-section reveal" id="feeding-strategy">
+                <div class="section-header">
+                    <span class="section-tag">Management</span>
+                    <h2 class="section-title">Feeding Strategy &amp; Nutritional Monitoring</h2>
+                    <p class="section-subtitle">Structured feeding schedules and behavioural enrichment to support natural foraging behaviour</p>
+                </div>
+
+                <div class="content-text">
+                    <p>
+                        The daily ration should be divided into three to five feeding sessions to better reflect the opportunistic feeding behaviour of wild harbour seals and reduce prolonged fasting periods <span class="citation">Gili, Meijer and Lacave, 2018</span>. In the wild, harbour seals spend considerable time locating and capturing prey, whereas captive individuals consume prepared diets within a relatively short period.
+                    </p>
+                    <p>
+                        Therefore, feeding should incorporate target feeding, scatter feeding and environmental enrichment to encourage natural foraging behaviours, increase feeding duration and provide behavioural stimulation. Target feeding also facilitates voluntary participation in husbandry procedures, including health examinations and weighing, while ensuring that each animal receives its allocated ration <span class="citation">Gili, Meijer and Lacave, 2018</span>.
+                    </p>
+                </div>
+
+                <div class="feeding-schedule">
+                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--primary); margin-bottom: 0.5rem;">
+                        <i class="fas fa-clock" style="color: var(--secondary);"></i> Example Daily Feeding Schedule
+                    </h3>
+                    <p style="color: var(--text-light); font-size: 0.95rem;">Dividing the 4.5 kg ration across multiple sessions</p>
+                    
+                    <div class="schedule-timeline">
+                        <div class="schedule-item">
+                            <div class="schedule-time">08:00</div>
+                            <h4 class="schedule-title">Morning Feed</h4>
+                            <p class="schedule-desc">1.2 kg mixed fish + supplements</p>
+                        </div>
+                        <div class="schedule-item">
+                            <div class="schedule-time">11:30</div>
+                            <h4 class="schedule-title">Mid-Morning</h4>
+                            <p class="schedule-desc">Scatter feeding enrichment</p>
+                        </div>
+                        <div class="schedule-item">
+                            <div class="schedule-time">14:00</div>
+                            <h4 class="schedule-title">Afternoon Feed</h4>
+                            <p class="schedule-desc">1.2 kg mixed fish + target training</p>
+                        </div>
+                        <div class="schedule-item">
+                            <div class="schedule-time">17:00</div>
+                            <h4 class="schedule-title">Late Afternoon</h4>
+                            <p class="schedule-desc">Foraging puzzle feeder</p>
+                        </div>
+                        <div class="schedule-item">
+                            <div class="schedule-time">19:30</div>
+                            <h4 class="schedule-title">Evening Feed</h4>
+                            <p class="schedule-desc">2.1 kg final ration + supplements</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <div class="info-box-title">
+                        <i class="fas fa-clipboard-list"></i> Routine Monitoring Records
+                    </div>
+                    <p>
+                        Routine nutritional monitoring is essential to evaluate the effectiveness of the feeding programme. Records should include daily food intake, supplement consumption, body weight, body condition score and feeding behaviour, as changes in appetite are often among the earliest indicators of disease in pinnipeds <span class="citation">Gili, Meijer and Lacave, 2018</span>. Regular veterinary assessments allow ration size and prey composition to be adjusted according to age, reproductive status, activity level and seasonal energy demands.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Food Chain Illustration -->
+            <section class="content-section reveal" id="food-chain">
+                <div class="section-header">
+                    <span class="section-tag">Ecology</span>
+                    <h2 class="section-title">The Marine Food Chain</h2>
+                    <p class="section-subtitle">Understanding harbour seals' position as apex predators in the marine ecosystem</p>
+                </div>
+
+                <div class="food-chain">
+                    <h3 class="food-chain-title">From Primary Producers to Apex Predator</h3>
+                    <div class="food-chain-visual">
+                        <div class="food-chain-item">
+                            <i class="fas fa-seedling"></i>
+                            <div class="food-chain-item-title">Phytoplankton</div>
+                            <div class="food-chain-item-sub">Primary producers</div>
+                        </div>
+                        <div class="food-chain-arrow"><i class="fas fa-arrow-right"></i></div>
+                        <div class="food-chain-item">
+                            <i class="fas fa-shrimp"></i>
+                            <div class="food-chain-item-title">Zooplankton</div>
+                            <div class="food-chain-item-sub">Primary consumers</div>
+                        </div>
+                        <div class="food-chain-arrow"><i class="fas fa-arrow-right"></i></div>
+                        <div class="food-chain-item">
+                            <i class="fas fa-fish"></i>
+                            <div class="food-chain-item-title">Small Fish</div>
+                            <div class="food-chain-item-sub">Herring, Capelin</div>
+                        </div>
+                        <div class="food-chain-arrow"><i class="fas fa-arrow-right"></i></div>
+                        <div class="food-chain-item">
+                            <i class="fas fa-fish-fins"></i>
+                            <div class="food-chain-item-title">Predatory Fish</div>
+                            <div class="food-chain-item-sub">Mackerel, Squid</div>
+                        </div>
+                        <div class="food-chain-arrow"><i class="fas fa-arrow-right"></i></div>
+                        <div class="food-chain-item seal-item">
+                            <i class="fas fa-water"></i>
+                            <div class="food-chain-item-title">Harbour Seal</div>
+                            <div class="food-chain-item-sub">Apex predator</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-text">
+                    <p>
+                        This food chain illustrates why harbour seals are exposed to bioaccumulation of certain nutrients and contaminants — they occupy a high trophic level, accumulating the nutritional (and potentially toxicological) profile of all prey consumed throughout their lives. This ecological reality underscores the importance of sourcing high-quality prey species and monitoring the health of captive animals through regular veterinary assessment <span class="citation">Gili, Meijer and Lacave, 2018</span>.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Critical Evaluation -->
+            <section class="content-section reveal" id="evaluation">
+                <div class="section-header">
+                    <span class="section-tag">Analysis</span>
+                    <h2 class="section-title">Critical Evaluation</h2>
+                    <p class="section-subtitle">A balanced assessment of the strengths and limitations of the proposed mixed-prey diet</p>
+                </div>
+
+                <div class="content-text">
+                    <p>
+                        The proposed mixed-prey diet provides a balanced approach to meeting the nutritional and behavioural requirements of captive harbour seals by supplying complementary sources of energy, protein and essential fatty acids while reflecting the species' naturally varied feeding ecology <span class="citation">Gili, Meijer and Lacave, 2018</span>. Dietary diversity also reduces dependence on a single prey species, thereby minimising the effects of seasonal variation in nutrient composition and improving the overall resilience of the feeding programme.
+                    </p>
+                </div>
+
+                <div class="evaluation-grid">
+                    <div class="evaluation-card evaluation-strengths">
+                        <h3 class="evaluation-title">
+                            <i class="fas fa-check-circle"></i> Strengths
+                        </h3>
+                        <ul class="evaluation-list">
+                            <li>Provides complementary sources of energy, protein and essential fatty acids</li>
+                            <li>Reflects the naturally varied feeding ecology of wild harbour seals <span class="citation">Gili, Meijer and Lacave, 2018</span></li>
+                            <li>Reduces dependence on a single prey species</li>
+                            <li>Minimises effects of seasonal variation in nutrient composition</li>
+                            <li>Improves overall resilience of the feeding programme</li>
+                            <li>Supports behavioural enrichment through prey variety</li>
+                        </ul>
+                    </div>
+
+                    <div class="evaluation-card evaluation-limitations">
+                        <h3 class="evaluation-title">
+                            <i class="fas fa-exclamation-triangle"></i> Limitations
+                        </h3>
+                        <ul class="evaluation-list">
+                            <li>Nutritional quality of frozen-thawed prey is influenced by storage duration and handling practices <span class="citation">Mazzaro, Koutsos and Williams, 2016</span></li>
+                            <li>Consistent feed quality is difficult to maintain</li>
+                            <li>Increased reliance on vitamin supplementation</li>
+                            <li>Commercial availability, seasonal fluctuations and cost may restrict provision of preferred prey species</li>
+                            <li>Published nutrient requirements for harbour seals remain limited <span class="citation">Gili, Meijer and Lacave, 2018</span></li>
+                            <li>Many feeding recommendations based on husbandry experience rather than controlled nutritional studies</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="warning-callout">
+                    <div class="warning-title">
+                        <i class="fas fa-flask"></i> Evidence Gap
+                    </div>
+                    <p>
+                        Although mixed-prey diets are widely recommended, the absence of controlled nutritional trials means that many husbandry recommendations remain based on expert consensus rather than species-specific experimental evidence. Consequently, successful dietary management requires a flexible, evidence-based approach in which feeding practices are continually refined through veterinary monitoring, body condition assessment and emerging research to ensure long-term health and welfare <span class="citation">Gili, Meijer and Lacave, 2018</span>.
+                    </p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- References Section -->
+    <section class="references-section" id="references">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <div class="section-header" style="text-align: center;">
+                <span class="section-tag">Academic Sources</span>
+                <h2 class="section-title">References</h2>
+                <p class="section-subtitle" style="margin: 0 auto;">Complete bibliography of sources cited on this page</p>
+            </div>
+
+            <div class="references-list">
+                <div class="reference-item">
+                    Croft, L., Napoli, E., Hung, C.K., St Leger, J., Gearhart, S., Heym, K., Wong, S., Sakaguchi, D., Lin, A., Puschner, B. and Giulivi, C. (2013) 'Clinical evaluation and biochemical analyses of thiamine deficiency in Pacific harbor seals (<em>Phoca vitulina</em>) maintained at a zoological facility', <em>Journal of the American Veterinary Medical Association</em>, 243(8), pp. 1179–1189. Available at: <a href="https://doi.org/10.2460/javma.243.8.1179" target="_blank" rel="noopener">https://doi.org/10.2460/javma.243.8.1179</a>.
+                </div>
+                <div class="reference-item">
+                    Gili, C., Meijer, G. and Lacave, G. (2018) <em>EAZA and EAAM Best Practice Guidelines for Otariidae and Phocidae (Pinnipeds)</em>. Amsterdam: European Association of Zoos and Aquaria. Available at: <a href="https://www.eaza.net" target="_blank" rel="noopener">https://www.eaza.net</a> (Accessed: 11 July 2026).
+                </div>
+                <div class="reference-item">
+                    Luxa, K. and Acevedo-Gutiérrez, A. (2013) 'Food habits of harbor seals (<em>Phoca vitulina</em>) in two estuaries in the central Salish Sea', <em>Aquatic Mammals</em>, 39(1), pp. 10–22. doi:10.1578/AM.39.1.2013.10.
+                </div>
+                <div class="reference-item">
+                    Mazzaro, L.M., Koutsos, E.A. and Williams, J.J. (2016) 'Current practices in aquatic animal supplementation', <em>Journal of Zoo and Aquarium Research</em>, 4(4), pp. 204–213.
+                </div>
+                <div class="reference-item">
+                    Mazzaro, L.M., Koutsos, E.A. and Williams, T.M. (2016) 'Marine mammal nutrition'. In: Dierauf, L.A., Gulland, F.M.D. and Whitman, K.L. (eds.) <em>CRC Handbook of Marine Mammal Medicine</em>. 3rd edn. Boca Raton: CRC Press, pp. 885–910.
+                </div>
+                <div class="reference-item">
+                    MSD Veterinary Manual (2024) <em>Nutrition and Nutritional Diseases of Marine Mammals</em>. MSD Veterinary Manual.
+                </div>
+                <div class="reference-item">
+                    MSD Veterinary Manual (2025) <em>Nutrition in Marine Mammals</em>. Available through the MSD Veterinary Manual online resource (Accessed: 11 July 2026).
+                </div>
+                <div class="reference-item">
+                    Thomas, A.C., Deagle, B.E., Nordstrom, C.A., Majewski, S.E., Nelson, B.W., Acevedo-Gutiérrez, A., Jeffries, S.J., Moore, J.E., Louden, A.H., Allegue, H., Pearson, S.F., Schmidt, M.B. and Trites, A.W. (2022) 'Data on the diets of Salish Sea harbour seals from DNA metabarcoding', <em>Scientific Data</em>, 9, 68. doi:10.1038/s41597-022-01152-5.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h3><i class="fas fa-water"></i> Phoca vitulina</h3>
+                <p>A comprehensive educational resource dedicated to the preventative health management and welfare of captive harbour seals.</p>
+                <div class="footer-social">
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <h4>Topics</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="nutrition.html">Nutrition</a></li>
+                    <li><a href="preventative-health.html">Preventative Health</a></li>
+                    <li><a href="enclosure-design.html">Enclosure Design</a></li>
+                    <li><a href="emerging-research.html">Emerging Research</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links">
+                <h4>Sections</h4>
+                <ul>
+                    <li><a href="#ecology">Nutritional Ecology</a></li>
+                    <li><a href="#prey-species">Prey Species</a></li>
+                    <li><a href="#deficiencies">Vitamin Deficiencies</a></li>
+                    <li><a href="#supplementation">Supplementation</a></li>
+                    <li><a href="#references">References</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links">
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="#">About This Project</a></li>
+                    <li><a href="#">Author Information</a></li>
+                    <li><a href="#">Institutional Affiliation</a></li>
+                    <li><a href="#">Feedback</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Preventative Health Management of Captive Harbour Seals. All rights reserved.</p>
+            <p>Educational Resource | University Dissertation</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = mobileMenuToggle.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuToggle.querySelector('i').classList.remove('fa-times');
+                mobileMenuToggle.querySelector('i').classList.add('fa-bars');
+            });
+        });
+
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+        const themeIcon = themeToggle.querySelector('i');
+
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme === 'dark') {
+            html.setAttribute('data-theme', 'dark');
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            if (html.getAttribute('data-theme') === 'dark') {
+                html.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'light');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            } else {
+                html.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            }
+        });
+
+        // Reading Progress Bar
+        const progressBar = document.getElementById('progressBar');
+
+        window.addEventListener('scroll', () => {
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight - windowHeight;
+            const scrollTop = window.scrollY;
+            const progress = (scrollTop / documentHeight) * 100;
+            progressBar.style.width = progress + '%';
+
+            // Back to top button
+            const backToTop = document.getElementById('backToTop');
+            if (scrollTop > 500) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        document.getElementById('backToTop').addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Scroll Reveal Animation
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealOnScroll = () => {
+            revealElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                if (elementTop < windowHeight - 100) {
+                    element.classList.add('active');
+                }
+            });
+        };
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+
+        // Sticky Side Navigation - Active Link Highlighting
+        const sideNavLinks = document.querySelectorAll('.side-nav-link');
+        const contentSections = document.querySelectorAll('.content-section');
+
+        const updateActiveSideNav = () => {
+            let currentSection = '';
+            contentSections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (window.scrollY >= sectionTop - 150) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+
+            sideNavLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', updateActiveSideNav);
+        window.addEventListener('load', updateActiveSideNav);
+
+        // Smooth scroll for side nav links
+        sideNavLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Accordion functionality
+        const accordionHeaders = document.querySelectorAll('.accordion-header');
+        accordionHeaders.forEach(header => {
+            header.addEventListener('click', () => {
+                const item = header.parentElement;
+                const wasActive = item.classList.contains('active');
+                
+                // Close all
+                document.querySelectorAll('.accordion-item').forEach(i => {
+                    i.classList.remove('active');
+                });
+                
+                // Open clicked if it wasn't active
+                if (!wasActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Open first accordion by default
+        document.querySelector('.accordion-item').classList.add('active');
+
+        // Interactive Table - Search
+        const tableSearch = document.getElementById('tableSearch');
+        const tableRows = document.querySelectorAll('#nutrientTable tbody tr');
+
+        tableSearch.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            tableRows.forEach(row => {
+                const text = row.textContent.toLowerCase();
+                row.style.display = text.includes(searchTerm) ? '' : 'none';
+            });
+        });
+
+        // Interactive Table - Filter Buttons
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                const filter = btn.getAttribute('data-filter');
+                tableRows.forEach(row => {
+                    if (filter === 'all') {
+                        row.style.display = '';
+                    } else {
+                        row.style.display = row.getAttribute('data-category') === filter ? '' : 'none';
+                    }
+                });
+            });
+        });
+
+        // Table Sorting
+        const tableHeaders = document.querySelectorAll('.data-table th[data-sort]');
+        tableHeaders.forEach((header, index) => {
+            header.addEventListener('click', () => {
+                const table = header.closest('table');
+                const tbody = table.querySelector('tbody');
+                const rows = Array.from(tbody.querySelectorAll('tr'));
+                const isAscending = header.classList.contains('sort-asc');
+                
+                // Reset all sort indicators
+                tableHeaders.forEach(h => {
+                    h.classList.remove('sort-asc', 'sort-desc');
+                    const icon = h.querySelector('i');
+                    if (icon) {
+                        icon.className = 'fas fa-sort';
+                    }
+                });
+                
+                rows.sort((a, b) => {
+                    const aText = a.children[index].textContent.trim();
+                    const bText = b.children[index].textContent.trim();
+                    
+                    if (isAscending) {
+                        return bText.localeCompare(aText);
+                    } else {
+                        return aText.localeCompare(bText);
+                    }
+                });
+                
+                header.classList.add(isAscending ? 'sort-desc' : 'sort-asc');
+                const icon = header.querySelector('i');
+                if (icon) {
+                    icon.className = isAscending ? 'fas fa-sort-down' : 'fas fa-sort-up';
+                }
+                
+                rows.forEach(row => tbody.appendChild(row));
+            });
+        });
+
+        // Parallax effect for hero image
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const heroImage = document.querySelector('.hero-image');
+            if (heroImage && scrolled < window.innerHeight) {
+                heroImage.style.transform = `translateY(${scrolled * 0.3}px)`;
+            }
+        });
+    </script>
+</body>
+</html>
